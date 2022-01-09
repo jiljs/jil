@@ -26,6 +26,7 @@
   "author": "TY",
   "license": "MIT",
   "scripts": {
+    "version": "npm run copy:assets",
     "copy:assets": "cpy package.json README.md dist",
     "build": "nb-tsc && npm run copy:assets",
     "clean": "nb-clean jil-event*.tgz dist/** *.tsbuildinfo package",
