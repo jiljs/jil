@@ -107,7 +107,7 @@ export namespace Event {
     removeListener(event: string | symbol, listener: Function): unknown;
   }
 
-  export function fromNodeEventEmitter<T extends any[]>(
+  export function fromNodeEventEmitter<T>(
     emitter: NodeEventEmitter,
     eventName: string,
     map: (...args: any[]) => T = id => id,
@@ -116,7 +116,6 @@ export namespace Event {
     const onFirstListenerAdd = () => emitter.on(eventName, fn);
     const onLastListenerRemove = () => emitter.removeListener(eventName, fn);
     const result = new Emitter<T>({onFirstListenerAdd, onLastListenerRemove});
-
     return result.event;
   }
 
@@ -126,7 +125,7 @@ export namespace Event {
     removeEventListener(event: string | symbol, listener: Function): void;
   }
 
-  export function fromDOMEventEmitter<T extends any[]>(
+  export function fromDOMEventEmitter<T>(
     emitter: DOMEventEmitter,
     eventName: string,
     map: (...args: any[]) => T = id => id,
