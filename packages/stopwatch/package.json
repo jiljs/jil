@@ -1,7 +1,7 @@
 {
   "name": "@jil/stopwatch",
   "description": "A managed stopwatch for both nodejs and browser",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": [
     "stop",
     "watch",
@@ -25,7 +25,6 @@
     "jest": "jest",
     "verify": "npm pack && tar xf jil-stopwatch*.tgz && tree package && npm run clean"
   },
-  "dependencies": {},
   "devDependencies": {
     "@nutol/build": "^0.2.0",
     "@nutol/eslint-config": "^0.2.0",
