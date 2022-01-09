@@ -1,0 +1,42 @@
+{
+  "name": "@jil/cancellation",
+  "description": "A common cancellation library",
+  "version": "0.1.0",
+  "keywords": [
+    "cancel",
+    "cancellation"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "build": "nb-tsc",
+    "clean": "nb-clean jil-cancellation*.tgz dist *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-cancellation*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "@jil/event": "^0.1.0"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.0",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

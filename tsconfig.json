@@ -1,0 +1,27 @@
+{
+  "extends": "@nutol/build/config/tsconfig.common.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "packages/cancellation/tsconfig.json"
+    },
+    {
+      "path": "packages/errors/tsconfig.json"
+    },
+    {
+      "path": "packages/event/tsconfig.json"
+    },
+    {
+      "path": "packages/lifecycle/tsconfig.json"
+    },
+    {
+      "path": "packages/stopwatch/tsconfig.json"
+    },
+    {
+      "path": "packages/types/tsconfig.json"
+    }
+  ],
+  "files": []
+}

@@ -1,0 +1,58 @@
+{
+  "name": "@jil/event",
+  "description": "A Event emitter library inspired by the event api used in vscode extensions.",
+  "version": "0.1.0",
+  "keywords": [
+    "event",
+    "events",
+    "emitter",
+    "async",
+    "buffer",
+    "bufferer",
+    "debounce",
+    "leakage",
+    "microtask",
+    "multiplexer",
+    "paused",
+    "pauseable",
+    "profiling",
+    "relay"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "copy:assets": "cpy package.json README.md dist",
+    "build": "nb-tsc && npm run copy:assets",
+    "clean": "nb-clean jil-event*.tgz dist/** *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-event*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "@jil/errors": "^0.1.0",
+    "@jil/stopwatch": "^0.1.0",
+    "@jil/types": "^0.1.0",
+    "tily": "^2.10.1"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.1",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
+    "cpy-cli": "^3.1.1"
+  },
+  "files": [
+    "**/*",
+    "!__tests__"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}

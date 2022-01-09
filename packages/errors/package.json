@@ -1,0 +1,52 @@
+{
+  "name": "@jil/errors",
+  "description": "A common errors library",
+  "version": "0.1.0",
+  "keywords": [
+    "error",
+    "errors",
+    "err",
+    "hander",
+    "illegal",
+    "message",
+    "not",
+    "implemented",
+    "supported",
+    "readonly",
+    "serialze",
+    "serialization",
+    "v8"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "copy:assets": "cpy package.json README.md dist",
+    "build": "nb-tsc && npm run copy:assets",
+    "clean": "nb-clean jil-errors*.tgz dist/** *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-errors*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "tily": "^2.10.1"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.1",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
+    "cpy-cli": "^3.1.1"
+  },
+  "files": [
+    "**/*",
+    "!__tests__"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}
