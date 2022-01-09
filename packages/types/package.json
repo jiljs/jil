@@ -19,7 +19,6 @@
   "author": "TY",
   "license": "MIT",
   "scripts": {
-    "acceptance": "nb-mocha \"dist/__tests__/acceptance/**/*.js\"",
     "build": "nb-tsc",
     "clean": "nb-clean jil-types*.tgz dist *.tsbuildinfo package",
     "pretest": "npm run clean && npm run build",
