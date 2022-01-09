@@ -1,7 +1,7 @@
 {
   "name": "@jil/event",
   "description": "A Event emitter library inspired by the event api used in vscode extensions.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "keywords": [
     "event",
     "events",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/jiljs/jil/compare/@jil/event@0.2.1...@jil/event@0.2.2) (2022-01-09)
+
+
+### Bug Fixes
+
+* **event:** generic type ([fb2c8b5](https://github.com/jiljs/jil/commit/fb2c8b543f0525cc26014e33452cc08c97670790))
+
+
+
+
+
 ## [0.2.1](https://github.com/jiljs/jil/compare/@jil/event@0.2.0...@jil/event@0.2.1) (2022-01-09)
 
 

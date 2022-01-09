@@ -1,7 +1,7 @@
 {
   "name": "@jil/cancellation",
   "description": "A common cancellation library",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "keywords": [
     "cancel",
     "cancellation"
@@ -22,7 +22,7 @@
     "verify": "npm pack && tar xf jil-cancellation*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/event": "^0.2.1"
+    "@jil/event": "^0.2.2"
   },
   "devDependencies": {
     "@nutol/build": "^0.2.0",
