@@ -20,6 +20,9 @@
       "path": "packages/lifecycle/tsconfig.json"
     },
     {
+      "path": "packages/retimer/tsconfig.json"
+    },
+    {
       "path": "packages/stopwatch/tsconfig.json"
     },
     {
