@@ -11,7 +11,8 @@ export interface Thenable<T> {
    * @param onrejected The callback to execute when the Promise is rejected.
    * @returns A Promise for the completion of which ever callback is executed.
    */
-  then<TResult>(onfulfilled?: (value: T) => TResult | Thenable<TResult>, onrejected?: (reason: any) => TResult | Thenable<TResult>): Thenable<TResult>;
-  // eslint-disable-next-line @typescript-eslint/unified-signatures
-  then<TResult>(onfulfilled?: (value: T) => TResult | Thenable<TResult>, onrejected?: (reason: any) => void): Thenable<TResult>;
+  then<TResult>(
+    onfulfilled?: (value: T) => TResult | Thenable<TResult>,
+    onrejected?: (reason: any) => TResult | Thenable<TResult> | void,
+  ): Thenable<TResult>;
 }

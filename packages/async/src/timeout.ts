@@ -1,6 +1,6 @@
-import { CancellationToken } from "@jil/cancellation";
-import { canceled } from "@jil/errors/canceled";
-import { CancelablePromise, createCancelablePromise } from "./cancelable";
+import {CancellationToken} from '@jil/cancellation';
+import {canceled} from '@jil/errors/canceled';
+import {CancelablePromise, createCancelablePromise} from './cancelable';
 
 export function timeout(millis: number): CancelablePromise<void>;
 export function timeout(millis: number, token: CancellationToken): Promise<void>;
