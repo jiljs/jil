@@ -1,3 +1,5 @@
-export function isThenable<T>(obj: unknown): obj is Promise<T> {
-  return !!obj && typeof (obj as unknown as Promise<T>).then === 'function';
+import { Thenable } from "@jil/types";
+
+export function isThenable<T>(obj: unknown): obj is Thenable<T> {
+  return !!obj && typeof (obj as unknown as Thenable<T>).then === 'function';
 }
