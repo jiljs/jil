@@ -1,9 +1,8 @@
 {
   "name": "@jil/retimer",
   "description": "A reschedulable setTimeout library for JavaScript",
-  "version": "0.1.0",
-  "keywords": [
-  ],
+  "version": "0.1.1",
+  "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
@@ -19,7 +18,6 @@
     "jest": "jest",
     "verify": "npm pack && tar xf jil-retimer*.tgz && tree package && npm run clean"
   },
-  "dependencies": {},
   "devDependencies": {
     "@nutol/build": "^0.2.0",
     "@nutol/eslint-config": "^0.2.0",
