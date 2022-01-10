@@ -5,6 +5,9 @@
   },
   "references": [
     {
+      "path": "packages/async/tsconfig.json"
+    },
+    {
       "path": "packages/cancellation/tsconfig.json"
     },
     {
