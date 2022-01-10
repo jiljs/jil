@@ -1,7 +1,7 @@
-import { retimer } from "../retimer";
+import {retimer} from '../retimer';
 
-describe("retimer", () => {
-  test("schedule a callback", done => {
+describe('retimer', () => {
+  test('schedule a callback', done => {
     const start = Date.now();
 
     retimer(() => {
@@ -10,7 +10,7 @@ describe("retimer", () => {
     }, 50);
   });
 
-  test("reschedule a callback", done => {
+  test('reschedule a callback', done => {
     const start = Date.now();
 
     const timer = retimer(() => {
@@ -23,7 +23,7 @@ describe("retimer", () => {
     }, 20);
   });
 
-  test("reschedule multiple times", done => {
+  test('reschedule multiple times', done => {
     const start = Date.now();
 
     const timer = retimer(() => {
@@ -39,9 +39,9 @@ describe("retimer", () => {
     }, 20);
   });
 
-  test("clear a timer", done => {
+  test('clear a timer', done => {
     const timer = retimer(() => {
-      done.fail("the timer should never get called");
+      done.fail('the timer should never get called');
     }, 20);
 
     timer.clear();
@@ -49,9 +49,9 @@ describe("retimer", () => {
     setTimeout(done, 50);
   });
 
-  test("clear a timer after a reschedule", done => {
+  test('clear a timer after a reschedule', done => {
     const timer = retimer(() => {
-      done.fail("the timer should never get called");
+      done.fail('the timer should never get called');
     }, 20);
 
     setTimeout(() => {
@@ -64,7 +64,7 @@ describe("retimer", () => {
     setTimeout(done, 50);
   });
 
-  test("can be rescheduled early", done => {
+  test('can be rescheduled early', done => {
     const start = Date.now();
 
     const timer = retimer(() => {
@@ -77,7 +77,7 @@ describe("retimer", () => {
     }, 20);
   });
 
-  test("can be rescheduled even if the timeout has already triggered", done => {
+  test('can be rescheduled even if the timeout has already triggered', done => {
     const start = Date.now();
     let count = 0;
 
@@ -93,10 +93,14 @@ describe("retimer", () => {
     }, 20);
   });
 
-  test("pass arguments to the callback", done => {
-    retimer(arg => {
-      expect(arg).toEqual(42);
-      done();
-    }, 50, 42);
+  test('pass arguments to the callback', done => {
+    retimer(
+      arg => {
+        expect(arg).toEqual(42);
+        done();
+      },
+      50,
+      42,
+    );
   });
 });

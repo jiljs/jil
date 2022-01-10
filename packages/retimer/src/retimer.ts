@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { time } from "./time";
+import {time} from './time';
 
 export type RetimerRunner = (...args: any) => any;
 
@@ -38,7 +38,7 @@ export class Retimer {
       timeout = this._scheduled;
     }
     const now = time();
-    if ((now + timeout) - (this._started + this._scheduled) < 0) {
+    if (now + timeout - (this._started + this._scheduled) < 0) {
       clearTimeout(this._timer);
       this.schedule(timeout);
     } else if (!this._triggered) {

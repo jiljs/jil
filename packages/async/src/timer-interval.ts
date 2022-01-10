@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TimerRunner } from "./types";
+import {TimerRunner} from './types';
 
 export class IntervalTimer {
   protected runner?: TimerRunner;
@@ -9,7 +9,7 @@ export class IntervalTimer {
   constructor(runner?: TimerRunner, interval?: number) {
     this.timer = -1;
     this.runner = runner;
-    if (typeof interval === "number") {
+    if (typeof interval === 'number') {
       this.reschedule(interval);
     }
   }
@@ -32,7 +32,7 @@ export class IntervalTimer {
 
   reschedule(interval: number): void {
     if (!this.runner) {
-      throw new Error('runner has not been set')
+      throw new Error('runner has not been set');
     }
     this.cancel();
     this.timer = setInterval(() => this.runner!(), interval);

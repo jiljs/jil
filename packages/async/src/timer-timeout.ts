@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TimerRunner } from "./types";
+import {TimerRunner} from './types';
 
 export class TimeoutTimer {
   protected runner?: TimerRunner;
@@ -31,7 +31,7 @@ export class TimeoutTimer {
 
   reschedule(timeout: number) {
     if (!this.runner) {
-      throw new Error('runner has not been set')
+      throw new Error('runner has not been set');
     }
     this.cancel();
     this.timer = setTimeout(() => {
