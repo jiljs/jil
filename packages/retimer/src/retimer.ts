@@ -33,7 +33,7 @@ export class Retimer {
     this._timer = setTimeout(this._timerWrapper, timeout);
   }
 
-  reschedule(timeout: number) {
+  reschedule(timeout?: number) {
     if (!timeout) {
       timeout = this._scheduled;
     }
