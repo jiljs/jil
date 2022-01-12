@@ -15,6 +15,12 @@
     },
     {
       "path": "../cancellation/tsconfig.json"
+    },
+    {
+      "path": "../stopwatch/tsconfig.json"
+    },
+    {
+      "path": "../types/tsconfig.json"
     }
   ]
 }

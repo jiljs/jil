@@ -19,7 +19,7 @@
     "verify": "npm pack && tar xf jil-retimer*.tgz && tree package && npm run clean"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.0",
+    "@nutol/build": "^0.2.1",
     "@nutol/eslint-config": "^0.2.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.8"
