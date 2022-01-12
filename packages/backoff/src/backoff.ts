@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { ValueOrPromise } from "@jil/types";
 import { CancellationToken } from "@jil/cancellation";
 import { CancelablePromise, createCancelablePromise } from "@jil/async/cancelable";
