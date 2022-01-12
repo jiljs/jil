@@ -1,7 +1,7 @@
 {
   "name": "@jil/async",
   "description": "A Fibonacci and exponential async library",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [],
   "main": "index.js",
   "types": "index.d.ts",
@@ -21,7 +21,7 @@
     "verify": "npm pack && tar xf jil-async*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/cancellation": "^0.2.3",
+    "@jil/cancellation": "^0.2.4",
     "@jil/errors": "^0.2.1",
     "@jil/types": "^0.2.2"
   },

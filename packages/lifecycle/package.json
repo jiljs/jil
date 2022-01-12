@@ -1,7 +1,7 @@
 {
   "name": "@jil/lifecycle",
   "description": "A light lifecycle management library",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "keywords": [
     "lifecycle",
     "disposable",

@@ -1,7 +1,7 @@
 {
   "name": "@jil/stopwatch",
   "description": "A managed stopwatch for both nodejs and browser",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "keywords": [
     "stop",
     "watch",
