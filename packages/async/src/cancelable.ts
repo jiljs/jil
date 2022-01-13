@@ -11,7 +11,7 @@ export interface CancelablePromise<T> extends Promise<T> {
 export type CallbackWithToken<T> = (token: CancellationToken) => Promise<T>;
 
 export function createCancelablePromise<T>(
-  parent: CancellationToken,
+  parent: CancellationToken | undefined,
   callback: CallbackWithToken<T>,
 ): CancelablePromise<T>;
 export function createCancelablePromise<T>(callback: CallbackWithToken<T>): CancelablePromise<T>;
