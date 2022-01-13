@@ -1,4 +1,6 @@
-export function add(a: number, b: number) {
-  return a + b;
-}
-
+export * from './options';
+export * from './backoff';
+export * from './jitter';
+export * from './jitters';
+export * from './strategy';
+export * from './strategies';
