@@ -14,7 +14,7 @@ The `backoff<T>` function takes a promise-returning function to retry, and an op
 returns a `CancelablePromise<T>`.
 
 ```ts
-function backoff<T>(runner: (token: CancellationToken) => Promise<T>, options?: BackoffOptions): CancelablePromise<T>;
+declare function backoff<T>(runner: (token: CancellationToken) => Promise<T>, options?: BackoffOptions): CancelablePromise<T>;
 ```
 
 Here is an example retrying a function that calls a hypothetical weather endpoint:
