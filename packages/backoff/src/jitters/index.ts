@@ -1,17 +1,17 @@
-import { Jitter, JitterType } from "../jitter";
-import { fullJitter } from "./full";
-import { noJitter } from "./no";
+import {Jitter, JitterType} from '../jitter';
+import {fullJitter} from './full';
+import {noJitter} from './no';
 
 export function buildJitter(jitter: JitterType | Jitter): Jitter {
-  if (typeof jitter === "function") {
+  if (typeof jitter === 'function') {
     return jitter;
   }
 
   switch (jitter) {
-    case "full":
+    case 'full':
       return fullJitter;
 
-    case "none":
+    case 'none':
     default:
       return noJitter;
   }

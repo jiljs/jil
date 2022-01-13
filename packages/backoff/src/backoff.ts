@@ -1,24 +1,20 @@
-import { ValueOrPromise } from "@jil/types";
-import { CancellationToken } from "@jil/cancellation";
-import { CancelablePromise, createCancelablePromise } from "@jil/async/cancelable";
-import { timeout } from "@jil/async/timeout";
-import { BackoffOptions, sanitizeOptions } from "./options";
-import { BackoffStrategy } from "./strategy";
-import { createStrategy } from "./strategies";
+import {ValueOrPromise} from '@jil/types';
+import {CancellationToken} from '@jil/cancellation';
+import {CancelablePromise, createCancelablePromise} from '@jil/async/cancelable';
+import {timeout} from '@jil/async/timeout';
+import {BackoffOptions, sanitizeOptions} from './options';
+import {BackoffStrategy} from './strategy';
+import {createStrategy} from './strategies';
 
-const debug = require("debug")("backoff");
+const debug = require('debug')('backoff');
 
 export type BackoffRunner<T> = (token: CancellationToken) => ValueOrPromise<T>;
 
 export class Backoff<T> {
-
   protected strategy: BackoffStrategy;
   protected attemptNumber = 0;
 
-  constructor(
-    private runner: BackoffRunner<T>,
-    private options: BackoffOptions
-  ) {
+  constructor(private runner: BackoffRunner<T>, private options: BackoffOptions) {
     this.strategy = createStrategy(options);
   }
 
@@ -27,7 +23,7 @@ export class Backoff<T> {
   }
 
   public run(): CancelablePromise<T> {
-    debug("run");
+    debug('run');
     return createCancelablePromise(async token => {
       while (!this.attemptLimitReached) {
         debug(`attempting #${this.attemptNumber}`);
@@ -62,7 +58,7 @@ export class Backoff<T> {
         }
       }
 
-      throw new Error("Something went wrong.");
+      throw new Error('Something went wrong.');
     });
   }
 
@@ -74,10 +70,7 @@ export class Backoff<T> {
   }
 }
 
-export function backoff<T>(
-  runner: BackoffRunner<T>,
-  options: Partial<BackoffOptions> = {}
-): CancelablePromise<T> {
+export function backoff<T>(runner: BackoffRunner<T>, options: Partial<BackoffOptions> = {}): CancelablePromise<T> {
   const sanitizedOptions = sanitizeOptions(options);
   return new Backoff(runner, sanitizedOptions).run();
 }

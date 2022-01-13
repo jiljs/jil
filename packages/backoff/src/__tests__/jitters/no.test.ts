@@ -1,4 +1,4 @@
-import { noJitter } from "../../jitters/no";
+import {noJitter} from '../../jitters/no';
 
 describe(`Testing ${noJitter.name}`, () => {
   it(`when calling #noJitter with a delay,

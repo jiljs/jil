@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Jitter, JitterType } from "./jitter";
-import { BackoffStrategyCtor, BackoffStrategyType } from "./strategy";
-import { ValueOrPromise } from "@jil/types";
+import {Jitter, JitterType} from './jitter';
+import {BackoffStrategyCtor, BackoffStrategyType} from './strategy';
+import {ValueOrPromise} from '@jil/types';
 
 export interface BackoffOptions {
   /**
@@ -74,29 +74,29 @@ export interface BackoffOptions {
 }
 
 const defaultOptions: BackoffOptions = {
-  strategy: "fibonacci",
-  jitter: "none",
+  strategy: 'fibonacci',
+  jitter: 'none',
   initialDelay: 100,
   maxDelay: Infinity,
   maxNumOfAttempts: 10,
   factor: 2,
   delayFirstAttempt: false,
-  retry: () => true
+  retry: () => true,
 };
 
 export function sanitizeOptions(options: Partial<BackoffOptions>) {
-  const sanitized: BackoffOptions = { ...defaultOptions, ...options };
+  const sanitized: BackoffOptions = {...defaultOptions, ...options};
 
   if (sanitized.initialDelay < 1) {
-    throw new Error("The initial timeout must be greater than or equal 0");
+    throw new Error('The initial timeout must be greater than or equal 0');
   }
 
   if (sanitized.maxDelay < 1) {
-    throw new Error("The initial timeout must be greater than or equal 0");
+    throw new Error('The initial timeout must be greater than or equal 0');
   }
 
   if (sanitized.maxDelay <= sanitized.initialDelay) {
-    throw new Error("The maximal backoff delay must be greater than the initial backoff delay");
+    throw new Error('The maximal backoff delay must be greater than the initial backoff delay');
   }
 
   if (sanitized.maxNumOfAttempts < 1) {

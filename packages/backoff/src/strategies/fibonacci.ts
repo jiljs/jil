@@ -1,4 +1,4 @@
-import { BackoffStrategy } from "../strategy";
+import {BackoffStrategy} from '../strategy';
 
 export class FibonacciBackoffStrategy extends BackoffStrategy {
   protected currentDelay = 0;
@@ -12,6 +12,6 @@ export class FibonacciBackoffStrategy extends BackoffStrategy {
   protected calcNext(): number {
     const result = Math.min(this.nextDelay, this.maxDelay);
     this.nextDelay += this.currentDelay;
-    return this.currentDelay = result;
+    return (this.currentDelay = result);
   }
 }

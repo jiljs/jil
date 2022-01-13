@@ -1,5 +1,5 @@
-export const mockSuccessResponse = { success: true };
-export const mockFailResponse = { success: false };
+export const mockSuccessResponse = {success: true};
+export const mockFailResponse = {success: false};
 
 export function promiseThatIsResolved() {
   return () => Promise.resolve(mockSuccessResponse);

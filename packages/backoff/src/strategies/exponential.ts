@@ -1,7 +1,6 @@
-import { BackoffStrategy } from "../strategy";
+import {BackoffStrategy} from '../strategy';
 
 export class ExponentialBackoffStrategy extends BackoffStrategy {
-
   protected currentDelay = 0;
   protected nextDelay = this.initialDelay;
 
@@ -15,5 +14,4 @@ export class ExponentialBackoffStrategy extends BackoffStrategy {
     this.nextDelay = this.currentDelay * this.options.factor;
     return this.currentDelay;
   }
-
 }

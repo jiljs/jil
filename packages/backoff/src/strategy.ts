@@ -1,8 +1,8 @@
-import { BackoffOptions, sanitizeOptions } from "./options";
-import { buildJitter } from "./jitters";
-import { Jitter } from "./jitter";
+import {BackoffOptions, sanitizeOptions} from './options';
+import {buildJitter} from './jitters';
+import {Jitter} from './jitter';
 
-export type BackoffStrategyType = "exponential" | "fibonacci";
+export type BackoffStrategyType = 'exponential' | 'fibonacci';
 
 export class BackoffStrategy {
   protected options: BackoffOptions;
@@ -26,11 +26,11 @@ export class BackoffStrategy {
   }
 
   public reset(): void {
-    throw new Error("Not implemented");
+    throw new Error('Not implemented');
   }
 
   protected calcNext(): number {
-    throw new Error("Not implemented");
+    throw new Error('Not implemented');
   }
 }
 

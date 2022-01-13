@@ -1,10 +1,10 @@
-import { ExponentialBackoffStrategy } from "../../strategies/exponential";
+import {ExponentialBackoffStrategy} from '../../strategies/exponential';
 
-describe("ExponentialBackoffStrategy", () => {
-  it("backoff delays should follow an exponential sequence", () => {
+describe('ExponentialBackoffStrategy', () => {
+  it('backoff delays should follow an exponential sequence', () => {
     const strategy = new ExponentialBackoffStrategy({
       initialDelay: 10,
-      maxDelay: 1000
+      maxDelay: 1000,
     });
 
     // Exponential sequence: x[i] = x[i-1] * 2.
@@ -14,11 +14,11 @@ describe("ExponentialBackoffStrategy", () => {
     expect(expectedDelays).toEqual(actualDelays);
   });
 
-  it("backoff delay factor should be configurable", () => {
+  it('backoff delay factor should be configurable', () => {
     const strategy = new ExponentialBackoffStrategy({
       initialDelay: 10,
       maxDelay: 270,
-      factor: 3
+      factor: 3,
     });
 
     // Exponential sequence: x[i] = x[i-1] * 3.
@@ -28,10 +28,10 @@ describe("ExponentialBackoffStrategy", () => {
     expect(expectedDelays).toEqual(actualDelays);
   });
 
-  it("backoff delays should restart from the initial delay after reset", () => {
+  it('backoff delays should restart from the initial delay after reset', () => {
     const strategy = new ExponentialBackoffStrategy({
       initialDelay: 10,
-      maxDelay: 1000
+      maxDelay: 1000,
     });
 
     strategy.next();

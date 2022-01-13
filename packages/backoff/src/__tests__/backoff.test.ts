@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { backoff, BackoffRunner } from "../backoff";
-import { BackoffOptions } from "../options";
+import {backoff, BackoffRunner} from '../backoff';
+import {BackoffOptions} from '../options';
 import {
   mockFailResponse,
   mockSuccessResponse,
   promiseThatFailsOnceThenSucceeds,
   promiseThatIsRejected,
-  promiseThatIsResolved
-} from "./support";
-import { timeout } from "@jil/async/timeout";
-import { StopWatch } from "@jil/stopwatch";
+  promiseThatIsResolved,
+} from './support';
+import {timeout} from '@jil/async/timeout';
+import {StopWatch} from '@jil/stopwatch';
 
-describe("Backoff", function() {
-
+describe('Backoff', function () {
   let backoffRunner: BackoffRunner<any>;
   let backoffOptions: Partial<BackoffOptions>;
 
@@ -22,23 +21,19 @@ describe("Backoff", function() {
   }
 
   beforeEach(() => {
-    backoffOptions = { initialDelay: 1 };
+    backoffOptions = {initialDelay: 1};
     backoffRunner = jest.fn(promiseThatIsResolved());
   });
 
-  describe("when request function is a promise that resolves", () => {
-    it("returns the resolved value", () => {
+  describe('when request function is a promise that resolves', () => {
+    it('returns the resolved value', () => {
       const request = initBackoff();
-      return request.then(response =>
-        expect(response).toBe(mockSuccessResponse)
-      );
+      return request.then(response => expect(response).toBe(mockSuccessResponse));
     });
 
-    it("calls the request function only once", () => {
+    it('calls the request function only once', () => {
       const request = initBackoff();
-      return request.then(() =>
-        expect(backoffRunner).toHaveBeenCalledTimes(1)
-      );
+      return request.then(() => expect(backoffRunner).toHaveBeenCalledTimes(1));
     });
 
     it(`when the #backoffOptions.maxNumOfAttempts is 0,
@@ -46,9 +41,7 @@ describe("Backoff", function() {
       backoffOptions.maxNumOfAttempts = 0;
       const request = initBackoff();
 
-      return request.then(() =>
-        expect(backoffRunner).toHaveBeenCalledTimes(1)
-      );
+      return request.then(() => expect(backoffRunner).toHaveBeenCalledTimes(1));
     });
   });
 
@@ -86,15 +79,15 @@ describe("Backoff", function() {
     });
   });
 
-  describe("when request function is a promise that is rejected", () => {
+  describe('when request function is a promise that is rejected', () => {
     beforeEach(() => (backoffRunner = promiseThatIsRejected()));
 
-    it("returns the rejected value", () => {
+    it('returns the rejected value', () => {
       const request = initBackoff();
       return request.catch(err => expect(err).toBe(mockFailResponse));
     });
 
-    it("retries the request as many times as specified in #BackOffOptions.maxNumOfAttempts", async () => {
+    it('retries the request as many times as specified in #BackOffOptions.maxNumOfAttempts', async () => {
       const numOfAttempts = 2;
       backoffOptions.maxNumOfAttempts = numOfAttempts;
       backoffRunner = jest.fn(() => Promise.reject(mockFailResponse));
@@ -120,7 +113,7 @@ describe("Backoff", function() {
     });
   });
 
-  it("when the #BackOffOptions.retry function returns a promise, it awaits it", async () => {
+  it('when the #BackOffOptions.retry function returns a promise, it awaits it', async () => {
     const retryDuration = 100;
     backoffOptions.retry = () => new Promise(resolve => setTimeout(() => resolve(true), retryDuration));
     backoffRunner = promiseThatFailsOnceThenSucceeds();
@@ -130,25 +123,20 @@ describe("Backoff", function() {
     const end = Date.now();
 
     const duration = end - start;
-    const roundedDuration =
-      Math.round(duration / retryDuration) * retryDuration;
+    const roundedDuration = Math.round(duration / retryDuration) * retryDuration;
 
     expect(roundedDuration).toBe(retryDuration);
   });
 
   describe(`when calling #backoff with a function that throws an error the first time, and succeeds the second time`, () => {
-    beforeEach(
-      () => (backoffRunner = jest.fn(promiseThatFailsOnceThenSucceeds()))
-    );
+    beforeEach(() => (backoffRunner = jest.fn(promiseThatFailsOnceThenSucceeds())));
 
     it(`returns a successful response`, () => {
       const request = initBackoff();
-      return request.then(response =>
-        expect(response).toBe(mockSuccessResponse)
-      );
+      return request.then(response => expect(response).toBe(mockSuccessResponse));
     });
 
-    it("calls the request function two times", async () => {
+    it('calls the request function two times', async () => {
       await initBackoff();
       expect(backoffRunner).toHaveBeenCalledTimes(2);
     });
@@ -160,7 +148,7 @@ describe("Backoff", function() {
       const factor = 3;
       const totalExpectedDelay = initialDelay + factor * initialDelay;
 
-      backoffOptions.strategy = "exponential";
+      backoffOptions.strategy = 'exponential';
       backoffOptions.initialDelay = initialDelay;
       backoffOptions.factor = factor;
       backoffOptions.delayFirstAttempt = true;
@@ -176,14 +164,13 @@ describe("Backoff", function() {
     });
   });
 
-  describe("cancelable", function() {
-
-    it("should return a CancelablePromise", function() {
+  describe('cancelable', function () {
+    it('should return a CancelablePromise', function () {
       const request = initBackoff();
-      expect(typeof request.cancel).toBe("function");
+      expect(typeof request.cancel).toBe('function');
     });
 
-    it("cancel backoff with runner that do not support cancellation", async () => {
+    it('cancel backoff with runner that do not support cancellation', async () => {
       const retriesToCancel = 3;
       const runDelay = 20;
       let elapsed = 0;
@@ -197,7 +184,7 @@ describe("Backoff", function() {
         if (retries === retriesToCancel) {
           elapsed = sw.elapsed();
         }
-        return Promise.reject("rejected");
+        return Promise.reject('rejected');
       };
       backoffOptions.initialDelay = 1;
       backoffOptions.retry = () => ++retries;
@@ -213,7 +200,7 @@ describe("Backoff", function() {
       expect(Math.round(elapsed)).toBeGreaterThanOrEqual(runDelay);
     });
 
-    it("cancel backoff with runner that do support cancellation", async () => {
+    it('cancel backoff with runner that do support cancellation', async () => {
       const retriesToCancel = 3;
       const runDelay = 20;
       let elapsed = 0;
@@ -231,7 +218,7 @@ describe("Backoff", function() {
         if (retries === retriesToCancel) {
           elapsed = sw.elapsed();
         }
-        return Promise.reject("rejected");
+        return Promise.reject('rejected');
       };
       backoffOptions.initialDelay = 1;
       backoffOptions.retry = () => ++retries;
@@ -246,6 +233,6 @@ describe("Backoff", function() {
 
       expect(Math.round(elapsed)).toBeGreaterThanOrEqual(runDelay / 2);
       expect(Math.round(elapsed)).toBeLessThan(runDelay);
-    })
+    });
   });
 });
