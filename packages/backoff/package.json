@@ -1,7 +1,7 @@
 {
   "name": "@jil/backoff",
   "description": "A utility that allows retrying a function with an exponential delay between attempts.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "verify": "npm pack && tar xf jil-backoff*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/async": "^0.2.2",
+    "@jil/async": "^0.2.3",
     "@jil/cancellation": "^0.2.4",
     "debug": "^4.3.3"
   },

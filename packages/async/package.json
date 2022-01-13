@@ -1,7 +1,7 @@
 {
   "name": "@jil/async",
   "description": "A Fibonacci and exponential async library",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "keywords": [],
   "main": "index.js",
   "types": "index.d.ts",
