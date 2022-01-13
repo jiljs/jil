@@ -8,8 +8,27 @@ export interface CancelablePromise<T> extends Promise<T> {
   cancel(): void;
 }
 
-export function createCancelablePromise<T>(callback: (token: CancellationToken) => Promise<T>): CancelablePromise<T> {
-  const source = new CancellationTokenSource();
+export type CallbackWithToken<T> = (token: CancellationToken) => Promise<T>;
+
+export function createCancelablePromise<T>(
+  parent: CancellationToken,
+  callback: CallbackWithToken<T>,
+): CancelablePromise<T>;
+export function createCancelablePromise<T>(callback: CallbackWithToken<T>): CancelablePromise<T>;
+export function createCancelablePromise<T>(
+  parent?: CancellationToken | CallbackWithToken<T>,
+  callback?: CallbackWithToken<T>,
+): CancelablePromise<T> {
+  if (typeof parent === 'function') {
+    callback = parent;
+    parent = undefined;
+  }
+
+  if (!callback) {
+    throw new Error('callback is required');
+  }
+
+  const source = new CancellationTokenSource(parent);
 
   const thenable = callback(source.token);
   const promise = new Promise<T>((resolve, reject) => {
