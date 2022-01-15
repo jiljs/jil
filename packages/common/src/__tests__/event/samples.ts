@@ -1,5 +1,5 @@
-import { Emitter } from "../../event/emitter";
-import { Event } from "../../event";
+import {Emitter} from '../../event/emitter';
+import {Event} from '../../event';
 
 export namespace Samples {
   export class EventCounter {

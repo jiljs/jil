@@ -2,7 +2,7 @@
 
 import {Jitter, JitterType} from './jitter';
 import {BackoffStrategyCtor, BackoffStrategyType} from './strategy';
-import {ValueOrPromise} from '@jil/types';
+import {ValueOrPromise} from '@jil/common';
 
 export interface BackoffOptions {
   /**

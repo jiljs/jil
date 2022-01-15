@@ -9,8 +9,8 @@ import {
   promiseThatIsRejected,
   promiseThatIsResolved,
 } from './support';
-import {timeout} from '@jil/async/timeout';
-import {StopWatch} from '@jil/stopwatch';
+import {timeout} from '@jil/common/async/timeout';
+import {StopWatch} from '@jil/common/stopwatch';
 
 describe('Backoff', function () {
   let backoffRunner: BackoffRunner<any>;

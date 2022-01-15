@@ -1,18 +1,17 @@
-import { AsyncEventCancellationToken } from "../event/async";
-import { Event } from "../event";
-import { Disposable, setDisposableTracker } from "../lifecycle";
+import {AsyncEventCancellationToken} from '../event/async';
+import {Event} from '../event';
+import {Disposable, setDisposableTracker} from '../lifecycle';
 
 export namespace CancellationToken {
   export const None: AsyncEventCancellationToken = Object.freeze({
     isCancellationRequested: false,
-    onCancellationRequested: Event.None
+    onCancellationRequested: Event.None,
   });
 }
 
 export function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 interface DisposableData {
   source: string | null;
@@ -46,7 +45,7 @@ class DisposableTracker implements DisposableTracker {
   ensureNoLeakingDisposables() {
     const rootParentCache = new Map<DisposableData, DisposableData>();
     const leaking = [...this.livingDisposables.values()].filter(
-      v => v.source !== null && !this.getRootParent(v, rootParentCache).isSingleton
+      v => v.source !== null && !this.getRootParent(v, rootParentCache).isSingleton,
     );
 
     if (leaking.length > 0) {
@@ -54,7 +53,7 @@ class DisposableTracker implements DisposableTracker {
       const firstLeaking = leaking.slice(0, count);
       const remainingCount = leaking.length - count;
 
-      const separator = "--------------------\n\n";
+      const separator = '--------------------\n\n';
       let s = firstLeaking.map(l => l.source).join(separator);
       if (remainingCount > 0) {
         s += `${separator}+ ${remainingCount} more`;
@@ -67,7 +66,7 @@ class DisposableTracker implements DisposableTracker {
   private getDisposableData(d: Disposable) {
     let val = this.livingDisposables.get(d);
     if (!val) {
-      val = { parent: null, source: null, isSingleton: false };
+      val = {parent: null, source: null, isSingleton: false};
       this.livingDisposables.set(d, val);
     }
     return val;
@@ -98,7 +97,7 @@ export function ensureNoDisposablesAreLeakedInTestSuite() {
     setDisposableTracker(tracker);
   });
 
-  afterEach(function() {
+  afterEach(function () {
     setDisposableTracker(null);
 
     // if (!getCurrentSpecResult.length) {

@@ -1,7 +1,7 @@
-import {ValueOrPromise} from '@jil/types';
-import {CancellationToken} from '@jil/cancellation';
-import {CancelablePromise, createCancelablePromise} from '@jil/async/cancelable';
-import {timeout} from '@jil/async/timeout';
+import {ValueOrPromise} from '@jil/common';
+import {CancellationToken} from '@jil/common/cancellation';
+import {CancelablePromise, createCancelablePromise} from '@jil/common/async/cancelable';
+import {timeout} from '@jil/common/async/timeout';
 import {BackoffOptions, sanitizeOptions} from './options';
 import {BackoffStrategy} from './strategy';
 import {createStrategy} from './strategies';

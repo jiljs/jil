@@ -1,16 +1,16 @@
-import { CancellationTokenSource } from "../../cancellation";
-import assert from "assert";
-import { raceCancellation, raceTimeout } from "../../async/race";
-import { timeout } from "../../async/timeout";
+import {CancellationTokenSource} from '../../cancellation';
+import assert from 'assert';
+import {raceCancellation, raceTimeout} from '../../async/race';
+import {timeout} from '../../async/timeout';
 
-describe("race", function() {
-  test("raceCancellation", async () => {
+describe('race', function () {
+  test('raceCancellation', async () => {
     const cts = new CancellationTokenSource();
 
     let triggered = false;
     const p = raceCancellation(
       timeout(100).then(() => (triggered = true)),
-      cts.token
+      cts.token,
     );
     cts.cancel();
 
@@ -19,7 +19,7 @@ describe("race", function() {
     assert.ok(!triggered);
   });
 
-  test("raceTimeout", async () => {
+  test('raceTimeout', async () => {
     const cts = new CancellationTokenSource();
 
     // timeout wins
@@ -29,7 +29,7 @@ describe("race", function() {
     const p1 = raceTimeout(
       timeout(100).then(() => (triggered = true)),
       1,
-      () => (timedout = true)
+      () => (timedout = true),
     );
     cts.cancel();
 
@@ -44,7 +44,7 @@ describe("race", function() {
     const p2 = raceTimeout(
       timeout(1).then(() => (triggered = true)),
       100,
-      () => (timedout = true)
+      () => (timedout = true),
     );
     cts.cancel();
 
