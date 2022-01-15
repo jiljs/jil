@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const Buffer: any;
 
-const hasBuffer = (typeof Buffer !== "undefined");
+const hasBuffer = typeof Buffer !== 'undefined';
 
 let textEncoder: TextEncoder | null;
 let textDecoder: TextDecoder | null;
 
 export class TinyBuffer {
-
   readonly buffer: Uint8Array;
   readonly byteLength: number;
 
@@ -34,7 +33,7 @@ export class TinyBuffer {
    * which is not transferable.
    */
   static wrap(actual: Uint8Array): TinyBuffer {
-    if (hasBuffer && !(Buffer.isBuffer(actual))) {
+    if (hasBuffer && !Buffer.isBuffer(actual)) {
       // https://nodejs.org/dist/latest-v10.x/docs/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length
       // Create a zero-copy Buffer wrapper around the ArrayBuffer pointed to by the Uint8Array
       actual = Buffer.from(actual.buffer, actual.byteOffset, actual.byteLength);
@@ -46,7 +45,7 @@ export class TinyBuffer {
    * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static fromString(source: string, options?: { dontUseNodeBuffer?: boolean; }): TinyBuffer {
+  static fromString(source: string, options?: {dontUseNodeBuffer?: boolean}): TinyBuffer {
     const dontUseNodeBuffer = options?.dontUseNodeBuffer || false;
     if (!dontUseNodeBuffer && hasBuffer) {
       return new TinyBuffer(Buffer.from(source));
@@ -75,7 +74,7 @@ export class TinyBuffer {
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
   static concat(buffers: TinyBuffer[], totalLength?: number): TinyBuffer {
-    if (typeof totalLength === "undefined") {
+    if (typeof totalLength === 'undefined') {
       totalLength = 0;
       for (let i = 0, len = buffers.length; i < len; i++) {
         totalLength += buffers[i].byteLength;
@@ -161,25 +160,17 @@ export class TinyBuffer {
 }
 
 export function readUInt16LE(source: Uint8Array, offset: number): number {
-  return (
-    ((source[offset + 0] << 0) >>> 0) |
-    ((source[offset + 1] << 8) >>> 0)
-  );
+  return ((source[offset + 0] << 0) >>> 0) | ((source[offset + 1] << 8) >>> 0);
 }
 
 export function writeUInt16LE(destination: Uint8Array, value: number, offset: number): void {
-  destination[offset + 0] = (value & 0b11111111);
+  destination[offset + 0] = value & 0b11111111;
   value = value >>> 8;
-  destination[offset + 1] = (value & 0b11111111);
+  destination[offset + 1] = value & 0b11111111;
 }
 
 export function readUInt32BE(source: Uint8Array, offset: number): number {
-  return (
-    source[offset] * 2 ** 24
-    + source[offset + 1] * 2 ** 16
-    + source[offset + 2] * 2 ** 8
-    + source[offset + 3]
-  );
+  return source[offset] * 2 ** 24 + source[offset + 1] * 2 ** 16 + source[offset + 2] * 2 ** 8 + source[offset + 3];
 }
 
 export function writeUInt32BE(destination: Uint8Array, value: number, offset: number): void {
@@ -202,13 +193,13 @@ export function readUInt32LE(source: Uint8Array, offset: number): number {
 }
 
 export function writeUInt32LE(destination: Uint8Array, value: number, offset: number): void {
-  destination[offset + 0] = (value & 0b11111111);
+  destination[offset + 0] = value & 0b11111111;
   value = value >>> 8;
-  destination[offset + 1] = (value & 0b11111111);
+  destination[offset + 1] = value & 0b11111111;
   value = value >>> 8;
-  destination[offset + 2] = (value & 0b11111111);
+  destination[offset + 2] = value & 0b11111111;
   value = value >>> 8;
-  destination[offset + 3] = (value & 0b11111111);
+  destination[offset + 3] = value & 0b11111111;
 }
 
 export function readUInt8(source: Uint8Array, offset: number): number {
@@ -228,7 +219,7 @@ export function decodeBase64(encoded: string) {
   // The simpler way to do this is `Uint8Array.from(atob(str), c => c.charCodeAt(0))`,
   // but that's about 10-20x slower than this function in current Chromium versions.
 
-  const buffer = new Uint8Array(Math.floor(encoded.length / 4 * 3));
+  const buffer = new Uint8Array(Math.floor((encoded.length / 4) * 3));
   const append = (value: number) => {
     switch (remainder) {
       case 3:
@@ -281,13 +272,13 @@ export function decodeBase64(encoded: string) {
   return TinyBuffer.wrap(buffer).slice(0, unpadded);
 }
 
-const base64Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-const base64UrlSafeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+const base64UrlSafeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 
 /** Encodes a buffer to a base64 string. */
-export function encodeBase64({ buffer }: TinyBuffer, padded = true, urlSafe = false) {
+export function encodeBase64({buffer}: TinyBuffer, padded = true, urlSafe = false) {
   const dictionary = urlSafe ? base64UrlSafeAlphabet : base64Alphabet;
-  let output = "";
+  let output = '';
 
   const remainder = buffer.byteLength % 3;
 
@@ -298,8 +289,8 @@ export function encodeBase64({ buffer }: TinyBuffer, padded = true, urlSafe = fa
     const c = buffer[i + 2];
 
     output += dictionary[a >>> 2];
-    output += dictionary[(a << 4 | b >>> 4) & 0b111111];
-    output += dictionary[(b << 2 | c >>> 6) & 0b111111];
+    output += dictionary[((a << 4) | (b >>> 4)) & 0b111111];
+    output += dictionary[((b << 2) | (c >>> 6)) & 0b111111];
     output += dictionary[c & 0b111111];
   }
 
@@ -308,16 +299,16 @@ export function encodeBase64({ buffer }: TinyBuffer, padded = true, urlSafe = fa
     output += dictionary[a >>> 2];
     output += dictionary[(a << 4) & 0b111111];
     if (padded) {
-      output += "==";
+      output += '==';
     }
   } else if (remainder === 2) {
     const a = buffer[i + 0];
     const b = buffer[i + 1];
     output += dictionary[a >>> 2];
-    output += dictionary[(a << 4 | b >>> 4) & 0b111111];
+    output += dictionary[((a << 4) | (b >>> 4)) & 0b111111];
     output += dictionary[(b << 2) & 0b111111];
     if (padded) {
-      output += "=";
+      output += '=';
     }
   }
 
