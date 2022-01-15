@@ -2,7 +2,15 @@
   "name": "@jil/buffer",
   "description": "Another buffer implementation from vscode",
   "version": "0.1.0",
-  "keywords": [],
+  "keywords": [
+    "buffer",
+    "array",
+    "arraybuffer",
+    "tiny",
+    "read",
+    "write",
+    "stream"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
