@@ -5,7 +5,9 @@
     "outDir": "dist",
     "rootDir": "src",
     "composite": true,
-    "lib": ["dom"]
+    "lib": [
+      "dom"
+    ]
   },
   "include": [
     "src"
