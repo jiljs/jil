@@ -34,5 +34,8 @@
     "dist",
     "src",
     "!*/__tests__"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
