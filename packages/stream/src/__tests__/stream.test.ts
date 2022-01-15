@@ -168,16 +168,10 @@ describe("Stream", () => {
     assert.ok(promise2 instanceof Promise);
 
     let drained1 = false;
-    (async () => {
-      await promise1;
-      drained1 = true;
-    })();
+    promise1.then(() => drained1 = true);
 
     let drained2 = false;
-    (async () => {
-      await promise2;
-      drained2 = true;
-    })();
+    promise2.then(() => drained2 = true);
 
     let data: string | undefined = undefined;
     stream.on("data", chunk => {

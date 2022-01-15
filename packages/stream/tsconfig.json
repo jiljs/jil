@@ -11,6 +11,9 @@
   ],
   "references": [
     {
+      "path": "../async/tsconfig.json"
+    },
+    {
       "path": "../errors/tsconfig.json"
     },
     {
