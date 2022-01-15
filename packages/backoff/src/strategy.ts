@@ -5,10 +5,10 @@ import {Jitter} from './jitter';
 export type BackoffStrategyType = 'exponential' | 'fibonacci';
 
 export class BackoffStrategy {
-  protected options: BackoffOptions;
+  protected options: Required<BackoffOptions>;
   protected jitter: Jitter;
 
-  constructor(options: Partial<BackoffOptions> = {}) {
+  constructor(options: BackoffOptions = {}) {
     this.options = sanitizeOptions(options);
     this.jitter = buildJitter(this.options.jitter);
   }

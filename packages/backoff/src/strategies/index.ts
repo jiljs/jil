@@ -3,7 +3,7 @@ import {BackoffStrategyCtor, BackoffStrategyType} from '../strategy';
 import {ExponentialBackoffStrategy} from './exponential';
 import {FibonacciBackoffStrategy} from './fibonacci';
 
-export function createStrategy(options: BackoffOptions) {
+export function createStrategy(options: Required<BackoffOptions>) {
   const Ctor = getCtor(options.strategy);
   return new Ctor(options);
 }

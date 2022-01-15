@@ -11,7 +11,7 @@ export interface BackoffOptions {
    * Defaults to `fibonacci`
    *
    */
-  strategy: BackoffStrategyType | BackoffStrategyCtor;
+  strategy?: BackoffStrategyType | BackoffStrategyCtor;
 
   /**
    * Decides whether a [jitters](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
@@ -19,28 +19,28 @@ export interface BackoffOptions {
    *
    * Defaults to `none`
    */
-  jitter: JitterType | Jitter;
+  jitter?: JitterType | Jitter;
 
   /**
    * The delay, in milliseconds, before executing the function for the first time.
    *
    * Defaults to 100
    */
-  initialDelay: number;
+  initialDelay?: number;
 
   /**
    * The maximum delay, in milliseconds, between two consecutive attempts.
    *
    * Defaults to Infinity, must be greater than initialDelay
    */
-  maxDelay: number;
+  maxDelay?: number;
 
   /**
    * The maximum number of times to attempt the function.
    *
    * Defaults to 10
    */
-  maxNumOfAttempts: number;
+  maxNumOfAttempts?: number;
 
   /**
    * The exponential factor. The `initialDelay` is multiplied by the `factor` to
@@ -48,7 +48,7 @@ export interface BackoffOptions {
    *
    * Defaults to 2, must be greater than 1
    */
-  factor: number;
+  factor?: number;
 
   /**
    * Decides whether the `initialDelay` should be applied before the first call.
@@ -56,7 +56,7 @@ export interface BackoffOptions {
    *
    * Defaults to false
    */
-  delayFirstAttempt: boolean;
+  delayFirstAttempt?: boolean;
 
   /**
    * The `retry` function can be used to run logic after every failed attempt
@@ -70,7 +70,7 @@ export interface BackoffOptions {
    * @param e
    * @param attemptNumber
    */
-  retry: (e: any, attemptNumber: number) => ValueOrPromise<any>;
+  retry?: (e: any, attemptNumber: number) => ValueOrPromise<any>;
 }
 
 const defaultOptions: BackoffOptions = {
@@ -84,8 +84,8 @@ const defaultOptions: BackoffOptions = {
   retry: () => true,
 };
 
-export function sanitizeOptions(options: Partial<BackoffOptions>) {
-  const sanitized: BackoffOptions = {...defaultOptions, ...options};
+export function sanitizeOptions(options: Partial<BackoffOptions>): Required<BackoffOptions> {
+  const sanitized = <Required<BackoffOptions>> {...defaultOptions, ...options};
 
   if (sanitized.initialDelay < 1) {
     throw new Error('The initial timeout must be greater than or equal 0');

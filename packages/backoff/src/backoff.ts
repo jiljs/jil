@@ -14,7 +14,7 @@ export class Backoff<T> {
   protected strategy: BackoffStrategy;
   protected attemptNumber = 0;
 
-  constructor(private runner: BackoffRunner<T>, private options: BackoffOptions) {
+  constructor(private runner: BackoffRunner<T>, private options: Required<BackoffOptions>) {
     this.strategy = createStrategy(options);
   }
 
