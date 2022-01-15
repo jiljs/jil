@@ -9,18 +9,5 @@
   "include": [
     "src"
   ],
-  "references": [
-    {
-      "path": "../async/tsconfig.json"
-    },
-    {
-      "path": "../cancellation/tsconfig.json"
-    },
-    {
-      "path": "../stopwatch/tsconfig.json"
-    },
-    {
-      "path": "../types/tsconfig.json"
-    }
-  ]
+  "references": []
 }

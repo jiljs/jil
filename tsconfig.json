@@ -8,37 +8,13 @@
   },
   "references": [
     {
-      "path": "packages/async/tsconfig.json"
-    },
-    {
       "path": "packages/backoff/tsconfig.json"
     },
     {
-      "path": "packages/buffer/tsconfig.json"
-    },
-    {
-      "path": "packages/cancellation/tsconfig.json"
-    },
-    {
-      "path": "packages/errors/tsconfig.json"
-    },
-    {
-      "path": "packages/event/tsconfig.json"
-    },
-    {
-      "path": "packages/lifecycle/tsconfig.json"
+      "path": "packages/common/tsconfig.json"
     },
     {
       "path": "packages/retimer/tsconfig.json"
-    },
-    {
-      "path": "packages/stopwatch/tsconfig.json"
-    },
-    {
-      "path": "packages/stream/tsconfig.json"
-    },
-    {
-      "path": "packages/types/tsconfig.json"
     }
   ],
   "files": []
