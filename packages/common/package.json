@@ -3,8 +3,6 @@
   "description": "A collection of common utilities and helpers for general purpose",
   "version": "0.2.1",
   "keywords": [],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=14"
   },
@@ -21,8 +19,7 @@
     "verify": "npm pack && tar xf jil-common*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "tily": "^2.10.1",
-    "ts-essentials": "^9.1.2"
+    "tily": "^2.10.1"
   },
   "devDependencies": {
     "@nutol/build": "^0.2.1",
