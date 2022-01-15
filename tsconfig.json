@@ -11,6 +11,9 @@
       "path": "packages/backoff/tsconfig.json"
     },
     {
+      "path": "packages/buffer/tsconfig.json"
+    },
+    {
       "path": "packages/cancellation/tsconfig.json"
     },
     {

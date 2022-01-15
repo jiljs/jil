@@ -1,0 +1,41 @@
+{
+  "name": "@jil/buffer",
+  "description": "Another buffer implementation from vscode",
+  "version": "0.1.0",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "version": "npm run copy:assets",
+    "copy:assets": "cpy package.json README.md dist",
+    "build": "nb-tsc && npm run copy:assets",
+    "clean": "nb-clean jil-buffer*.tgz dist/* *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-buffer*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "@jil/stream": "^0.1.0"
+  },
+  "devDependencies": {
+    "@jil/async": "^0.2.3",
+    "@nutol/build": "^0.2.0",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8"
+  },
+  "files": [
+    "**/*",
+    "!__tests__"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}
