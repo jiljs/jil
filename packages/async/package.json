@@ -14,7 +14,7 @@
     "version": "npm run copy:assets",
     "copy:assets": "cpy package.json README.md dist",
     "build": "nb-tsc && npm run copy:assets",
-    "clean": "nb-clean jil-async*.tgz *.tsbuildinfo package dist/**",
+    "clean": "nb-clean jil-async*.tgz *.tsbuildinfo package dist/*",
     "pretest": "npm run clean && npm run build",
     "test": "npm run jest",
     "jest": "jest",

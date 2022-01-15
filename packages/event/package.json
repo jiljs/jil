@@ -29,7 +29,7 @@
     "version": "npm run copy:assets",
     "copy:assets": "cpy package.json README.md dist",
     "build": "nb-tsc && npm run copy:assets",
-    "clean": "nb-clean jil-event*.tgz dist/** *.tsbuildinfo package",
+    "clean": "nb-clean jil-event*.tgz dist/* *.tsbuildinfo package",
     "pretest": "npm run clean && npm run build",
     "test": "npm run jest",
     "jest": "jest",

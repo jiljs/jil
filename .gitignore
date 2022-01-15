@@ -6,8 +6,8 @@ npm-debug.log
 coverage
 .nyc_output
 **/*.tgz
-packages/*/dist/**
-examples/*/dist/**
+packages/*/dist/*
+examples/*/dist/*
 **/package
 .sandbox
 *.tsbuildinfo

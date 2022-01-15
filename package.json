@@ -27,7 +27,7 @@
     "prettier:cli": "nb-prettier \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
     "prettier:check": "npm run prettier:cli -- --check",
     "prettier:fix": "npm run prettier:cli -- --write",
-    "clean": "lerna run clean && nb-clean \"packages/*/dist/**\"",
+    "clean": "lerna run clean",
     "clean:lerna": "lerna clean",
     "build": "lerna run build",
     "build:full": "npm ci --ignore-scripts && lerna bootstrap --ci && npm run clean && npm run build",
