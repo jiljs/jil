@@ -25,7 +25,7 @@
     "ts-essentials": "^9.1.2"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.0",
+    "@nutol/build": "^0.2.1",
     "@nutol/eslint-config": "^0.2.0",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.8",
