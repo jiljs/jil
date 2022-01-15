@@ -89,7 +89,7 @@ main();
 
 - `maxDelay?: number`
 
-  The maximum delay, in millis`econds, between two consecutive attempts.
+  The maximum delay, in milliseconds, between two consecutive attempts.
 
   Defaults to Infinity, must be greater than initialDelay
 
