@@ -1,7 +1,7 @@
 {
   "name": "@jil/retimer",
   "description": "A reschedulable setTimeout library for JavaScript",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
