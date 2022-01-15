@@ -1,7 +1,7 @@
 {
   "name": "@jil/stream",
   "description": "A light stream from vscode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "stream",
     "readable",
@@ -23,11 +23,11 @@
     "verify": "npm pack && tar xf jil-stream*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/errors": "^0.2.1",
-    "@jil/lifecycle": "^0.2.3"
+    "@jil/errors": "^0.2.2",
+    "@jil/lifecycle": "^0.2.4"
   },
   "devDependencies": {
-    "@jil/async": "^0.2.3",
+    "@jil/async": "^0.2.4",
     "@nutol/build": "^0.2.0",
     "@nutol/eslint-config": "^0.2.0",
     "@types/jest": "^27.4.0",

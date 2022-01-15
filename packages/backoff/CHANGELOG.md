@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.6](https://github.com/jiljs/jil/compare/@jil/backoff@0.1.5...@jil/backoff@0.1.6) (2022-01-15)
+
+
+### Bug Fixes
+
+* a spell ([7e67811](https://github.com/jiljs/jil/commit/7e678111c9697f2536ac899616cd5b7762cb82e0))
+
+
+
+
+
 ## [0.1.5](https://github.com/jiljs/jil/compare/@jil/backoff@0.1.4...@jil/backoff@0.1.5) (2022-01-13)
 
 **Note:** Version bump only for package @jil/backoff

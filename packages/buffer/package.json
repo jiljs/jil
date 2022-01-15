@@ -1,7 +1,7 @@
 {
   "name": "@jil/buffer",
   "description": "Another buffer implementation from vscode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "buffer",
     "array",
@@ -29,10 +29,10 @@
     "verify": "npm pack && tar xf jil-buffer*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/stream": "^0.1.0"
+    "@jil/stream": "^0.1.1"
   },
   "devDependencies": {
-    "@jil/async": "^0.2.3",
+    "@jil/async": "^0.2.4",
     "@nutol/build": "^0.2.0",
     "@nutol/eslint-config": "^0.2.0",
     "@types/jest": "^27.4.0",

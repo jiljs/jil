@@ -1,7 +1,7 @@
 {
   "name": "@jil/event",
   "description": "A Event emitter library inspired by the event api used in vscode extensions.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "keywords": [
     "event",
     "events",
@@ -36,9 +36,9 @@
     "verify": "npm pack && tar xf jil-event*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/errors": "^0.2.1",
-    "@jil/stopwatch": "^0.2.1",
-    "@jil/types": "^0.2.2",
+    "@jil/errors": "^0.2.2",
+    "@jil/stopwatch": "^0.2.2",
+    "@jil/types": "^0.2.3",
     "tily": "^2.10.1"
   },
   "devDependencies": {
