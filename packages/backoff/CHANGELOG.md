@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/jiljs/jil/compare/@jil/backoff@0.1.6...@jil/backoff@0.2.0) (2022-01-15)
+
+
+### Features
+
+* combine common codes to @jil/common package ([c4b6e28](https://github.com/jiljs/jil/commit/c4b6e286ddfcbee22843dd2087509fa04a478254))
+
+
+
+
+
 ## [0.1.6](https://github.com/jiljs/jil/compare/@jil/backoff@0.1.5...@jil/backoff@0.1.6) (2022-01-15)
 
 
