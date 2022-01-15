@@ -29,6 +29,9 @@
       "path": "packages/stopwatch/tsconfig.json"
     },
     {
+      "path": "packages/stream/tsconfig.json"
+    },
+    {
       "path": "packages/types/tsconfig.json"
     }
   ],
