@@ -1,4 +1,4 @@
-import { EventUnsubscribe, EventUnsubscribeStore } from "./event";
+import {EventUnsubscribe, EventUnsubscribeStore} from './event';
 
 export class DefaultEventUnsubscribeStore implements EventUnsubscribeStore {
   protected handlers: Set<EventUnsubscribe> = new Set();
@@ -16,7 +16,7 @@ export class DefaultEventUnsubscribeStore implements EventUnsubscribeStore {
         } catch (e) {
           errors.push(e);
         }
-      })
+      });
     } finally {
       this.handlers.clear();
     }

@@ -120,7 +120,7 @@ export class DisposableStore implements Disposable {
     }
   }
 
-  public add<T extends Disposable>(o: T): T
+  public add<T extends Disposable>(o: T): T;
   public add(o: Disposable['dispose']): Disposable;
   public add<T extends Disposable>(o: T | Disposable['dispose']): T | Disposable {
     if (!o) {

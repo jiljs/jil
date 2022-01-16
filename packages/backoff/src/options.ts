@@ -85,7 +85,7 @@ const defaultOptions: BackoffOptions = {
 };
 
 export function sanitizeOptions(options: Partial<BackoffOptions>): Required<BackoffOptions> {
-  const sanitized = <Required<BackoffOptions>> {...defaultOptions, ...options};
+  const sanitized = <Required<BackoffOptions>>{...defaultOptions, ...options};
 
   if (sanitized.initialDelay < 1) {
     throw new Error('The initial timeout must be greater than or equal 0');

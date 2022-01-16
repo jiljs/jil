@@ -1,4 +1,4 @@
-import { noop } from 'tily/function/noop';
+import {noop} from 'tily/function/noop';
 import {Emitter} from './emitter';
 import {Event, EventUnsubscribe} from './event';
 

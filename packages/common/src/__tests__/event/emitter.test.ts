@@ -4,8 +4,8 @@ import {errorHandler, setUnexpectedErrorHandler} from '../../errors/handler';
 import {Emitter} from '../../event/emitter';
 import {EventUnsubscribe} from '../../event';
 import {Samples} from './samples';
-import { DisposableStore } from '../../lifecycle';
-import { DefaultEventUnsubscribeStore } from "../../event/unsubs";
+import {DisposableStore} from '../../lifecycle';
+import {DefaultEventUnsubscribeStore} from '../../event/unsubs';
 
 describe('Emitter', function () {
   const counter = new Samples.EventCounter();
@@ -79,7 +79,6 @@ describe('Emitter', function () {
     doc.setText('boo');
     assert.strictEqual(counter.count, 2);
   });
-
 
   test('DefaultEventUnsubscribeStore', function () {
     const bucket = new DefaultEventUnsubscribeStore();

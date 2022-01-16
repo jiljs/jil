@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { once } from 'tily/function/once';
+import {once} from 'tily/function/once';
 import {DisposableStore, Disposable} from './disposable';
 
 export interface IReference<T> extends Disposable {
