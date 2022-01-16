@@ -155,7 +155,7 @@ export namespace Disposable {
   });
 }
 
-export class DefaultDisposable implements Disposable {
+export abstract class BaseDisposable implements Disposable {
   protected readonly _store = new DisposableStore();
 
   protected constructor() {
