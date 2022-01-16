@@ -120,7 +120,9 @@ export class DisposableStore implements Disposable {
     }
   }
 
-  public add<T extends Disposable>(o: T): T {
+  public add<T extends Disposable>(o: T): T
+  public add(o: Disposable['dispose']): Disposable;
+  public add<T extends Disposable>(o: T | Disposable['dispose']): T | Disposable {
     if (!o) {
       return o;
     }
@@ -128,7 +130,9 @@ export class DisposableStore implements Disposable {
       throw new Error('Cannot register a disposable on itself!');
     }
 
-    setParentOfDisposable(o, this);
+    const disposable = typeof o === 'function' ? toDisposable(o) : o;
+
+    setParentOfDisposable(disposable, this);
     if (this._isDisposed) {
       if (!DisposableStore.DISABLE_DISPOSED_WARNING) {
         console.warn(
@@ -138,10 +142,10 @@ export class DisposableStore implements Disposable {
         );
       }
     } else {
-      this._toDispose.add(o);
+      this._toDispose.add(disposable);
     }
 
-    return o;
+    return disposable;
   }
 }
 

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {Emitter} from './emitter';
+import { Emitter } from "./emitter";
+import { DisposableStore } from "../lifecycle";
 
 /**
  * A function that is called when an event is emitted.
@@ -11,15 +12,29 @@ export type EventListener<T> = (data: T) => any;
  */
 export type EventUnsubscribe = () => void;
 
+export interface EventUnsubscribeStore {
+  /**
+   * Add an event unsubscribe handler
+   * @param unsub
+   */
+  add(unsub: EventUnsubscribe): void;
+
+  /**
+   * Call all event unsubscribes and clear store
+   */
+  clear(): void;
+}
+
 /**
  * A function that can be called to attach an event listener.
  *
  * Listeners are called in the order they are attached.
  */
-export type Event<T> = (listener: EventListener<T>, thisArgs?: any, unsubs?: EventUnsubscribe[]) => EventUnsubscribe;
+export type Event<T> = (listener: EventListener<T>, thisArgs?: any, store?: EventUnsubscribe[] | EventUnsubscribeStore | DisposableStore) => EventUnsubscribe;
 
 export namespace Event {
-  const noop = () => {};
+  const noop = () => {
+  };
 
   export const None: Event<any> = () => noop;
 
@@ -55,7 +70,7 @@ export namespace Event {
     listener: (data: O) => any,
     merge: (last: O | undefined, event: T) => O,
     delay = 100,
-    leading = false,
+    leading = false
   ): EventUnsubscribe {
     let output: O | undefined = undefined;
     let handle: any = undefined;
@@ -110,12 +125,12 @@ export namespace Event {
   export function fromNodeEventEmitter<T>(
     emitter: NodeEventEmitter,
     eventName: string,
-    map: (...args: any[]) => T = id => id,
+    map: (...args: any[]) => T = id => id
   ): Event<T> {
     const fn = (...args: any[]) => result.emit(map(...args));
     const onFirstListenerAdd = () => emitter.on(eventName, fn);
     const onLastListenerRemove = () => emitter.removeListener(eventName, fn);
-    const result = new Emitter<T>({onFirstListenerAdd, onLastListenerRemove});
+    const result = new Emitter<T>({ onFirstListenerAdd, onLastListenerRemove });
     return result.event;
   }
 
@@ -128,12 +143,12 @@ export namespace Event {
   export function fromDOMEventEmitter<T>(
     emitter: DOMEventEmitter,
     eventName: string,
-    map: (...args: any[]) => T = id => id,
+    map: (...args: any[]) => T = id => id
   ): Event<T> {
     const fn = (...args: any[]) => result.emit(map(...args));
     const onFirstListenerAdd = () => emitter.addEventListener(eventName, fn);
     const onLastListenerRemove = () => emitter.removeEventListener(eventName, fn);
-    const result = new Emitter<T>({onFirstListenerAdd, onLastListenerRemove});
+    const result = new Emitter<T>({ onFirstListenerAdd, onLastListenerRemove });
     return result.event;
   }
 }

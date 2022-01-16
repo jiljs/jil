@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {onUnexpectedError} from '../errors/handler';
-import {Event, EventListener} from './event';
-import {LeakageMonitor} from './leakage';
-import {EventProfiling} from './profiling';
+import { onUnexpectedError } from "../errors/handler";
+import { Event, EventListener, EventUnsubscribeStore } from "./event";
+import { LeakageMonitor } from "./leakage";
+import { EventProfiling } from "./profiling";
 
 export type EmitterListenerAware = (emitter?: Emitter) => void;
 
@@ -54,7 +54,7 @@ export class Emitter<T = any> {
   /**
    * The event that is controller by this emitter.
    */
-  readonly event: Event<T> = (listener, thisArgs?, unsubs?) => {
+  readonly event: Event<T> = (listener, thisArgs?, store?) => {
     const firstListener = !this.hasListeners();
     if (firstListener) {
       this._options?.onFirstListenerAdd?.(this);
@@ -82,8 +82,10 @@ export class Emitter<T = any> {
       }
     };
 
-    if (Array.isArray(unsubs)) {
-      unsubs.push(unsub);
+    if (isEventUnsubscribeStore(store)) {
+      store.add(unsub);
+    } else if (Array.isArray(store)) {
+      store.push(unsub);
     }
 
     return unsub;
@@ -115,7 +117,7 @@ export class Emitter<T = any> {
         const [listener, data] = this._deliveryQueue.shift()!;
 
         try {
-          if (typeof listener === 'function') {
+          if (typeof listener === "function") {
             listener(data);
           } else {
             listener[0].call(listener[1], data);
@@ -142,4 +144,8 @@ export class Emitter<T = any> {
   protected hasListeners() {
     return this._listeners.size > 0;
   }
+}
+
+function isEventUnsubscribeStore(x: unknown): x is EventUnsubscribeStore {
+  return !!x && typeof (x as EventUnsubscribeStore).add === "function" && typeof (x as EventUnsubscribeStore).clear === "function";
 }

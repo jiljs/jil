@@ -4,6 +4,8 @@ import {errorHandler, setUnexpectedErrorHandler} from '../../errors/handler';
 import {Emitter} from '../../event/emitter';
 import {EventUnsubscribe} from '../../event';
 import {Samples} from './samples';
+import { DisposableStore } from '../../lifecycle';
+import { DefaultEventUnsubscribeStore } from "../../event/unsubs";
 
 describe('Emitter', function () {
   const counter = new Samples.EventCounter();
@@ -50,6 +52,45 @@ describe('Emitter', function () {
     while (bucket.length) {
       bucket.pop()!();
     }
+    doc.setText('boo');
+
+    // noop
+    subscription();
+
+    doc.setText('boo');
+    assert.strictEqual(counter.count, 2);
+  });
+
+  test('DisposableStore', function () {
+    const bucket = new DisposableStore();
+    const doc = new Samples.Document3();
+    const subscription = doc.onDidChange(counter.onEvent, counter, bucket);
+
+    doc.setText('far');
+    doc.setText('boo');
+
+    // unhook listener
+    bucket.clear();
+    doc.setText('boo');
+
+    // noop
+    subscription();
+
+    doc.setText('boo');
+    assert.strictEqual(counter.count, 2);
+  });
+
+
+  test('DefaultEventUnsubscribeStore', function () {
+    const bucket = new DefaultEventUnsubscribeStore();
+    const doc = new Samples.Document3();
+    const subscription = doc.onDidChange(counter.onEvent, counter, bucket);
+
+    doc.setText('far');
+    doc.setText('boo');
+
+    // unhook listener
+    bucket.clear();
     doc.setText('boo');
 
     // noop
