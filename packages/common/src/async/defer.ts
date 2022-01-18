@@ -4,7 +4,7 @@ import {canceled} from '../errors/canceled';
 export type ResolveFn<T = unknown> = (value: T | Promise<T>) => void;
 export type RejectFn = (reason?: unknown) => void;
 
-export interface DeferredPromise<ValueType> extends Promise<ValueType> {
+export interface DeferredPromise<T> extends Promise<T> {
   readonly isRejected: boolean;
   readonly isResolved: boolean;
   readonly isSettled: boolean;
@@ -12,26 +12,26 @@ export interface DeferredPromise<ValueType> extends Promise<ValueType> {
   /**
    * The deferred promise.
    */
-  promise: Promise<ValueType>;
+  promise: Promise<T>;
 
   /**
    * Resolves the promise with a value or the result of another promise.
    * @param value - The value to resolve the promise with.
    */
-  resolve: ResolveFn<ValueType>;
-  complete: ResolveFn<ValueType>;
+  resolve(value: T | Promise<T>): void;
+  complete(value: T | Promise<T>): void;
 
   /**
    * Reject the promise with a provided reason or error.
    * @param reason - The reason or error to reject the promise with.
    */
-  reject: RejectFn;
-  error: RejectFn;
+  reject(reason?: unknown): void;
+  error(reason?: unknown): void;
 
   /**
    * Reject with canceled error
    */
-  cancel: () => void;
+  cancel(): void;
 }
 
 /**
