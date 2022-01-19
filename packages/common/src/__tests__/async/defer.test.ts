@@ -21,12 +21,28 @@ describe('DeferredPromise', function () {
     assert.strictEqual(deferred.isResolved, true);
   });
 
+  test('resolves with void', async () => {
+    const deferred = defer<number>();
+    assert.strictEqual(deferred.isResolved, false);
+    deferred.complete();
+    assert.strictEqual(await deferred, undefined);
+    assert.strictEqual(deferred.isResolved, true);
+  });
+
   test('rejects', async () => {
     const deferred = defer<number>();
     assert.strictEqual(deferred.isRejected, false);
     const err = new Error('oh no!');
     deferred.error(err);
     assert.strictEqual(await deferred.catch(e => e), err);
+    assert.strictEqual(deferred.isRejected, true);
+  });
+
+  test('rejects with void', async () => {
+    const deferred = defer<number>();
+    assert.strictEqual(deferred.isRejected, false);
+    deferred.error();
+    assert.strictEqual(await deferred.catch(e => e), undefined);
     assert.strictEqual(deferred.isRejected, true);
   });
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {canceled} from '../errors/canceled';
 
-export type ResolveFn<T = unknown> = (value: T | Promise<T>) => void;
+export type ResolveFn<T = unknown> = (value?: T | Promise<T>) => void;
 export type RejectFn = (reason?: unknown) => void;
 
 export interface DeferredPromise<T> extends Promise<T> {
@@ -18,8 +18,8 @@ export interface DeferredPromise<T> extends Promise<T> {
    * Resolves the promise with a value or the result of another promise.
    * @param value - The value to resolve the promise with.
    */
-  resolve(value: T | Promise<T>): void;
-  complete(value: T | Promise<T>): void;
+  resolve(value?: T | Promise<T>): void;
+  complete(value?: T | Promise<T>): void;
 
   /**
    * Reject the promise with a provided reason or error.
