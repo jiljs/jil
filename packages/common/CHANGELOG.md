@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/jiljs/jil/compare/@jil/common@0.2.9...@jil/common@0.2.10) (2022-01-22)
+
+**Note:** Version bump only for package @jil/common
+
+
+
+
+
 ## [0.2.9](https://github.com/jiljs/jil/compare/@jil/common@0.2.8...@jil/common@0.2.9) (2022-01-19)
 
 **Note:** Version bump only for package @jil/common
