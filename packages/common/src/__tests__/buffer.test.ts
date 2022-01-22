@@ -2,7 +2,7 @@
 import * as assert from 'assert';
 import {timeout} from '../async/timeout';
 import {peekStream} from '../stream';
-import {decodeBase64, encodeBase64, TinyBuffer} from '../buffer';
+import {decodeBase64, encodeBase64, DataBuffer} from '../buffer';
 import {
   bufferedStreamToBuffer,
   bufferToReadable,
@@ -13,29 +13,29 @@ import {
 } from '../buffer/stream';
 
 describe('Buffer', () => {
-  test('issue #71993 - TinyBuffer#toString returns numbers', () => {
+  test('issue #71993 - DataBuffer#toString returns numbers', () => {
     const data = new Uint8Array([1, 2, 3, 'h'.charCodeAt(0), 'i'.charCodeAt(0), 4, 5]).buffer;
-    const buffer = TinyBuffer.wrap(new Uint8Array(data, 3, 2));
+    const buffer = DataBuffer.wrap(new Uint8Array(data, 3, 2));
     assert.deepStrictEqual(buffer.toString(), 'hi');
   });
 
   test('bufferToReadable / readableToBuffer', () => {
     const content = 'Hello World';
-    const readable = bufferToReadable(TinyBuffer.fromString(content));
+    const readable = bufferToReadable(DataBuffer.fromString(content));
 
     assert.strictEqual(readableToBuffer(readable).toString(), content);
   });
 
   test('bufferToStream / streamToBuffer', async () => {
     const content = 'Hello World';
-    const stream = bufferToStream(TinyBuffer.fromString(content));
+    const stream = bufferToStream(DataBuffer.fromString(content));
 
     assert.strictEqual((await streamToBuffer(stream)).toString(), content);
   });
 
   test('bufferedStreamToBuffer', async () => {
     const content = 'Hello World';
-    const stream = await peekStream(bufferToStream(TinyBuffer.fromString(content)), 1);
+    const stream = await peekStream(bufferToStream(DataBuffer.fromString(content)), 1);
 
     assert.strictEqual((await bufferedStreamToBuffer(stream)).toString(), content);
   });
@@ -43,7 +43,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - basics (no error)', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -59,9 +59,9 @@ describe('Buffer', () => {
     });
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     assert.strictEqual(chunks.length, 2);
     assert.strictEqual(chunks[0].toString(), 'Hello');
@@ -73,7 +73,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - basics (error)', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -89,7 +89,7 @@ describe('Buffer', () => {
     });
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
     stream.error(new Error());
     stream.end();
@@ -104,11 +104,11 @@ describe('Buffer', () => {
     const stream = newWriteableBufferStream();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -133,11 +133,11 @@ describe('Buffer', () => {
     const stream = newWriteableBufferStream();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
     stream.error(new Error());
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -164,16 +164,16 @@ describe('Buffer', () => {
     const stream = newWriteableBufferStream();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     let ended = false;
     stream.on('end', () => {
       ended = true;
     });
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -192,15 +192,15 @@ describe('Buffer', () => {
   test('bufferWriteableStream - nothing happens after end()', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     let dataCalledAfterEnd = false;
     stream.on('data', data => {
@@ -218,11 +218,11 @@ describe('Buffer', () => {
     });
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
     stream.error(new Error());
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     assert.strictEqual(dataCalledAfterEnd, false);
     assert.strictEqual(errorCalledAfterEnd, false);
@@ -236,7 +236,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - pause/resume (simple)', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -254,9 +254,9 @@ describe('Buffer', () => {
     stream.pause();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     assert.strictEqual(chunks.length, 0);
     assert.strictEqual(errors.length, 0);
@@ -273,7 +273,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - pause/resume (pause after first write)', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -289,12 +289,12 @@ describe('Buffer', () => {
     });
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
 
     stream.pause();
 
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     assert.strictEqual(chunks.length, 1);
     assert.strictEqual(chunks[0].toString(), 'Hello');
@@ -313,7 +313,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - pause/resume (error)', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -331,7 +331,7 @@ describe('Buffer', () => {
     stream.pause();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
     stream.error(new Error());
     stream.end();
@@ -351,7 +351,7 @@ describe('Buffer', () => {
   test('bufferWriteableStream - destroy', async () => {
     const stream = newWriteableBufferStream();
 
-    const chunks: TinyBuffer[] = [];
+    const chunks: DataBuffer[] = [];
     stream.on('data', data => {
       chunks.push(data);
     });
@@ -369,16 +369,16 @@ describe('Buffer', () => {
     stream.destroy();
 
     await timeout(0);
-    stream.write(TinyBuffer.fromString('Hello'));
+    stream.write(DataBuffer.fromString('Hello'));
     await timeout(0);
-    stream.end(TinyBuffer.fromString('World'));
+    stream.end(DataBuffer.fromString('World'));
 
     assert.strictEqual(chunks.length, 0);
     assert.strictEqual(ended, false);
     assert.strictEqual(errors.length, 0);
   });
 
-  test('Performance issue with TinyBuffer#slice #76076', function () {
+  test('Performance issue with DataBuffer#slice #76076', function () {
     // Buffer#slice creates a view
     if (typeof Buffer !== 'undefined') {
       const buff = Buffer.from([10, 20, 30, 40]);
@@ -449,7 +449,7 @@ describe('Buffer', () => {
 
     test('encodes', () => {
       for (const [bytes, expected] of testCases) {
-        assert.strictEqual(encodeBase64(TinyBuffer.wrap(bytes)), expected);
+        assert.strictEqual(encodeBase64(DataBuffer.wrap(bytes)), expected);
       }
     });
 

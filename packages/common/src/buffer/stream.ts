@@ -1,34 +1,34 @@
 import * as streams from '../stream';
-import {TinyBuffer} from './buffer';
+import {DataBuffer} from './buffer';
 
-export interface TinyBufferReadable extends streams.Readable<TinyBuffer> {}
+export interface DataBufferReadable extends streams.Readable<DataBuffer> {}
 
-export interface TinyBufferReadableStream extends streams.ReadableStream<TinyBuffer> {}
+export interface DataBufferReadableStream extends streams.ReadableStream<DataBuffer> {}
 
-export interface TinyBufferWriteableStream extends streams.WriteableStream<TinyBuffer> {}
+export interface DataBufferWriteableStream extends streams.WriteableStream<DataBuffer> {}
 
-export interface TinyBufferReadableBufferedStream extends streams.ReadableBufferedStream<TinyBuffer> {}
+export interface DataBufferReadableBufferedStream extends streams.ReadableBufferedStream<DataBuffer> {}
 
-export function readableToBuffer(readable: TinyBufferReadable): TinyBuffer {
-  return streams.consumeReadable<TinyBuffer>(readable, chunks => TinyBuffer.concat(chunks));
+export function readableToBuffer(readable: DataBufferReadable): DataBuffer {
+  return streams.consumeReadable<DataBuffer>(readable, chunks => DataBuffer.concat(chunks));
 }
 
-export function bufferToReadable(buffer: TinyBuffer): TinyBufferReadable {
-  return streams.toReadable<TinyBuffer>(buffer);
+export function bufferToReadable(buffer: DataBuffer): DataBufferReadable {
+  return streams.toReadable<DataBuffer>(buffer);
 }
 
-export function streamToBuffer(stream: streams.ReadableStream<TinyBuffer>): Promise<TinyBuffer> {
-  return streams.consumeStream<TinyBuffer>(stream, chunks => TinyBuffer.concat(chunks));
+export function streamToBuffer(stream: streams.ReadableStream<DataBuffer>): Promise<DataBuffer> {
+  return streams.consumeStream<DataBuffer>(stream, chunks => DataBuffer.concat(chunks));
 }
 
 export async function bufferedStreamToBuffer(
-  bufferedStream: streams.ReadableBufferedStream<TinyBuffer>,
-): Promise<TinyBuffer> {
+  bufferedStream: streams.ReadableBufferedStream<DataBuffer>,
+): Promise<DataBuffer> {
   if (bufferedStream.ended) {
-    return TinyBuffer.concat(bufferedStream.buffer);
+    return DataBuffer.concat(bufferedStream.buffer);
   }
 
-  return TinyBuffer.concat([
+  return DataBuffer.concat([
     // Include already read chunks...
     ...bufferedStream.buffer,
 
@@ -37,30 +37,30 @@ export async function bufferedStreamToBuffer(
   ]);
 }
 
-export function bufferToStream(buffer: TinyBuffer): streams.ReadableStream<TinyBuffer> {
-  return streams.toStream<TinyBuffer>(buffer, chunks => TinyBuffer.concat(chunks));
+export function bufferToStream(buffer: DataBuffer): streams.ReadableStream<DataBuffer> {
+  return streams.toStream<DataBuffer>(buffer, chunks => DataBuffer.concat(chunks));
 }
 
 export function streamToBufferReadableStream(
   stream: streams.ReadableStreamEvents<Uint8Array | string>,
-): streams.ReadableStream<TinyBuffer> {
-  return streams.transform<Uint8Array | string, TinyBuffer>(
+): streams.ReadableStream<DataBuffer> {
+  return streams.transform<Uint8Array | string, DataBuffer>(
     stream,
-    {data: data => (typeof data === 'string' ? TinyBuffer.fromString(data) : TinyBuffer.wrap(data))},
-    chunks => TinyBuffer.concat(chunks),
+    {data: data => (typeof data === 'string' ? DataBuffer.fromString(data) : DataBuffer.wrap(data))},
+    chunks => DataBuffer.concat(chunks),
   );
 }
 
 export function newWriteableBufferStream(
   options?: streams.WriteableStreamOptions,
-): streams.WriteableStream<TinyBuffer> {
-  return streams.newWriteableStream<TinyBuffer>(chunks => TinyBuffer.concat(chunks), options);
+): streams.WriteableStream<DataBuffer> {
+  return streams.newWriteableStream<DataBuffer>(chunks => DataBuffer.concat(chunks), options);
 }
 
-export function prefixedBufferReadable(prefix: TinyBuffer, readable: TinyBufferReadable): TinyBufferReadable {
-  return streams.prefixedReadable(prefix, readable, chunks => TinyBuffer.concat(chunks));
+export function prefixedBufferReadable(prefix: DataBuffer, readable: DataBufferReadable): DataBufferReadable {
+  return streams.prefixedReadable(prefix, readable, chunks => DataBuffer.concat(chunks));
 }
 
-export function prefixedBufferStream(prefix: TinyBuffer, stream: TinyBufferReadableStream): TinyBufferReadableStream {
-  return streams.prefixedStream(prefix, stream, chunks => TinyBuffer.concat(chunks));
+export function prefixedBufferStream(prefix: DataBuffer, stream: DataBufferReadableStream): DataBufferReadableStream {
+  return streams.prefixedStream(prefix, stream, chunks => DataBuffer.concat(chunks));
 }

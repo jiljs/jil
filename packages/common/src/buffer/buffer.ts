@@ -6,7 +6,7 @@ const hasBuffer = typeof Buffer !== 'undefined';
 let textEncoder: TextEncoder | null;
 let textDecoder: TextDecoder | null;
 
-export class TinyBuffer {
+export class DataBuffer {
   readonly buffer: Uint8Array;
   readonly byteLength: number;
 
@@ -16,53 +16,53 @@ export class TinyBuffer {
   }
 
   /**
-   * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
+   * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static alloc(byteLength: number): TinyBuffer {
+  static alloc(byteLength: number): DataBuffer {
     if (hasBuffer) {
-      return new TinyBuffer(Buffer.allocUnsafe(byteLength));
+      return new DataBuffer(Buffer.allocUnsafe(byteLength));
     } else {
-      return new TinyBuffer(new Uint8Array(byteLength));
+      return new DataBuffer(new Uint8Array(byteLength));
     }
   }
 
   /**
    * When running in a nodejs context, if `actual` is not a nodejs Buffer, the backing store for
-   * the returned `TinyBuffer` instance might use a nodejs Buffer allocated from node's Buffer pool,
+   * the returned `DataBuffer` instance might use a nodejs Buffer allocated from node's Buffer pool,
    * which is not transferable.
    */
-  static wrap(actual: Uint8Array): TinyBuffer {
+  static wrap(actual: Uint8Array): DataBuffer {
     if (hasBuffer && !Buffer.isBuffer(actual)) {
       // https://nodejs.org/dist/latest-v10.x/docs/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length
       // Create a zero-copy Buffer wrapper around the ArrayBuffer pointed to by the Uint8Array
       actual = Buffer.from(actual.buffer, actual.byteOffset, actual.byteLength);
     }
-    return new TinyBuffer(actual);
+    return new DataBuffer(actual);
   }
 
   /**
-   * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
+   * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static fromString(source: string, options?: {dontUseNodeBuffer?: boolean}): TinyBuffer {
+  static fromString(source: string, options?: {dontUseNodeBuffer?: boolean}): DataBuffer {
     const dontUseNodeBuffer = options?.dontUseNodeBuffer || false;
     if (!dontUseNodeBuffer && hasBuffer) {
-      return new TinyBuffer(Buffer.from(source));
+      return new DataBuffer(Buffer.from(source));
     } else {
       if (!textEncoder) {
         textEncoder = new TextEncoder();
       }
-      return new TinyBuffer(textEncoder.encode(source));
+      return new DataBuffer(textEncoder.encode(source));
     }
   }
 
   /**
-   * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
+   * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static fromByteArray(source: number[]): TinyBuffer {
-    const result = TinyBuffer.alloc(source.length);
+  static fromByteArray(source: number[]): DataBuffer {
+    const result = DataBuffer.alloc(source.length);
     for (let i = 0, len = source.length; i < len; i++) {
       result.buffer[i] = source[i];
     }
@@ -70,10 +70,10 @@ export class TinyBuffer {
   }
 
   /**
-   * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
+   * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static concat(buffers: TinyBuffer[], totalLength?: number): TinyBuffer {
+  static concat(buffers: DataBuffer[], totalLength?: number): DataBuffer {
     if (typeof totalLength === 'undefined') {
       totalLength = 0;
       for (let i = 0, len = buffers.length; i < len; i++) {
@@ -81,7 +81,7 @@ export class TinyBuffer {
       }
     }
 
-    const ret = TinyBuffer.alloc(totalLength);
+    const ret = DataBuffer.alloc(totalLength);
     let offset = 0;
     for (let i = 0, len = buffers.length; i < len; i++) {
       const element = buffers[i];
@@ -93,11 +93,11 @@ export class TinyBuffer {
   }
 
   /**
-   * When running in a nodejs context, the backing store for the returned `TinyBuffer` instance
+   * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  clone(): TinyBuffer {
-    const result = TinyBuffer.alloc(this.byteLength);
+  clone(): DataBuffer {
+    const result = DataBuffer.alloc(this.byteLength);
     result.set(this);
     return result;
   }
@@ -113,15 +113,15 @@ export class TinyBuffer {
     }
   }
 
-  slice(start?: number, end?: number): TinyBuffer {
+  slice(start?: number, end?: number): DataBuffer {
     // IMPORTANT: use subarray instead of slice because TypedArray#slice
     // creates shallow copy and NodeBuffer#slice doesn't. The use of subarray
     // ensures the same, performance, behaviour.
-    return new TinyBuffer(this.buffer.subarray(start, end));
+    return new DataBuffer(this.buffer.subarray(start, end));
   }
 
-  set(array: TinyBuffer | Uint8Array | ArrayBuffer | ArrayBufferView, offset?: number): void {
-    if (array instanceof TinyBuffer) {
+  set(array: DataBuffer | Uint8Array | ArrayBuffer | ArrayBufferView, offset?: number): void {
+    if (array instanceof DataBuffer) {
       this.buffer.set(array.buffer, offset);
     } else if (array instanceof Uint8Array) {
       this.buffer.set(array, offset);
@@ -269,14 +269,14 @@ export function decodeBase64(encoded: string) {
   }
 
   // slice is needed to account for overestimation due to padding
-  return TinyBuffer.wrap(buffer).slice(0, unpadded);
+  return DataBuffer.wrap(buffer).slice(0, unpadded);
 }
 
 const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 const base64UrlSafeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 
 /** Encodes a buffer to a base64 string. */
-export function encodeBase64({buffer}: TinyBuffer, padded = true, urlSafe = false) {
+export function encodeBase64({buffer}: DataBuffer, padded = true, urlSafe = false) {
   const dictionary = urlSafe ? base64UrlSafeAlphabet : base64Alphabet;
   let output = '';
 
