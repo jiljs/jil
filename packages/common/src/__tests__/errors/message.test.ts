@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {toErrorMessage} from '../errors/message';
+import {toErrorMessage} from '../../errors/message';
 
-describe('Errors', () => {
+describe('message', () => {
   test('Get Error Message', function () {
     expect(toErrorMessage('Foo Bar')).toStrictEqual('Foo Bar');
     expect(toErrorMessage(new Error('Foo Bar'))).toStrictEqual('Foo Bar');
