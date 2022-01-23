@@ -15,6 +15,14 @@ export class DataBuffer {
     this.byteLength = this.buffer.byteLength;
   }
 
+  static isDataBuffer(obj: any): obj is DataBuffer {
+    return (
+      obj?.constructor != null &&
+      typeof obj.constructor.isDataBuffer === 'function' &&
+      typeof obj.constructor.alloc === 'function'
+    );
+  }
+
   /**
    * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
