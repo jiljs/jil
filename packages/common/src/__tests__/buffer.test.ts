@@ -203,12 +203,12 @@ describe('Buffer', () => {
     stream.end(DataBuffer.fromString('World'));
 
     let dataCalledAfterEnd = false;
-    stream.on('data', data => {
+    stream.on('data', () => {
       dataCalledAfterEnd = true;
     });
 
     let errorCalledAfterEnd = false;
-    stream.on('error', error => {
+    stream.on('error', () => {
       errorCalledAfterEnd = true;
     });
 
@@ -462,5 +462,13 @@ describe('Buffer', () => {
     test('throws error on invalid encoding', () => {
       assert.throws(() => decodeBase64('invalid!'));
     });
+  });
+
+  it("to buffer", function() {
+    if (Buffer) {
+      const dataBuf = DataBuffer.fromString('Hello World!');
+      const buf = Buffer.from(dataBuf.buffer);
+      expect(buf.toString()).toEqual('Hello World!');
+    }
   });
 });
