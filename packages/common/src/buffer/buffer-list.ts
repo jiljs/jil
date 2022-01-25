@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DataBuffer } from "./buffer";
-import { NotImplementedError } from "../errors/not-implemented";
+import {DataBuffer} from './buffer';
+import {NotImplementedError} from '../errors/not-implemented';
 
-const symbol = Symbol.for("BufferList");
+const symbol = Symbol.for('BufferList');
 
 export class BufferList {
   readonly [symbol] = true;
@@ -11,7 +11,6 @@ export class BufferList {
   protected _bufs: DataBuffer[];
 
   constructor(buf?: DataBuffer | DataBuffer[]) {
-
     this._bufs = [];
     this.length = 0;
 
@@ -35,11 +34,11 @@ export class BufferList {
   }
 
   slice(start?: number, end?: number) {
-    if (typeof start === "number" && start < 0) {
+    if (typeof start === 'number' && start < 0) {
       start += this.length;
     }
 
-    if (typeof end === "number" && end < 0) {
+    if (typeof end === 'number' && end < 0) {
       end += this.length;
     }
 
@@ -47,11 +46,11 @@ export class BufferList {
   }
 
   copy(dst: DataBuffer | null, dstStart: number, srcStart?: number, srcEnd?: number): DataBuffer {
-    if (typeof srcStart !== "number" || srcStart < 0) {
+    if (typeof srcStart !== 'number' || srcStart < 0) {
       srcStart = 0;
     }
 
-    if (typeof srcEnd !== "number" || srcEnd > this.length) {
+    if (typeof srcEnd !== 'number' || srcEnd > this.length) {
       srcEnd = this.length;
     }
 
@@ -74,9 +73,7 @@ export class BufferList {
     if (srcStart === 0 && srcEnd === this.length) {
       if (!dst) {
         // slice, but full concat if multiple buffers
-        return this._bufs.length === 1
-          ? this._bufs[0]
-          : DataBuffer.concat(this._bufs, this.length);
+        return this._bufs.length === 1 ? this._bufs[0] : DataBuffer.concat(this._bufs, this.length);
       }
 
       // copy, need to copy individual buffers
@@ -129,7 +126,7 @@ export class BufferList {
 
   shallowSlice(start: number, end: number) {
     start = start || 0;
-    end = typeof end !== "number" ? this.length : end;
+    end = typeof end !== 'number' ? this.length : end;
 
     if (start < 0) {
       start += this.length;
@@ -200,9 +197,9 @@ export class BufferList {
       return this;
     }
 
-    if (typeof buf === "number") {
+    if (typeof buf === 'number') {
       this._appendBuffer(DataBuffer.fromString(buf.toString()));
-    } else if (typeof buf === "string") {
+    } else if (typeof buf === 'string') {
       this._appendBuffer(DataBuffer.fromString(buf));
     } else if (Array.isArray(buf)) {
       for (const item of buf) {
@@ -222,18 +219,18 @@ export class BufferList {
     return this;
   }
 
-  indexOf(search: string | number | Uint8Array | BufferList | DataBuffer, offset?: number/*, encoding?: string*/) {
+  indexOf(search: string | number | Uint8Array | BufferList | DataBuffer, offset?: number /*, encoding?: string*/) {
     // if (encoding === undefined && typeof offset === "string") {
     //   encoding = offset;
     //   offset = undefined;
     // }
 
-    if (typeof search === "function" || Array.isArray(search)) {
-      throw new TypeError("The \"value\" argument must be one of type string, Buffer, BufferList, or Uint8Array.");
-    } else if (typeof search === "number") {
+    if (typeof search === 'function' || Array.isArray(search)) {
+      throw new TypeError('The "value" argument must be one of type string, Buffer, BufferList, or Uint8Array.');
+    } else if (typeof search === 'number') {
       search = DataBuffer.fromByteArray([search]);
-    } else if (typeof search === "string") {
-      search = DataBuffer.fromString(search/*, encoding*/);
+    } else if (typeof search === 'string') {
+      search = DataBuffer.fromString(search /*, encoding*/);
     } else if (this._isBufferList(search)) {
       search = search.slice();
     } else if (!DataBuffer.isDataBuffer(search)) {
@@ -375,7 +372,7 @@ export class BufferList {
   }
 }
 
-(function() {
+(function () {
   const methods: Record<string, number | null> = {
     // readDoubleBE: 8,
     // readDoubleLE: 8,
@@ -390,7 +387,7 @@ export class BufferList {
     readUInt16BE: 2,
     readUInt16LE: 2,
     // readInt8: 1,
-    readUInt8: 1
+    readUInt8: 1,
     // readIntBE: null,
     // readIntLE: null,
     // readUIntBE: null,
@@ -401,14 +398,14 @@ export class BufferList {
     // (function (m) {
     const proto = BufferList.prototype as any;
     if (methods[m] == null) {
-      proto[m] = function(this: BufferList, offset: number, byteLength: number) {
+      proto[m] = function (this: BufferList, offset: number, byteLength: number) {
         return (this.slice(offset, offset + byteLength) as any)[m](0, byteLength);
       };
     } else {
-      proto[m] = function(this: BufferList, offset = 0) {
+      proto[m] = function (this: BufferList, offset = 0) {
         return (this.slice(offset, offset + methods[m]!) as any)[m](0);
       };
     }
     // }(m))
   }
-}());
+})();

@@ -464,7 +464,7 @@ describe('Buffer', () => {
     });
   });
 
-  it("to buffer", function() {
+  it('to buffer', function () {
     if (Buffer) {
       const dataBuf = DataBuffer.fromString('Hello World!');
       const buf = Buffer.from(dataBuf.buffer);

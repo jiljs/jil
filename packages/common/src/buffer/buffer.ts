@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 declare const Buffer: any;
 
-const hasBuffer = typeof Buffer !== "undefined";
+const hasBuffer = typeof Buffer !== 'undefined';
 
 let textEncoder: TextEncoder | null;
 let textDecoder: TextDecoder | null;
@@ -29,8 +29,8 @@ export class DataBuffer {
   static isDataBuffer(obj: any): obj is DataBuffer {
     return (
       obj?.constructor != null &&
-      typeof obj.constructor.isDataBuffer === "function" &&
-      typeof obj.constructor.alloc === "function"
+      typeof obj.constructor.isDataBuffer === 'function' &&
+      typeof obj.constructor.alloc === 'function'
     );
   }
 
@@ -64,7 +64,7 @@ export class DataBuffer {
    * When running in a nodejs context, the backing store for the returned `DataBuffer` instance
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
-  static fromString(source: string, options?: { dontUseNodeBuffer?: boolean }): DataBuffer {
+  static fromString(source: string, options?: {dontUseNodeBuffer?: boolean}): DataBuffer {
     const dontUseNodeBuffer = options?.dontUseNodeBuffer || false;
     if (!dontUseNodeBuffer && hasBuffer) {
       return new DataBuffer(Buffer.from(source));
@@ -93,7 +93,7 @@ export class DataBuffer {
    * might use a nodejs Buffer allocated from node's Buffer pool, which is not transferable.
    */
   static concat(buffers: DataBuffer[], totalLength?: number): DataBuffer {
-    if (typeof totalLength === "undefined") {
+    if (typeof totalLength === 'undefined') {
       totalLength = 0;
       for (let i = 0, len = buffers.length; i < len; i++) {
         totalLength += buffers[i].byteLength;
@@ -154,7 +154,7 @@ export class DataBuffer {
   }
 
   copy(target: DataBuffer, targetStart?: number, start?: number, end?: number): number {
-    if (!DataBuffer.isDataBuffer(target)) throw new TypeError("argument should be a DataBuffer");
+    if (!DataBuffer.isDataBuffer(target)) throw new TypeError('argument should be a DataBuffer');
     targetStart = targetStart ?? 0;
     start = start ?? 0;
     end = end ?? this.length;
@@ -168,10 +168,10 @@ export class DataBuffer {
 
     // Fatal error conditions
     if (targetStart < 0) {
-      throw new RangeError("targetStart out of bounds");
+      throw new RangeError('targetStart out of bounds');
     }
-    if (start < 0 || start >= this.length) throw new RangeError("Index out of range");
-    if (end < 0) throw new RangeError("sourceEnd out of bounds");
+    if (start < 0 || start >= this.length) throw new RangeError('Index out of range');
+    if (end < 0) throw new RangeError('sourceEnd out of bounds');
 
     // Are we oob?
     if (end > this.length) end = this.length;
@@ -181,7 +181,7 @@ export class DataBuffer {
 
     const len = end - start;
 
-    if (this === target && typeof Uint8Array.prototype.copyWithin === "function") {
+    if (this === target && typeof Uint8Array.prototype.copyWithin === 'function') {
       // Use built-in when available, missing from IE11
       this.buffer.copyWithin(targetStart, start, end);
     } else {
@@ -240,7 +240,6 @@ export class DataBuffer {
   }
 }
 
-
 // Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
 // OR the last index of `val` in `buffer` at offset <= `byteOffset`.
 //
@@ -252,12 +251,18 @@ export class DataBuffer {
 // - byteOffset - an index into `buffer`; will be clamped to an int32
 // - encoding - an optional encoding, relevant is val is a string
 // - dir - true for indexOf, false for lastIndexOf
-function bidirectionalIndexOf(buffer: DataBuffer, val: string | number | DataBuffer, byteOffset: number, encoding?: string, dir?: boolean) {
+function bidirectionalIndexOf(
+  buffer: DataBuffer,
+  val: string | number | DataBuffer,
+  byteOffset: number,
+  encoding?: string,
+  dir?: boolean,
+) {
   // Empty buffer means no match
   if (buffer.length === 0) return -1;
 
   // Normalize byteOffset
-  if (typeof byteOffset === "string") {
+  if (typeof byteOffset === 'string') {
     encoding = byteOffset;
     byteOffset = 0;
   } else if (byteOffset > 0x7fffffff) {
@@ -268,7 +273,7 @@ function bidirectionalIndexOf(buffer: DataBuffer, val: string | number | DataBuf
   byteOffset = +byteOffset; // Coerce to Number.
   if (isNaN(byteOffset)) {
     // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
-    byteOffset = dir ? 0 : (buffer.length - 1);
+    byteOffset = dir ? 0 : buffer.length - 1;
   }
 
   // Normalize byteOffset: negative offsets start from the end of the buffer
@@ -282,7 +287,7 @@ function bidirectionalIndexOf(buffer: DataBuffer, val: string | number | DataBuf
   }
 
   // Normalize val
-  if (typeof val === "string") {
+  if (typeof val === 'string') {
     val = Buffer.from(val, encoding);
   }
 
@@ -293,9 +298,9 @@ function bidirectionalIndexOf(buffer: DataBuffer, val: string | number | DataBuf
       return -1;
     }
     return arrayIndexOf(buffer, val, byteOffset, encoding, dir);
-  } else if (typeof val === "number") {
-    val = val & 0xFF; // Search for a byte value [0-255]
-    if (typeof Uint8Array.prototype.indexOf === "function") {
+  } else if (typeof val === 'number') {
+    val = val & 0xff; // Search for a byte value [0-255]
+    if (typeof Uint8Array.prototype.indexOf === 'function') {
       if (dir) {
         return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset);
       } else {
@@ -305,19 +310,24 @@ function bidirectionalIndexOf(buffer: DataBuffer, val: string | number | DataBuf
     return arrayIndexOf(buffer, [val], byteOffset, encoding, dir);
   }
 
-  throw new TypeError("val must be string, number or Buffer");
+  throw new TypeError('val must be string, number or Buffer');
 }
 
 // from: https://github.com/feross/buffer/blob/master/index.js#L760
-function arrayIndexOf(arr: DataBuffer, val: DataBuffer | number[], byteOffset: number, encoding?: string, dir?: boolean) {
+function arrayIndexOf(
+  arr: DataBuffer,
+  val: DataBuffer | number[],
+  byteOffset: number,
+  encoding?: string,
+  dir?: boolean,
+) {
   let indexSize = 1;
   let arrLength = arr.length;
   let valLength = val.length;
 
   if (encoding !== undefined) {
     encoding = String(encoding).toLowerCase();
-    if (encoding === "ucs2" || encoding === "ucs-2" ||
-      encoding === "utf16le" || encoding === "utf-16le") {
+    if (encoding === 'ucs2' || encoding === 'ucs-2' || encoding === 'utf16le' || encoding === 'utf-16le') {
       if (arr.length < 2 || val.length < 2) {
         return -1;
       }
@@ -492,13 +502,13 @@ export function decodeBase64(encoded: string) {
   return DataBuffer.wrap(buffer).slice(0, unpadded);
 }
 
-const base64Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-const base64UrlSafeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+const base64Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+const base64UrlSafeAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 
 /** Encodes a buffer to a base64 string. */
-export function encodeBase64({ buffer }: DataBuffer, padded = true, urlSafe = false) {
+export function encodeBase64({buffer}: DataBuffer, padded = true, urlSafe = false) {
   const dictionary = urlSafe ? base64UrlSafeAlphabet : base64Alphabet;
-  let output = "";
+  let output = '';
 
   const remainder = buffer.byteLength % 3;
 
@@ -519,7 +529,7 @@ export function encodeBase64({ buffer }: DataBuffer, padded = true, urlSafe = fa
     output += dictionary[a >>> 2];
     output += dictionary[(a << 4) & 0b111111];
     if (padded) {
-      output += "==";
+      output += '==';
     }
   } else if (remainder === 2) {
     const a = buffer[i];
@@ -528,7 +538,7 @@ export function encodeBase64({ buffer }: DataBuffer, padded = true, urlSafe = fa
     output += dictionary[((a << 4) | (b >>> 4)) & 0b111111];
     output += dictionary[(b << 2) & 0b111111];
     if (padded) {
-      output += "=";
+      output += '=';
     }
   }
 
