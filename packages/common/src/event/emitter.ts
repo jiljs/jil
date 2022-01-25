@@ -51,6 +51,10 @@ export class Emitter<T = any> {
     this._options = options;
   }
 
+  get listenerCount() {
+    return this._listeners.size;
+  }
+
   /**
    * The event that is controller by this emitter.
    */
@@ -141,7 +145,7 @@ export class Emitter<T = any> {
     }
   }
 
-  protected hasListeners() {
+  hasListeners() {
     return this._listeners.size > 0;
   }
 }
