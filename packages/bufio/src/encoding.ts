@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { enforce } from "./enforce";
-import { EncodingError } from "./error";
+import {enforce} from './enforce';
+import {EncodingError} from './error';
 
 /*
  * Constants
