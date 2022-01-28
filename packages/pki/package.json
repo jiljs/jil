@@ -1,7 +1,7 @@
 {
   "name": "@jil/pki",
   "description": "A JavaScript library implementing the formats that are used in PKI applications.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "pki",
     "certificate",
@@ -25,8 +25,8 @@
     "verify": "npm pack && tar xf jil-pki*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/bufio": "^0.1.1",
-    "@jil/crypto": "^0.1.1",
+    "@jil/bufio": "^0.1.2",
+    "@jil/crypto": "^0.1.2",
     "fast-glob": "^3.2.11"
   },
   "devDependencies": {
