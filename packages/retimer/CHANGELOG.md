@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/jiljs/jil/compare/@jil/retimer@0.1.10...@jil/retimer@0.1.11) (2022-01-28)
+
+**Note:** Version bump only for package @jil/retimer
+
+
+
+
+
 ## [0.1.10](https://github.com/jiljs/jil/compare/@jil/retimer@0.1.9...@jil/retimer@0.1.10) (2022-01-22)
 
 **Note:** Version bump only for package @jil/retimer
