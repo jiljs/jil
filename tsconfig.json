@@ -23,6 +23,9 @@
       "path": "packages/inflight/tsconfig.json"
     },
     {
+      "path": "packages/pki/tsconfig.json"
+    },
+    {
       "path": "packages/retimer/tsconfig.json"
     }
   ],
