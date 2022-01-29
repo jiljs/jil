@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "version": "npm run copy:assets",
-    "copy:assets": "cpy package.json README.md dist",
+    "copy:assets": "cpy package.json .npmignore LICENSE README.md CHANGELOG.md dist",
     "build": "nb-tsc && npm run copy:assets",
     "clean": "nb-clean jil-common*.tgz dist/* *.tsbuildinfo package",
     "pretest": "npm run clean && npm run build",
