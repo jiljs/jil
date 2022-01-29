@@ -19,7 +19,6 @@ before_script:
 test:
   script:
     - npm run test:ci
-    - npm run coverage:summary
   coverage: /Statements\s+:\s(\d+.?\d+)%/
   artifacts:
     when: always
