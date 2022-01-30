@@ -1,7 +1,7 @@
 {
   "name": "@jil/pki",
   "description": "A JavaScript library implementing the formats that are used in PKI applications.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "pki",
     "certificate",
