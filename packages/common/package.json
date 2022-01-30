@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "optimal": "^5.1.1",
-    "tily": "^2.10.1"
+    "tily": "^2.10.2"
   },
   "devDependencies": {
     "@nutol/build": "^0.2.1",
