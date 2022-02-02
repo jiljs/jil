@@ -2,6 +2,7 @@
 /coverage
 packages/*/dist
 examples/*/dist
-*.json
 CHANGELOG.md
+*.json
 *.yml
+*.pem
