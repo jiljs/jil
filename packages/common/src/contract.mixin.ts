@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as t from "optimal";
-import { Blueprint, DeepPartial, optimal, Schemas } from "optimal";
-import { isPlainObject } from "tily/is/plainObject";
-import { last } from "tily/array/last";
-import { MixinTarget } from "./types";
+import * as t from 'optimal';
+import {Blueprint, DeepPartial, optimal, Schemas} from 'optimal';
+import {isPlainObject} from 'tily/is/plainObject';
+import {last} from 'tily/array/last';
+import {MixinTarget} from './types';
 
 export const EmptyBlueprint = {};
 
-export function ContractMixin<O extends object = {}, T extends MixinTarget<Object> = MixinTarget<Object>>(superClass: T) {
+export function ContractMixin<O extends object = {}, T extends MixinTarget<Object> = MixinTarget<Object>>(
+  superClass: T,
+) {
   return class extends superClass {
-
     /** Validated and configured options. */
     readonly options: Readonly<Required<O>>;
 
@@ -20,7 +21,6 @@ export function ContractMixin<O extends object = {}, T extends MixinTarget<Objec
         this.configure(last(args));
       }
     }
-
 
     /**
      * Set an options object by merging the new partial and existing options
@@ -39,7 +39,7 @@ export function ContractMixin<O extends object = {}, T extends MixinTarget<Objec
      * ```
      */
     configure(options?: Partial<O> | ((options: Required<O>) => Partial<O>)): Readonly<Required<O>> {
-      const nextOptions = typeof options === "function" ? options(this.options) : options;
+      const nextOptions = typeof options === 'function' ? options(this.options) : options;
 
       const blueprint = this.blueprint(t.schemas, this.options === undefined) as Blueprint<O>;
 
@@ -47,10 +47,10 @@ export function ContractMixin<O extends object = {}, T extends MixinTarget<Objec
         // We don't want the "options" property to be modified directly,
         // so it's read only, but we still want to modify it with this function.
         // @ts-expect-error Allow readonly overwrite
-        this["options"] = Object.freeze(
+        this['options'] = Object.freeze(
           optimal(blueprint, {
-            name: this.constructor.name
-          }).validate({ ...this.options, ...nextOptions } as DeepPartial<O>)
+            name: this.constructor.name,
+          }).validate({...this.options, ...nextOptions} as DeepPartial<O>),
         );
       }
 

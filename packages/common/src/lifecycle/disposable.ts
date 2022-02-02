@@ -176,4 +176,3 @@ export abstract class DisposableObject implements Disposable {
     return this._store.add(o);
   }
 }
-

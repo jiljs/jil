@@ -1,9 +1,6 @@
-import { Blueprint, Schemas } from "optimal";
+import {Blueprint, Schemas} from 'optimal';
 
-export type BlueprintFactory<T extends object> = (
-  schemas: Schemas,
-  onConstruction?: boolean,
-) => Blueprint<T>;
+export type BlueprintFactory<T extends object> = (schemas: Schemas, onConstruction?: boolean) => Blueprint<T>;
 
 export interface Optionable<T extends object = {}> {
   /** Validated and configured options. */

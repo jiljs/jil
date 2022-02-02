@@ -1,23 +1,23 @@
-import { Contract } from "../contract";
-import { Schemas } from "optimal";
+import {Contract} from '../contract';
+import {Schemas} from 'optimal';
 
 describe('Contract', () => {
-  class OptionalProps extends Contract<{ foo?: string; bar?: number; baz?: { qux: string } }> {
-    blueprint({ number, string, shape }: Schemas) {
+  class OptionalProps extends Contract<{foo?: string; bar?: number; baz?: {qux: string}}> {
+    blueprint({number, string, shape}: Schemas) {
       return {
         foo: string('default'),
         bar: number(),
-        baz: shape({ qux: string() }),
+        baz: shape({qux: string()}),
       };
     }
   }
 
-  class RequiredProps extends Contract<{ bar: number }> {
-    constructor(options: { bar: number }) {
+  class RequiredProps extends Contract<{bar: number}> {
+    constructor(options: {bar: number}) {
       super(options);
     }
 
-    blueprint({ number }: Schemas) {
+    blueprint({number}: Schemas) {
       return {
         bar: number().required(),
       };
@@ -106,7 +106,7 @@ describe('Contract', () => {
     it('can set an option using a callback function', () => {
       expect(opts.options.foo).toBe('default');
 
-      opts.configure((prev) => ({
+      opts.configure(prev => ({
         foo: `${prev.foo}-new`,
       }));
 
@@ -122,7 +122,7 @@ describe('Contract', () => {
       expect(opts.options).toEqual({
         foo: 'abc',
         bar: 123,
-        baz: { qux: '' },
+        baz: {qux: ''},
       });
 
       opts.configure({
@@ -132,7 +132,7 @@ describe('Contract', () => {
       expect(opts.options).toEqual({
         foo: 'abc',
         bar: 456,
-        baz: { qux: '' },
+        baz: {qux: ''},
       });
     });
 
