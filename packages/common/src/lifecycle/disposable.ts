@@ -155,7 +155,7 @@ export namespace Disposable {
   });
 }
 
-export abstract class BaseDisposable implements Disposable {
+export abstract class DisposableObject implements Disposable {
   protected readonly _store = new DisposableStore();
 
   protected constructor() {
@@ -163,7 +163,7 @@ export abstract class BaseDisposable implements Disposable {
     setParentOfDisposable(this._store, this);
   }
 
-  public dispose(): void {
+  dispose(): void {
     markAsDisposed(this);
 
     this._store.dispose();
@@ -176,3 +176,4 @@ export abstract class BaseDisposable implements Disposable {
     return this._store.add(o);
   }
 }
+

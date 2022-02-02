@@ -3,7 +3,7 @@ import * as assert from 'assert';
 import {Disposable, DisposableStore, dispose, markAsSingleton, MultiDisposeError, toDisposable} from '../lifecycle';
 import {ReferenceCollection} from '../lifecycle/reference';
 import {ensureNoDisposablesAreLeakedInTestSuite, throwIfDisposablesAreLeaked} from './support';
-import {DisposableMixin} from '../lifecycle/mixin';
+import {DisposableMixin} from '../lifecycle/disposable.mixin';
 
 class SampleDisposable implements Disposable {
   isDisposed = false;
@@ -328,8 +328,11 @@ describe('No Leakage Utilities', () => {
 });
 
 describe('DisposableMixin', function () {
+  class Foo {}
+
   test('extend from disposable mixin', () => {
-    class Greeter extends DisposableMixin(Object) {}
+    class Greeter extends DisposableMixin(Foo) {}
+    expect(new Greeter()).toBeInstanceOf(Foo);
     expect(typeof Greeter.prototype.dispose).toBe('function');
   });
 });
