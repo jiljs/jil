@@ -4,7 +4,8 @@
     "composite": true,
     "lib": [
       "dom"
-    ]
+    ],
+    "target": "ES2020"
   },
   "references": [
     {
@@ -20,6 +21,12 @@
       "path": "packages/crypto/tsconfig.json"
     },
     {
+      "path": "packages/debug/tsconfig.json"
+    },
+    {
+      "path": "packages/decorators/tsconfig.json"
+    },
+    {
       "path": "packages/inflight/tsconfig.json"
     },
     {
@@ -27,6 +34,12 @@
     },
     {
       "path": "packages/retimer/tsconfig.json"
+    },
+    {
+      "path": "packages/support/tsconfig.json"
+    },
+    {
+      "path": "packages/testlab/tsconfig.json"
     }
   ],
   "files": []

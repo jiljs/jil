@@ -1,0 +1,42 @@
+{
+  "name": "@jil/debug",
+  "description": "Lightweight debugging and crash reporting.",
+  "version": "0.1.0",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "build": "nb-tsc",
+    "clean": "nb-clean jil-debug*.tgz dist *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-debug*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "@jil/support": "^0.1.0",
+    "@types/debug": "^4.1.7",
+    "debug": "^4.3.3",
+    "tily": "^2.10.2"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.0",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@jil/decorators",
+  "description": "Experimental decorators for common patterns",
+  "version": "0.1.0",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "version": "npm run copy:assets",
+    "copy:assets": "cpy package.json .npmignore LICENSE README.md CHANGELOG.md dist",
+    "build": "nb-tsc && npm run copy:assets",
+    "clean": "nb-clean jil-decorators*.tgz dist/* *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-decorators*.tgz && tree package && npm run clean"
+  },
+  "devDependencies": {
+    "@jil/common": "^0.2.17",
+    "@nutol/build": "^0.2.0",
+    "@nutol/eslint-config": "^0.2.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
+    "cpy-cli": "^3.1.1"
+  },
+  "files": [
+    "**/*",
+    "!__tests__"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}

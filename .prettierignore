@@ -1,8 +1,8 @@
 .github/
 /coverage
 packages/*/dist
-examples/*/dist
 CHANGELOG.md
+__fixtures__
 *.json
 *.yml
 *.pem

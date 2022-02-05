@@ -1,0 +1,7 @@
+{
+  "name": "test-jil-workspace-lerna",
+  "version": "0.0.0",
+  "testBoost": {
+    "lerna": true
+  }
+}

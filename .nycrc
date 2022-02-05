@@ -1,11 +1,9 @@
 {
   "include": [
-    "packages/*/dist",
-    "examples/*/dist"
+    "packages/*/dist"
   ],
   "exclude": [
-    "packages/*/dist/__tests__/",
-    "examples/*/dist/__tests__/"
+    "packages/*/dist/__tests__/"
   ],
   "extension": [
     ".js",

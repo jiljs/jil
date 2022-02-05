@@ -5,3 +5,4 @@ coverage/
 **/*.d.ts
 ./*.js
 .eslintrc.js
+__fixtures__/**

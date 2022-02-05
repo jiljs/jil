@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@memoize() errors if \`cache\` is not a map 1`] = `"\`cache\` must be an instance of \`Map\`."`;
+
+exports[`@memoize() errors if \`expires\` is negative 1`] = `"\`expires\` must be a number greater than or equal to 0."`;
+
+exports[`@memoize() errors if \`expires\` is not a number 1`] = `"\`expires\` must be a number greater than or equal to 0."`;
+
+exports[`@memoize() errors if \`hasher\` is not a function 1`] = `"\`hasher\` must be a function."`;
+
+exports[`@memoize() errors if applied to a class 1`] = `"\`@memoize\` may only be applied to class methods or getters."`;
+
+exports[`@memoize() errors if applied to a property 1`] = `"\`@memoize\` may only be applied to class methods or getters."`;

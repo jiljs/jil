@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@debounce() errors if applied to a class 1`] = `"\`@debounce\` may only be applied to class methods."`;
+
+exports[`@debounce() errors if applied to a property 1`] = `"\`@debounce\` may only be applied to class methods."`;
