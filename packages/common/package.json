@@ -1,7 +1,7 @@
 {
   "name": "@jil/common",
   "description": "A collection of common utilities and helpers for general purpose",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "keywords": [],
   "engines": {
     "node": ">=14"
