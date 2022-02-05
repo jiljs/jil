@@ -180,7 +180,7 @@ describe('Backoff', function () {
         if (retries === retriesToCancel) {
           setTimeout(() => request.cancel(), runDelay / 2);
         }
-        await timeout(runDelay);
+        await timeout(runDelay + 5);
         if (retries === retriesToCancel) {
           elapsed = sw.elapsed();
         }
