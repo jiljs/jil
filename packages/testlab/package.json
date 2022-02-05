@@ -22,11 +22,11 @@
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.0",
+    "@nutol/build": "^0.2.1",
     "@nutol/eslint-config": "^0.2.0",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.8"
+    "@types/node": "^17.0.15"
   },
   "files": [
     "README.md",
