@@ -33,6 +33,9 @@
       "path": "packages/inflight/tsconfig.json"
     },
     {
+      "path": "packages/module/tsconfig.json"
+    },
+    {
       "path": "packages/pki/tsconfig.json"
     },
     {
