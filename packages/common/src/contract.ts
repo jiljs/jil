@@ -15,7 +15,7 @@ export abstract class Contract<T extends object = {}> implements Optionable<T> {
    * Freeze and return the options object.
    *
    * ```ts
-   * object.configure({ name: 'Boost' });
+   * object.configure({ name: 'Jil' });
    *
    * object.configure((prevOptions) => ({
    * 	nestedObject: {

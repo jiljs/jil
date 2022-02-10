@@ -12,7 +12,7 @@ import {isTypeScript} from './typescript';
  * as NodeJS will iterate through each extension until a file is found.
  *
  * ```ts
- * import { requireModule } from '@boost/module';
+ * import { requireModule } from '@jil/module';
  *
  * const result = requireModule('../../some/module');
  * ```

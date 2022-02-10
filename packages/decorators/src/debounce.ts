@@ -1,4 +1,4 @@
-import {isMethod} from './helpers/is-method';
+import {isMethod} from './utils/is-method';
 
 /**
  * A method decorator that delays the execution of the class method

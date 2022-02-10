@@ -28,7 +28,7 @@ export function ContractMixin<O extends object = {}, T extends MixinTarget<Objec
      * Freeze and return the options object.
      *
      * ```ts
-     * object.configure({ name: 'Boost' });
+     * object.configure({ name: 'Jil' });
      *
      * object.configure((prevOptions) => ({
      * 	nestedObject: {

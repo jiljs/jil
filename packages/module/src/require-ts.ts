@@ -63,7 +63,7 @@ export function unregisterExtensions() {
  * to all child imports.
  *
  * ```ts
- * import { requireTSModule } from '@boost/module';
+ * import { requireTSModule } from '@jil/module';
  *
  * const result = requireTSModule('../../some/module.ts');
  * ```

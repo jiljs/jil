@@ -1,7 +1,7 @@
-import {isClass} from './helpers/is-class';
-import {isMethod} from './helpers/is-method';
-import {isParam} from './helpers/is-param';
-import {isProperty} from './helpers/is-property';
+import {isClass} from './utils/is-class';
+import {isMethod} from './utils/is-method';
+import {isParam} from './utils/is-param';
+import {isProperty} from './utils/is-property';
 
 /**
  * A decorator that marks a class declaration, class method,

@@ -1,4 +1,4 @@
-import {isMethod} from './helpers/is-method';
+import {isMethod} from './utils/is-method';
 
 export type MemoizedFunction<T> = (...args: unknown[]) => T;
 
