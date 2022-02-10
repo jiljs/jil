@@ -1,7 +1,7 @@
-import { isObject } from 'tily/is/object';
-import { toArray } from "tily/array/toArray";
-import { PluginOptions, PluginsSetting, PluginsSettingList, PluginsSettingMap } from "../types";
-import { mergeObject } from './merge-object';
+import {isObject} from 'tily/is/object';
+import {toArray} from 'tily/array/toArray';
+import {PluginOptions, PluginsSetting, PluginsSettingList, PluginsSettingMap} from '../types';
+import {mergeObject} from './merge-object';
 
 function convertListToMap(list: PluginsSettingList): PluginsSettingMap {
   const map: PluginsSettingMap = {};
@@ -19,17 +19,15 @@ function convertListToMap(list: PluginsSettingList): PluginsSettingMap {
  * This is useful if utilizing the `@jil/plugin` package.
  */
 export function mergePlugins(prev: PluginsSetting, next: PluginsSetting): PluginsSettingMap {
-	const plugins = Array.isArray(prev) ? convertListToMap(prev) : { ...prev };
+  const plugins = Array.isArray(prev) ? convertListToMap(prev) : {...prev};
 
-	Object.entries(Array.isArray(next) ? convertListToMap(next) : next).forEach(([name, options]) => {
-		if (isObject(options)) {
-			plugins[name] = isObject(plugins[name])
-				? mergeObject(plugins[name] as object, options)
-				: options;
-		} else if (options !== undefined) {
-			plugins[name] = options;
-		}
-	});
+  Object.entries(Array.isArray(next) ? convertListToMap(next) : next).forEach(([name, options]) => {
+    if (isObject(options)) {
+      plugins[name] = isObject(plugins[name]) ? mergeObject(plugins[name] as object, options) : options;
+    } else if (options !== undefined) {
+      plugins[name] = options;
+    }
+  });
 
-	return plugins;
+  return plugins;
 }

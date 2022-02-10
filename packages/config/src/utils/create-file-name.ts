@@ -1,21 +1,17 @@
-export function createFileName(
-	name: string,
-	ext: string,
-	options: { envSuffix?: string; leadingDot?: boolean },
-): string {
-	const { envSuffix, leadingDot } = options;
+export function createFileName(name: string, ext: string, options: {envSuffix?: string; leadingDot?: boolean}): string {
+  const {envSuffix, leadingDot} = options;
 
-	let fileName = name;
+  let fileName = name;
 
-	if (leadingDot) {
-		fileName = `.${name}`;
-	}
+  if (leadingDot) {
+    fileName = `.${name}`;
+  }
 
-	if (envSuffix) {
-		fileName += `.${envSuffix}`;
-	}
+  if (envSuffix) {
+    fileName += `.${envSuffix}`;
+  }
 
-	fileName += `.${ext}`;
+  fileName += `.${ext}`;
 
-	return fileName;
+  return fileName;
 }

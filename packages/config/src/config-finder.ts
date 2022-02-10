@@ -1,26 +1,26 @@
 /* eslint-disable no-param-reassign, no-await-in-loop */
 
-import minimatch from "minimatch";
-import { toArray } from "tily/array/toArray";
-import { isFilePath, isModuleName, PackageStructure, Path, PathResolver } from "@jil/common-node";
-import { Blueprint, Schemas } from "@jil/common/optimal";
-import { color } from "@jil/support";
-import { ConfigError } from "./errors";
-import { CONFIG_FOLDER, DEFAULT_EXTS, PACKAGE_FILE } from "./constants";
-import { Finder } from "./finder";
-import { createFileName } from "./utils/create-file-name";
-import { getEnv } from "./utils/get-env";
-import { loadCjs } from "./loaders/cjs";
-import { loadJs } from "./loaders/js";
-import { loadJson } from "./loaders/json";
-import { loadMjs } from "./loaders/mjs";
-import { loadTs } from "./loaders/ts";
-import { loadYaml } from "./loaders/yaml";
-import { ConfigFile, ConfigFinderOptions, ExtType, FileSource, OverridesSetting } from "./types";
+import minimatch from 'minimatch';
+import {toArray} from 'tily/array/toArray';
+import {isFilePath, isModuleName, PackageStructure, Path, PathResolver} from '@jil/common-node';
+import {Blueprint, Schemas} from '@jil/common/optimal';
+import {color} from '@jil/support';
+import {ConfigError} from './errors';
+import {CONFIG_FOLDER, DEFAULT_EXTS, PACKAGE_FILE} from './constants';
+import {Finder} from './finder';
+import {createFileName} from './utils/create-file-name';
+import {getEnv} from './utils/get-env';
+import {loadCjs} from './loaders/cjs';
+import {loadJs} from './loaders/js';
+import {loadJson} from './loaders/json';
+import {loadMjs} from './loaders/mjs';
+import {loadTs} from './loaders/ts';
+import {loadYaml} from './loaders/yaml';
+import {ConfigFile, ConfigFinderOptions, ExtType, FileSource, OverridesSetting} from './types';
 
 export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, ConfigFinderOptions<T>> {
   blueprint(schemas: Schemas): Blueprint<ConfigFinderOptions<T>> {
-    const { array, bool, func, shape, string } = schemas;
+    const {array, bool, func, shape, string} = schemas;
 
     return {
       extendsSetting: string(),
@@ -34,11 +34,11 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
         mjs: func(() => loadMjs).notNullable(),
         ts: func(() => loadTs).notNullable(),
         yaml: func(() => loadYaml).notNullable(),
-        yml: func(() => loadYaml).notNullable()
+        yml: func(() => loadYaml).notNullable(),
       }).exact(),
       name: string().required().camelCase(),
       overridesSetting: string(),
-      resolver: func(() => PathResolver.defaultResolver).notNullable()
+      resolver: func(() => PathResolver.defaultResolver).notNullable(),
     };
   }
 
@@ -52,7 +52,7 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
   async determinePackageScope(dir: Path): Promise<PackageStructure> {
     let currentDir = dir.isDirectory() ? dir : dir.parent();
 
-    this.debug("Determining package scope for %s", color.filePath(dir.path()));
+    this.debug('Determining package scope for %s', color.filePath(dir.path()));
 
     while (!this.isFileSystemRoot(currentDir)) {
       const pkgPath = currentDir.append(PACKAGE_FILE);
@@ -60,14 +60,14 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
 
       if (cache) {
         if (cache.exists) {
-          this.debug("Scope found at %s", color.filePath(pkgPath.path()));
+          this.debug('Scope found at %s', color.filePath(pkgPath.path()));
 
           return cache.content;
         }
 
         // Fall-through
       } else if (pkgPath.exists()) {
-        this.debug("Scope found at %s", color.filePath(pkgPath.path()));
+        this.debug('Scope found at %s', color.filePath(pkgPath.path()));
 
         return this.cache.cacheFileContents(pkgPath, () => loadJson(pkgPath));
       } else {
@@ -77,7 +77,7 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
       currentDir = currentDir.parent();
     }
 
-    throw new ConfigError("PACKAGE_UNKNOWN_SCOPE");
+    throw new ConfigError('PACKAGE_UNKNOWN_SCOPE');
   }
 
   /**
@@ -100,13 +100,13 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
         }
 
         await Promise.all(
-          files.map((configPath) => {
+          files.map(configPath => {
             if (configPath.exists()) {
               paths.push(configPath);
             }
 
             return configPath;
-          })
+          }),
         );
 
         // Once we find any file, we abort looking for others
@@ -118,8 +118,8 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
       this.debug.invariant(
         paths.length > 0,
         `Finding config files in ${color.filePath(baseDir.path())}`,
-        paths.map((path) => path.name()).join(", "),
-        "No files"
+        paths.map(path => path.name()).join(', '),
+        'No files',
       );
 
       // Make sure env takes higher precedence
@@ -133,11 +133,11 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
    * Create and return a config file name, with optional branch and environment variants.
    */
   getFileName(ext: string, isBranch: boolean, isEnv: boolean): string {
-    const { name } = this.options;
+    const {name} = this.options;
 
     return createFileName(name, ext, {
-      envSuffix: isEnv ? getEnv(name) : "",
-      leadingDot: isBranch
+      envSuffix: isEnv ? getEnv(name) : '',
+      leadingDot: isBranch,
     });
   }
 
@@ -146,9 +146,9 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
    * Extract and apply extended and override configs based on the base path.
    */
   async resolveFiles(basePath: Path, foundFiles: Path[]): Promise<ConfigFile<T>[]> {
-    this.debug("Resolving %d config files", foundFiles.length);
+    this.debug('Resolving %d config files', foundFiles.length);
 
-    const configs = await Promise.all(foundFiles.map((filePath) => this.loadConfig(filePath)));
+    const configs = await Promise.all(foundFiles.map(filePath => this.loadConfig(filePath)));
 
     // Overrides take the highest precedence and must appear after everything,
     // including branch level configs. However, they must extract first so that
@@ -156,7 +156,7 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
     if (this.options.overridesSetting) {
       const overriddenConfigs = this.extractOverriddenConfigs(basePath, configs);
 
-      this.debug("Overriding %d configs", overriddenConfigs.length);
+      this.debug('Overriding %d configs', overriddenConfigs.length);
 
       if (overriddenConfigs.length > 0) {
         configs.push(...overriddenConfigs);
@@ -168,7 +168,7 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
     if (this.options.extendsSetting) {
       const extendedConfigs = await this.extractExtendedConfigs(configs);
 
-      this.debug("Extending %d configs", extendedConfigs.length);
+      this.debug('Extending %d configs', extendedConfigs.length);
 
       if (extendedConfigs.length > 0) {
         configs.unshift(...extendedConfigs);
@@ -184,37 +184,31 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
    * a property that matches the `extendsSetting` option.
    */
   protected async extractExtendedConfigs(configs: ConfigFile<T>[]): Promise<ConfigFile<T>[]> {
-    const { name, extendsSetting, resolver } = this.options;
+    const {name, extendsSetting, resolver} = this.options;
     const extendsPaths: Path[] = [];
 
-    this.debug("Extracting configs to extend from");
+    this.debug('Extracting configs to extend from');
 
-    for (const { config, path, source } of configs) {
+    for (const {config, path, source} of configs) {
       const key = extendsSetting as keyof typeof config;
       const extendsFrom = config[key];
 
-      if (source === "root" || source === "overridden") {
+      if (source === 'root' || source === 'overridden') {
         delete config[key];
       } else if (extendsFrom) {
-        throw new ConfigError("EXTENDS_ONLY_ROOT", [key]);
+        throw new ConfigError('EXTENDS_ONLY_ROOT', [key]);
       } else {
         // eslint-disable-next-line no-continue
         continue;
       }
 
       const extendedPaths = await Promise.all(
-        (toArray(extendsFrom) as unknown as string[]).map(async (extendsPath) => {
+        (toArray(extendsFrom) as unknown as string[]).map(async extendsPath => {
           // Node module
           if (isModuleName(extendsPath)) {
-            const modulePath = new Path(
-              extendsPath,
-              createFileName(name, "js", { envSuffix: "preset" })
-            );
+            const modulePath = new Path(extendsPath, createFileName(name, 'js', {envSuffix: 'preset'}));
 
-            this.debug(
-              "Extending config from node module: %s",
-              color.moduleName(modulePath.path())
-            );
+            this.debug('Extending config from node module: %s', color.moduleName(modulePath.path()));
 
             return new Path(await resolver(modulePath.path()));
           }
@@ -228,20 +222,20 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
               filePath = path.parent().append(extendsPath);
             }
 
-            this.debug("Extending config from file path: %s", color.filePath(filePath.path()));
+            this.debug('Extending config from file path: %s', color.filePath(filePath.path()));
 
             return filePath;
           }
 
           // Unknown
-          throw new ConfigError("EXTENDS_UNKNOWN_PATH", [extendsPath]);
-        })
+          throw new ConfigError('EXTENDS_UNKNOWN_PATH', [extendsPath]);
+        }),
       );
 
       extendsPaths.push(...extendedPaths);
     }
 
-    return Promise.all(extendsPaths.map((path) => this.loadConfig(path, "extended")));
+    return Promise.all(extendsPaths.map(path => this.loadConfig(path, 'extended')));
   }
 
   /**
@@ -249,54 +243,47 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
    * Overrides are located within a property that matches the `overridesSetting` option.
    */
   protected extractOverriddenConfigs(basePath: Path, configs: ConfigFile<T>[]): ConfigFile<T>[] {
-    const { overridesSetting } = this.options;
+    const {overridesSetting} = this.options;
     const overriddenConfigs: ConfigFile<T>[] = [];
 
-    this.debug(
-      "Extracting configs to override with (matching against %s)",
-      color.filePath(basePath.path())
-    );
+    this.debug('Extracting configs to override with (matching against %s)', color.filePath(basePath.path()));
 
-    configs.forEach(({ config, path, source }) => {
+    configs.forEach(({config, path, source}) => {
       const key = overridesSetting as keyof typeof config;
       const overrides = config[key];
 
-      if (source === "root") {
+      if (source === 'root') {
         delete config[key];
       } else if (overrides) {
-        throw new ConfigError("ROOT_ONLY_OVERRIDES", [key]);
+        throw new ConfigError('ROOT_ONLY_OVERRIDES', [key]);
       } else {
         return;
       }
 
-      (toArray(overrides) as unknown as OverridesSetting<T>).forEach(
-        ({ exclude, include, settings }) => {
-          const options = { dot: true, matchBase: true };
-          const excludePatterns = toArray(exclude) as string[];
-          const excluded = excludePatterns.some((pattern) => minimatch(basePath.path(), pattern, options));
-          const includePatterns = toArray(include);
-          const included = includePatterns.some((pattern) =>
-            minimatch(basePath.path(), pattern, options)
-          );
-          const passes = included && !excluded;
+      (toArray(overrides) as unknown as OverridesSetting<T>).forEach(({exclude, include, settings}) => {
+        const options = {dot: true, matchBase: true};
+        const excludePatterns = toArray(exclude) as string[];
+        const excluded = excludePatterns.some(pattern => minimatch(basePath.path(), pattern, options));
+        const includePatterns = toArray(include);
+        const included = includePatterns.some(pattern => minimatch(basePath.path(), pattern, options));
+        const passes = included && !excluded;
 
-          this.debug.invariant(
-            passes,
-            `Matching with includes "${includePatterns}" and excludes "${excludePatterns}"`,
-            "Matched",
-            // eslint-disable-next-line no-nested-ternary
-            excluded ? "Excluded" : included ? "Not matched" : "Not included"
-          );
+        this.debug.invariant(
+          passes,
+          `Matching with includes "${includePatterns}" and excludes "${excludePatterns}"`,
+          'Matched',
+          // eslint-disable-next-line no-nested-ternary
+          excluded ? 'Excluded' : included ? 'Not matched' : 'Not included',
+        );
 
-          if (passes) {
-            overriddenConfigs.push({
-              config: settings,
-              path,
-              source: "overridden"
-            });
-          }
+        if (passes) {
+          overriddenConfigs.push({
+            config: settings,
+            path,
+            source: 'overridden',
+          });
         }
-      );
+      });
     });
 
     return overriddenConfigs;
@@ -308,38 +295,38 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
   protected async loadConfig(path: Path, source?: FileSource): Promise<ConfigFile<T>> {
     const pkg = await this.determinePackageScope(path);
     const config = await this.cache.cacheFileContents(path, async () => {
-      const { loaders } = this.options;
+      const {loaders} = this.options;
       const ext = path.ext(true);
 
-      this.debug("Loading config %s with type %s", color.filePath(path.path()), color.symbol(ext));
+      this.debug('Loading config %s with type %s', color.filePath(path.path()), color.symbol(ext));
 
       switch (ext) {
-        case "cjs":
+        case 'cjs':
           return loaders.cjs(path, pkg);
-        case "js":
+        case 'js':
           return loaders.js(path, pkg);
-        case "json":
-        case "json5":
+        case 'json':
+        case 'json5':
           return loaders.json(path, pkg);
-        case "mjs":
+        case 'mjs':
           // Not easily testable yet
           // istanbul ignore next
           return loaders.mjs(path, pkg);
-        case "ts":
-        case "tsx":
+        case 'ts':
+        case 'tsx':
           return loaders.ts(path, pkg);
-        case "yaml":
-        case "yml":
+        case 'yaml':
+        case 'yml':
           return loaders.yaml(path, pkg);
         default:
-          throw new ConfigError("LOADER_UNSUPPORTED", [ext]);
+          throw new ConfigError('LOADER_UNSUPPORTED', [ext]);
       }
     });
 
     return {
       config,
       path,
-      source: source ?? (path.path().includes(CONFIG_FOLDER) ? "root" : "branch")
+      source: source ?? (path.path().includes(CONFIG_FOLDER) ? 'root' : 'branch'),
     };
   }
 }

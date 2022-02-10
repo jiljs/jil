@@ -1,5 +1,5 @@
-import { ModuleResolver, PackageStructure, Path } from '@jil/common-node';
-import { DeepPartial } from '@jil/common/optimal';
+import {ModuleResolver, PackageStructure, Path} from '@jil/common-node';
+import {DeepPartial} from '@jil/common/optimal';
 
 export type ExtType = 'cjs' | 'js' | 'json' | 'json5' | 'mjs' | 'ts' | 'yaml' | 'yml';
 
@@ -12,63 +12,63 @@ export type Handler<T> = (prev: T, next: T) => Promise<T | undefined> | T | unde
 export type FileSource = 'branch' | 'extended' | 'overridden' | 'root';
 
 export interface File {
-	/** Absolute path of the file. */
-	path: Path;
-	/** The source where the file originated. */
-	source: FileSource;
+  /** Absolute path of the file. */
+  path: Path;
+  /** The source where the file originated. */
+  source: FileSource;
 }
 
 export interface ConfigFile<T> extends File {
-	/** Config content of the file. */
-	config: DeepPartial<T>;
+  /** Config content of the file. */
+  config: DeepPartial<T>;
 }
 
 export interface IgnoreFile extends File {
-	/** Ignored content of the file, split on new lines. */
-	ignore: string[];
+  /** Ignored content of the file, split on new lines. */
+  ignore: string[];
 }
 
 export interface ProcessedConfig<T> {
-	/** All found and loaded config file contents merged and processed into a
+  /** All found and loaded config file contents merged and processed into a
   single config object. */
-	config: Required<T>;
-	/** List of config files found and loaded. */
-	files: ConfigFile<T>[];
+  config: Required<T>;
+  /** List of config files found and loaded. */
+  files: ConfigFile<T>[];
 }
 
 export interface ConfigFinderOptions<T> {
-	/** Name of the setting in which "config extending" is enabled. */
-	extendsSetting?: string;
-	/** List of extensions, in order, to find config files within each folder. Defaults to built-in file format list. */
-	extensions?: ExtType[];
-	/** Find and load environment based config files (using `NODE_ENV`). Defaults to `true`. */
-	includeEnv?: boolean;
-	/** Mapping of loader functions by type. Defaults to built-in file type loaders. */
-	loaders?: { [K in LoaderType]: Loader<T> };
-	/** Name of config files, without extension. */
-	name: string;
-	/** Name of the setting in which "config overriding" is enabled. */
-	overridesSetting?: string;
-	/** Custom module resolver. */
-	resolver?: ModuleResolver;
+  /** Name of the setting in which "config extending" is enabled. */
+  extendsSetting?: string;
+  /** List of extensions, in order, to find config files within each folder. Defaults to built-in file format list. */
+  extensions?: ExtType[];
+  /** Find and load environment based config files (using `NODE_ENV`). Defaults to `true`. */
+  includeEnv?: boolean;
+  /** Mapping of loader functions by type. Defaults to built-in file type loaders. */
+  loaders?: {[K in LoaderType]: Loader<T>};
+  /** Name of config files, without extension. */
+  name: string;
+  /** Name of the setting in which "config overriding" is enabled. */
+  overridesSetting?: string;
+  /** Custom module resolver. */
+  resolver?: ModuleResolver;
 }
 
 export interface IgnoreFinderOptions {
-	/** Name of ignore files, without extension. */
-	name: string;
+  /** Name of ignore files, without extension. */
+  name: string;
 }
 
 export interface ProcessorOptions {
-	/**
-	 * When a setting has a value of `undefined`, fallback to the
-	 * default/initial value for that setting. Defaults to `true`.
-	 */
-	defaultWhenUndefined?: boolean;
-	/** Name of config files, without extension. */
-	name: string;
-	/** Validate all settings within a config file before processing. Defaults to
+  /**
+   * When a setting has a value of `undefined`, fallback to the
+   * default/initial value for that setting. Defaults to `true`.
+   */
+  defaultWhenUndefined?: boolean;
+  /** Name of config files, without extension. */
+  name: string;
+  /** Validate all settings within a config file before processing. Defaults to
   `true`. */
-	validate?: boolean;
+  validate?: boolean;
 }
 
 export type FileGlob = string[] | string;
@@ -76,12 +76,12 @@ export type FileGlob = string[] | string;
 export type ExtendsSetting = string[] | string;
 
 export interface OverridesSettingItem<T> {
-	/** File path patterns/globs to ignore. */
-	exclude?: FileGlob;
-	/** File path patterns/globs to match against. */
-	include: FileGlob;
-	/** Settings configured for this specific override. */
-	settings: DeepPartial<T>;
+  /** File path patterns/globs to ignore. */
+  exclude?: FileGlob;
+  /** File path patterns/globs to match against. */
+  include: FileGlob;
+  /** Settings configured for this specific override. */
+  settings: DeepPartial<T>;
 }
 
 export type OverridesSetting<T> = OverridesSettingItem<T>[];

@@ -1,13 +1,13 @@
-import { Contract } from "@jil/common/contract";
-import { Path, PortablePath } from "@jil/common-node";
-import { createDebugger, Debugger } from "@jil/debug";
-import { color } from "@jil/support";
-import { Cache } from "./cache";
-import { ConfigError } from "./errors";
-import { CONFIG_FOLDER, PACKAGE_FILE } from "./constants";
-import { File } from "./types";
+import {Contract} from '@jil/common/contract';
+import {Path, PortablePath} from '@jil/common-node';
+import {createDebugger, Debugger} from '@jil/debug';
+import {color} from '@jil/support';
+import {Cache} from './cache';
+import {ConfigError} from './errors';
+import {CONFIG_FOLDER, PACKAGE_FILE} from './constants';
+import {File} from './types';
 
-export abstract class Finder<T extends File, Options extends { name: string }> extends Contract<Options> {
+export abstract class Finder<T extends File, Options extends {name: string}> extends Contract<Options> {
   protected readonly debug: Debugger;
 
   protected readonly cache: Cache;
@@ -28,7 +28,7 @@ export abstract class Finder<T extends File, Options extends { name: string }> e
     const branch = Path.resolve(dir);
     let currentDir = branch.isDirectory() ? branch : branch.parent();
 
-    this.debug("Loading files from branch %s to root", color.filePath(branch.path()));
+    this.debug('Loading files from branch %s to root', color.filePath(branch.path()));
 
     while (!this.isFileSystemRoot(currentDir)) {
       // eslint-disable-next-line no-await-in-loop
@@ -53,7 +53,7 @@ export abstract class Finder<T extends File, Options extends { name: string }> e
    * and `package.json` file.
    */
   async loadFromRoot(dir: PortablePath = process.cwd()): Promise<T[]> {
-    this.debug("Loading files from possible root %s", color.filePath(String(dir)));
+    this.debug('Loading files from possible root %s', color.filePath(String(dir)));
 
     const root = this.getRootDir(dir);
     const files = await this.findFilesInDir(root);
@@ -74,7 +74,7 @@ export abstract class Finder<T extends File, Options extends { name: string }> e
     const root = Path.resolve(dir);
 
     if (!this.isRootDir(root)) {
-      throw new ConfigError("ROOT_INVALID", [CONFIG_FOLDER]);
+      throw new ConfigError('ROOT_INVALID', [CONFIG_FOLDER]);
     }
 
     return root;
@@ -112,12 +112,12 @@ export abstract class Finder<T extends File, Options extends { name: string }> e
     const pkgPath = dir.append(PACKAGE_FILE);
 
     if (!pkgPath.exists()) {
-      throw new ConfigError("ROOT_NO_PACKAGE", [CONFIG_FOLDER]);
+      throw new ConfigError('ROOT_NO_PACKAGE', [CONFIG_FOLDER]);
     }
 
     this.cache.pkgPath = pkgPath;
 
-    this.debug("Project root found at %s", color.filePath(dir.path()));
+    this.debug('Project root found at %s', color.filePath(dir.path()));
 
     return true;
   }

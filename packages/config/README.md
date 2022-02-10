@@ -3,27 +3,27 @@
 > Powerful convention based finder, loader, and manager of both configuration and ignore files.
 
 ```ts
-import { Blueprint, Schemas } from '@jil/common/optimal';
-import { Configuration } from '@jil/config';
+import {Blueprint, Schemas} from '@jil/common/optimal';
+import {Configuration} from '@jil/config';
 
 interface ConfigFile {
-	debug: boolean;
-	sourceMaps: boolean;
+  debug: boolean;
+  sourceMaps: boolean;
 }
 
 class ConfigManager extends Configuration<ConfigFile> {
-	blueprint({ bool }: Schemas): Blueprint<ConfigFile> {
-		return {
-			debug: bool(),
-			sourceMaps: bool(),
-		};
-	}
+  blueprint({bool}: Schemas): Blueprint<ConfigFile> {
+    return {
+      debug: bool(),
+      sourceMaps: bool(),
+    };
+  }
 }
 
 const configManager = new ConfigManager('jil');
 
 // Load `.config/jil.js`, `jil.production.json`, `.jil.yaml`, etc
-const { config } = await configManager.loadConfigFromRoot('.');
+const {config} = await configManager.loadConfigFromRoot('.');
 
 // Load `.jilignore` files
 const ignore = await configManager.loadIgnoreFromBranchToRoot('./some/deep/path');
