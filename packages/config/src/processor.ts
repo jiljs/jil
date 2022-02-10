@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop */
-
 import {isObject} from 'tily/is/object';
 import {Contract} from '@jil/common/contract';
 import {Blueprint, optimal, Schemas} from '@jil/common/optimal';

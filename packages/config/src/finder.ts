@@ -31,7 +31,6 @@ export abstract class Finder<T extends File, Options extends {name: string}> ext
     this.debug('Loading files from branch %s to root', color.filePath(branch.path()));
 
     while (!this.isFileSystemRoot(currentDir)) {
-      // eslint-disable-next-line no-await-in-loop
       const files = await this.findFilesInDir(currentDir);
 
       if (files.length > 0) {
