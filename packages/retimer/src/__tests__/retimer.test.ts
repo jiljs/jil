@@ -7,7 +7,7 @@ describe('retimer', () => {
     retimer(() => {
       expect(Date.now() - start).toBeGreaterThanOrEqual(50);
       done();
-    }, 50);
+    }, 60);
   });
 
   test('reschedule a callback', done => {
