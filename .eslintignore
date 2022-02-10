@@ -2,7 +2,7 @@ node_modules/
 dist/
 coverage/
 /sandbox
+/__fixtures__
 **/*.d.ts
 ./*.js
 .eslintrc.js
-__fixtures__/**
