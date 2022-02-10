@@ -21,6 +21,9 @@
       "path": "packages/common/tsconfig.json"
     },
     {
+      "path": "packages/config/tsconfig.json"
+    },
+    {
       "path": "packages/crypto/tsconfig.json"
     },
     {

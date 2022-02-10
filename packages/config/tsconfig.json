@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@nutol/build/config/tsconfig.common.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../common-node/tsconfig.json"
+    },
+    {
+      "path": "../common/tsconfig.json"
+    },
+    {
+      "path": "../debug/tsconfig.json"
+    },
+    {
+      "path": "../module/tsconfig.json"
+    },
+    {
+      "path": "../support/tsconfig.json"
+    },
+    {
+      "path": "../testlab/tsconfig.json"
+    }
+  ]
+}
