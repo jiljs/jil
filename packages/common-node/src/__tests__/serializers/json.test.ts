@@ -1,0 +1,19 @@
+import * as path from '@jil/common/path';
+import * as json from '../../serializers/json';
+
+describe('json', () => {
+  const data = {
+    foo: 123,
+    bar: true,
+    baz: 'abc',
+    qux: {},
+  };
+
+  it('serializes and parses json', () => {
+    expect(json.parse(json.stringify(data))).toEqual(data);
+  });
+
+  it('loads and parses from a file', () => {
+    expect(json.load(path.join(__dirname, '__fixtures__/test.json'))).toEqual(data);
+  });
+});
