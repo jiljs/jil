@@ -1,9 +1,8 @@
 {
   "name": "@jil/module",
   "description": "Module resolving and loading utilities with TypeScript support.",
-  "version": "0.1.0",
-  "keywords": [
-  ],
+  "version": "0.2.0",
+  "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
@@ -19,7 +18,6 @@
     "jest": "jest",
     "verify": "npm pack && tar xf jil-module*.tgz && tree package && npm run clean"
   },
-  "dependencies": {},
   "devDependencies": {
     "@nutol/build": "^0.2.1",
     "@nutol/eslint-config": "^0.2.0",
