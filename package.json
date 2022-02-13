@@ -13,7 +13,6 @@
     "postinstall": "husky install && yarn run lnw && yarn run build",
     "prerelease": "yarn run build:full && yarn run lint",
     "release": "cross-env CI=1 lerna version && lerna publish from-git --yes",
-    "version": "yarn install",
     "lint": "yarn run eslint",
     "lint:fix": "yarn run eslint:fix",
     "eslint": "nb-eslint --report-unused-disable-directives --cache .",
