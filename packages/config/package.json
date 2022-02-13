@@ -29,7 +29,7 @@
     "tily": "^2.14.1"
   },
   "devDependencies": {
-    "@jil/common-node": "^0.2.0",
+    "@jil/common-node": "^0.2.1",
     "@jil/testlab": "^0.2.3",
     "@nutol/build": "^0.2.2",
     "@nutol/eslint-config": "^0.2.1",
