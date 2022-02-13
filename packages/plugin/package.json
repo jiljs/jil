@@ -1,0 +1,46 @@
+{
+  "name": "@jil/plugin",
+  "description": "Plugin based architecture that supports module loading, custom types, registries, scopes, and more.",
+  "version": "0.1.0",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "build": "nb-tsc",
+    "clean": "nb-clean jil-plugin*.tgz dist/* *.tsbuildinfo package",
+    "pretest": "yarn run clean && yarn run build",
+    "test": "yarn run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-plugin*.tgz && tree package && yarn run clean"
+  },
+  "dependencies": {
+    "@jil/common": "^0.2.20",
+    "@jil/common-node": "^0.2.0",
+    "@jil/debug": "^0.2.2",
+    "@jil/event": "^0.2.5",
+    "@jil/module": "^0.2.0",
+    "@jil/support": "^0.2.2",
+    "@types/debug": "^4.1.7",
+    "pluralize": "^8.0.0",
+    "tily": "^2.14.1"
+  },
+  "devDependencies": {
+    "@jil/testlab": "^0.2.2",
+    "@nutol/build": "^0.2.2",
+    "@nutol/eslint-config": "^0.2.1",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.17",
+    "@types/pluralize": "^0.0.29"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ]
+}
