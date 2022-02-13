@@ -9,7 +9,8 @@
   "author": "TY",
   "license": "MIT",
   "scripts": {
-    "postinstall": "husky install && nb-lnw && yarn run build",
+    "lnw": "nb-lnw",
+    "postinstall": "husky install && yarn run lnw && yarn run build",
     "prerelease": "yarn run build:full && yarn run lint",
     "release": "cross-env CI=1 lerna version && lerna publish from-git --yes",
     "version": "yarn install && git add yarn.lock",
