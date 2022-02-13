@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/jiljs/jil/compare/@jil/inflight@0.1.6...@jil/inflight@0.1.7) (2022-02-13)
+
+**Note:** Version bump only for package @jil/inflight
+
+
+
+
+
 ## [0.1.6](https://github.com/jiljs/jil/compare/@jil/inflight@0.1.5...@jil/inflight@0.1.6) (2022-02-10)
 
 **Note:** Version bump only for package @jil/inflight

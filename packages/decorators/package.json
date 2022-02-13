@@ -1,7 +1,7 @@
 {
   "name": "@jil/decorators",
   "description": "Experimental decorators for common patterns",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
     "verify": "npm pack && tar xf jil-decorators*.tgz && tree package && yarn run clean"
   },
   "devDependencies": {
-    "@jil/common": "^0.2.20",
+    "@jil/common": "^0.2.21",
     "@nutol/build": "^0.2.2",
     "@nutol/eslint-config": "^0.2.1",
     "@types/jest": "^27.4.0",
