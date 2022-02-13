@@ -2,7 +2,7 @@
   "name": "test-jil-workspace-mismatch",
   "version": "0.0.0",
   "workspaces": ["workspaces/*"],
-  "testBoost": {
+  "testJil": {
     "yarn": true
   }
 }

@@ -2,11 +2,11 @@ import {getEnv} from '../../utils/get-env';
 
 describe('getEnv()', () => {
   it('returns from project named env', () => {
-    process.env.BOOST_TEST_ENV = 'test';
+    process.env.JIL_TEST_ENV = 'test';
 
     expect(getEnv('jilTest')).toBe('test');
 
-    delete process.env.BOOST_TEST_ENV;
+    delete process.env.JIL_TEST_ENV;
   });
 
   it('returns from node env', () => {

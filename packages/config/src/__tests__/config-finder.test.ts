@@ -241,8 +241,8 @@ describe('ConfigFinder', () => {
     });
 
     describe('environment context', () => {
-      it('loads branch config files (using BOOST_ENV)', async () => {
-        process.env.BOOST_ENV = 'test';
+      it('loads branch config files (using JIL_ENV)', async () => {
+        process.env.JIL_ENV = 'test';
 
         const tempRoot = getFixturePath('config-scenario-branch-with-envs');
 
@@ -266,7 +266,7 @@ describe('ConfigFinder', () => {
           },
         ]);
 
-        delete process.env.BOOST_ENV;
+        delete process.env.JIL_ENV;
       });
 
       it('loads branch config files (using NODE_ENV)', async () => {
@@ -297,8 +297,8 @@ describe('ConfigFinder', () => {
         process.env.NODE_ENV = 'test';
       });
 
-      it('doesnt load branch config files if `includeEnv` is false (using BOOST_ENV)', async () => {
-        process.env.BOOST_ENV = 'test';
+      it('doesnt load branch config files if `includeEnv` is false (using JIL_ENV)', async () => {
+        process.env.JIL_ENV = 'test';
 
         const tempRoot = getFixturePath('config-scenario-branch-with-envs');
 
@@ -319,7 +319,7 @@ describe('ConfigFinder', () => {
           },
         ]);
 
-        delete process.env.BOOST_ENV;
+        delete process.env.JIL_ENV;
       });
     });
 

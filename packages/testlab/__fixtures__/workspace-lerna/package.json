@@ -1,7 +1,7 @@
 {
   "name": "test-jil-workspace-lerna",
   "version": "0.0.0",
-  "testBoost": {
+  "testJil": {
     "lerna": true
   }
 }
