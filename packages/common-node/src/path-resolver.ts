@@ -7,7 +7,7 @@ import {Lookup, ModuleResolver, Pathable, PortablePath, ResolvedLookup} from './
 export class PathResolver {
   private lookups: Lookup[] = [];
 
-  private resolver: ModuleResolver;
+  private readonly resolver: ModuleResolver;
 
   constructor(resolver?: ModuleResolver) {
     this.resolver = resolver ?? PathResolver.defaultResolver;

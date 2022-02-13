@@ -13,18 +13,18 @@
   "scripts": {
     "build": "nb-tsc",
     "clean": "nb-clean jil-backoff*.tgz dist *.tsbuildinfo package",
-    "pretest": "npm run clean && npm run build",
-    "test": "npm run jest",
+    "pretest": "yarn run clean && yarn run build",
+    "test": "yarn run jest",
     "jest": "jest",
-    "verify": "npm pack && tar xf jil-backoff*.tgz && tree package && npm run clean"
+    "verify": "npm pack && tar xf jil-backoff*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
     "@jil/common": "^0.2.20",
     "debug": "^4.3.3"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.1",
-    "@nutol/eslint-config": "^0.2.0",
+    "@nutol/build": "^0.2.2",
+    "@nutol/eslint-config": "^0.2.1",
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.17"

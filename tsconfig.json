@@ -42,6 +42,9 @@
       "path": "packages/pki/tsconfig.json"
     },
     {
+      "path": "packages/plugin/tsconfig.json"
+    },
+    {
       "path": "packages/retimer/tsconfig.json"
     },
     {

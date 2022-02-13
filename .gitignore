@@ -1,5 +1,22 @@
+# Logs
+logs/
+*.log
+
+# Cache
+.eslintcache
 .idea
-lerna-debug.log
+.npm
+.vscode
+.yarnclean
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 node_modules
 npm-debug.log
@@ -11,8 +28,5 @@ packages/*/dist/*
 **/package
 .sandbox
 *.tsbuildinfo
-
-# ESLint cache
-.eslintcache
 
 !packages/testlab/__fixtures__/**

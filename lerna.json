@@ -1,7 +1,7 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "command": {
     "bootstrap": {
       "concurrency": 4,
@@ -24,6 +24,5 @@
       "concurrency": 8,
       "yes": true
     }
-  },
-  "version": "independent"
+  }
 }
