@@ -1,7 +1,7 @@
 {
   "name": "@jil/translate",
   "description": "Package and application level translations made easy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,8 +19,8 @@
     "verify": "npm pack && tar xf jil-translate*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.21",
-    "@jil/common-node": "^0.2.1",
+    "@jil/common": "^0.2.22",
+    "@jil/common-node": "^0.2.2",
     "@jil/support": "^0.2.3",
     "i18next": "^21.6.11",
     "os-locale": "^5.0.0",

@@ -1,7 +1,7 @@
 {
   "name": "@jil/terminal",
   "description": "A collection of utilities for managing and interacting with a terminal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [
     "jil",
     "terminal",
