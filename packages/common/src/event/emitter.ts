@@ -99,7 +99,7 @@ export class Emitter<T = any> {
    * Emit this event.
    * @returns `true` if any listeners have been called.
    */
-  emit(data: T) {
+  emit(data: T): any {
     if (this.hasListeners()) {
       // put all [listener,event]-pairs into delivery queue
       // then emit all event. an inner/nested event might be
@@ -133,7 +133,6 @@ export class Emitter<T = any> {
 
       this._perfMon?.stop();
     }
-    return this.hasListeners();
   }
 
   dispose() {

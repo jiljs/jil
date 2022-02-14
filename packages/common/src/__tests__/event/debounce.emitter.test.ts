@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {Event} from '../../event';
 import {Emitter} from '../../event/emitter';
-import {DebounceEmitter} from '../../event/debounce';
+import {DebounceEmitter} from '../../event/debounce.emitter';
 import {Samples} from './samples';
 import {delay} from '../support';
 

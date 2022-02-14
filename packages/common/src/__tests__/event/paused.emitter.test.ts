@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import {PauseableEmitter} from '../../event/paused';
+import {PauseableEmitter} from '../../event/pauseable.emitter';
 
 describe('PauseableEmitter', function () {
   test('basic', function () {

@@ -1,7 +1,7 @@
 import {Contract} from '@jil/common/contract';
 import {ModuleResolver, PortablePath} from '@jil/common-node';
 import {Blueprint, schemas} from '@jil/common/optimal';
-import {Emitter} from '@jil/event/emitter';
+import {Emitter} from '@jil/common/event/emitter';
 import {Cache} from './cache';
 import {ConfigFinder} from './config-finder';
 import {IgnoreFinder} from './ignore-finder';

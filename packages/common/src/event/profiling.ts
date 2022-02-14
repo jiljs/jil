@@ -18,7 +18,7 @@ export class EventProfiling {
     this._listenerCount = listenerCount;
   }
 
-  stop(): void {
+  stop(listenerCount?: number): void {
     if (this._stopWatch) {
       const elapsed = this._stopWatch.elapsed();
       this._elapsedOverall += elapsed;
@@ -26,7 +26,7 @@ export class EventProfiling {
 
       console.info(
         `did EMIT ${this._name}: elapsed_ms: ${elapsed.toFixed(5)}, listener: ${
-          this._listenerCount
+          listenerCount ?? this._listenerCount
         } (elapsed_overall: ${this._elapsedOverall.toFixed(2)}, invocations: ${this._invocationCount})`,
       );
       this._stopWatch = undefined;

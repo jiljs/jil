@@ -24,6 +24,7 @@
     "clean:lerna": "lerna clean",
     "build": "lerna run build --sort",
     "build:full": "yarn install --frozen-lockfile --ignore-scripts && yarn run clean && yarn run build",
+    "prebuild": "yarn run lnw",
     "pretest": "yarn run clean && yarn run prettier:fix && yarn run build",
     "test": "yarn run jest",
     "test:ci": "jest --collectCoverage --coverageDirectory=\"./coverage\" --reporters=default --reporters=jest-junit --watchAll=false",
@@ -54,7 +55,7 @@
     "jest-environment-node-single-context": "^27.2.1",
     "jest-junit": "^13.0.0",
     "lerna": "^4.0.0",
-    "lint-staged": "^12.3.3",
+    "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.5"

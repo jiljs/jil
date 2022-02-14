@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {EmitterOptions} from './emitter';
-import {PauseableEmitter} from './paused';
+import {PauseableEmitter} from './pauseable.emitter';
 
 export class DebounceEmitter<T> extends PauseableEmitter<T> {
   private readonly _delay: number;

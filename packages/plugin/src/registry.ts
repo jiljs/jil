@@ -6,7 +6,7 @@ import {Contract} from '@jil/common/contract';
 import {MODULE_NAME_PATTERN, ModuleID, ModuleResolver, PathResolver} from '@jil/common-node';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {createDebugger, Debugger} from '@jil/debug';
-import {Emitter} from '@jil/event/emitter';
+import {Emitter} from '@jil/common/event/emitter';
 import {color} from '@jil/support';
 import {DEFAULT_PRIORITY} from './constants';
 import {debug} from './debug';

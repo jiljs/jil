@@ -1,4 +1,4 @@
-import {AsyncEventCancellationToken} from '../event/async';
+import {AsyncEventCancellationToken} from '../event/async.emitter';
 import {Event} from '../event';
 import {Disposable, setDisposableTracker} from '../lifecycle';
 

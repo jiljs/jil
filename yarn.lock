@@ -935,7 +935,7 @@ __metadata:
     "@types/node": ^17.0.17
     "@types/resolve": ^1.20.1
     resolve: ^1.22.0
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -949,7 +949,7 @@ __metadata:
     "@types/node": ^17.0.17
     cpy-cli: ^3.1.1
     optimal: ^5.1.1
-    tily: ^2.14.1
+    tily: ^2.14.3
     tsd: ^0.19.1
   languageName: unknown
   linkType: soft
@@ -961,7 +961,6 @@ __metadata:
     "@jil/common": ^0.2.21
     "@jil/common-node": ^0.2.1
     "@jil/debug": ^0.2.3
-    "@jil/event": ^0.2.5
     "@jil/module": ^0.2.1
     "@jil/support": ^0.2.3
     "@jil/testlab": ^0.2.3
@@ -970,7 +969,7 @@ __metadata:
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.17
     minimatch: ^4.1.1
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1000,7 +999,7 @@ __metadata:
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.17
     debug: ^4.3.3
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1016,27 +1015,6 @@ __metadata:
     cpy-cli: ^3.1.1
   languageName: unknown
   linkType: soft
-
-"@jil/errors@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "@jil/errors@npm:0.2.2"
-  dependencies:
-    tily: ^2.10.1
-  checksum: 633428fcd5969ff7ee02738819a52515953c2895b5699d4d75418693395a8493b865071a0fd9416ca6869af69291080359c2928c55a4816dedc338e11bdf791a
-  languageName: node
-  linkType: hard
-
-"@jil/event@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "@jil/event@npm:0.2.5"
-  dependencies:
-    "@jil/errors": ^0.2.2
-    "@jil/stopwatch": ^0.2.2
-    "@jil/types": ^0.2.3
-    tily: ^2.10.1
-  checksum: fdf013cd2f0dde593080284cb576340cc879cb365582d7eed95ac17c59956fae709ef55d2d9e50536444e5056df4f7240979172d4527f950308d513f458df794
-  languageName: node
-  linkType: hard
 
 "@jil/inflight@workspace:packages/inflight":
   version: 0.0.0-use.local
@@ -1063,7 +1041,7 @@ __metadata:
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.17
     chalk: ^4.1.2
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1075,6 +1053,26 @@ __metadata:
     "@nutol/eslint-config": ^0.2.1
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.17
+  languageName: unknown
+  linkType: soft
+
+"@jil/pipeline@workspace:packages/pipeline":
+  version: 0.0.0-use.local
+  resolution: "@jil/pipeline@workspace:packages/pipeline"
+  dependencies:
+    "@jil/common": ^0.2.21
+    "@jil/debug": ^0.2.3
+    "@jil/support": ^0.2.3
+    "@jil/translate": ^0.1.1
+    "@nutol/build": ^0.2.2
+    "@nutol/eslint-config": ^0.2.1
+    "@types/jest": ^27.4.0
+    "@types/node": ^17.0.17
+    "@types/split": ^1.0.0
+    execa: ^5.1.1
+    lodash: ^4.17.21
+    split: ^1.0.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1100,7 +1098,6 @@ __metadata:
     "@jil/common": ^0.2.21
     "@jil/common-node": ^0.2.1
     "@jil/debug": ^0.2.3
-    "@jil/event": ^0.2.5
     "@jil/module": ^0.2.1
     "@jil/support": ^0.2.3
     "@jil/testlab": ^0.2.3
@@ -1111,7 +1108,7 @@ __metadata:
     "@types/node": ^17.0.17
     "@types/pluralize": ^0.0.29
     pluralize: ^8.0.0
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1125,13 +1122,6 @@ __metadata:
     "@types/node": ^17.0.17
   languageName: unknown
   linkType: soft
-
-"@jil/stopwatch@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "@jil/stopwatch@npm:0.2.2"
-  checksum: 60a8294ca1d18ac4b43cad5e63ce0e8f85e366bee3fe4ccbd36859a9017b733818088a2c2f45d95824db7ee9204b21d8a8fa7d9c8bc726aed3fe98d0b1a40127
-  languageName: node
-  linkType: hard
 
 "@jil/support@^0.2.3, @jil/support@workspace:packages/support":
   version: 0.0.0-use.local
@@ -1197,20 +1187,9 @@ __metadata:
     "@types/os-locale": ^4.0.2
     i18next: ^21.6.11
     os-locale: ^5.0.0
-    tily: ^2.14.1
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
-
-"@jil/types@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@jil/types@npm:0.2.3"
-  dependencies:
-    ts-essentials: ^9.1.2
-  peerDependencies:
-    typescript: ">=4.1.0"
-  checksum: da40a42bcb7b532efed94c7cdac2b81db4025a050120ea10900dc5cc9b759698f05127d0a8ff6b2cbe4827e21121686f75d0185d9691b0ced3cf3eab940e3d2a
-  languageName: node
-  linkType: hard
 
 "@jridgewell/resolve-uri@npm:^3.0.3":
   version: 3.0.5
@@ -2638,10 +2617,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/split@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@types/split@npm:1.0.0"
+  dependencies:
+    "@types/node": "*"
+    "@types/through": "*"
+  checksum: 00576cd8860b550879b01f1ff7f9efcc949e8db8df94c9e41b0de68f900015634b26bdb75ebc0bd0b8f919855efa7b7d040c96917c2fe14b40eb877df45c71a5
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
   checksum: 205fdbe3326b7046d7eaf5e494d8084f2659086a266f3f9cf00bccc549c8e36e407f88168ad4383c8b07099957ad669f75f2532ed4bc70be2b037330f7bae019
+  languageName: node
+  linkType: hard
+
+"@types/through@npm:*":
+  version: 0.0.30
+  resolution: "@types/through@npm:0.0.30"
+  dependencies:
+    "@types/node": "*"
+  checksum: 9578470db0b527c26e246a1220ae9bffc6bf47f20f89c54aac467c083ab1f7e16c00d9a7b4bb6cb4e2dfae465027270827e5908a6236063f6214625e50585d78
   languageName: node
   linkType: hard
 
@@ -7522,7 +7520,7 @@ __metadata:
     jest-environment-node-single-context: ^27.2.1
     jest-junit: ^13.0.0
     lerna: ^4.0.0
-    lint-staged: ^12.3.3
+    lint-staged: ^12.3.4
     prettier: ^2.5.1
     ts-jest: ^27.1.3
     typescript: ^4.5.5
@@ -7861,9 +7859,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^12.3.3":
-  version: 12.3.3
-  resolution: "lint-staged@npm:12.3.3"
+"lint-staged@npm:^12.3.4":
+  version: 12.3.4
+  resolution: "lint-staged@npm:12.3.4"
   dependencies:
     cli-truncate: ^3.1.0
     colorette: ^2.0.16
@@ -7880,7 +7878,7 @@ __metadata:
     yaml: ^1.10.2
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: a9147eb5def6345622d1b772d5920b1282808738abf53e6034d8da2d21d6baf80135ea22f799bf4092867a3dba13cd875493b8e32e47f3b4574e4e8871a0aa8e
+  checksum: 4e0b4b9da4183a0daeab35d41e4d243fb1270a39db997efa0c3745fa148a7a4b8b723a51cb757595fc8bb118796ca1465e67aede72f25e9ea48165aec36cec3b
   languageName: node
   linkType: hard
 
@@ -10739,7 +10737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"split@npm:^1.0.0":
+"split@npm:^1.0.0, split@npm:^1.0.1":
   version: 1.0.1
   resolution: "split@npm:1.0.1"
   dependencies:
@@ -11202,12 +11200,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tily@npm:^2.10.1, tily@npm:^2.14.1":
-  version: 2.14.1
-  resolution: "tily@npm:2.14.1"
+"tily@npm:^2.14.3":
+  version: 2.14.3
+  resolution: "tily@npm:2.14.3"
   peerDependencies:
     react-is: "*"
-  checksum: b79f29774bcf82cfd213e4b01eb11cd0c13730bcbd03d3badea591d2098ee3693b50397ee7e4bb8f607a949935742bf621eeae142724280ae236794c5849d4e9
+  checksum: 71a450826dd4c0a4c72077a903c66818aef7d1826ccd2a1db55be18bcc12c4a0356c78380cf3076781b31764bf0d2944b0040ea58f682888887798f770952f25
   languageName: node
   linkType: hard
 

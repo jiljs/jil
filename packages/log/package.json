@@ -24,7 +24,7 @@
     "@jil/support": "^0.2.3",
     "@jil/translate": "^0.1.1",
     "chalk": "^4.1.2",
-    "tily": "^2.14.1"
+    "tily": "^2.14.3"
   },
   "devDependencies": {
     "@nutol/build": "^0.2.2",

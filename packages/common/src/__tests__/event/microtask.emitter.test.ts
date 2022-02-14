@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {MicrotaskEmitter} from '../../event/microtask';
+import {MicrotaskEmitter} from '../../event/microtask.emitter';
 
 describe('Microtask', function () {
   test('Microtask Emitter', done => {

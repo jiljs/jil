@@ -24,7 +24,7 @@
     "@jil/support": "^0.2.3",
     "i18next": "^21.6.11",
     "os-locale": "^5.0.0",
-    "tily": "^2.14.1"
+    "tily": "^2.14.3"
   },
   "devDependencies": {
     "@nutol/build": "^0.2.2",

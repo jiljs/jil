@@ -1,6 +1,6 @@
 import assert from 'assert';
 import {errorHandler, setUnexpectedErrorHandler} from '../../errors/handler';
-import {AsyncEmitter, IWaitUntil} from '../../event/async';
+import {AsyncEmitter, IWaitUntil} from '../../event/async.emitter';
 import {CancellationToken, delay} from '../support';
 
 describe('AsyncEmitter', function () {
