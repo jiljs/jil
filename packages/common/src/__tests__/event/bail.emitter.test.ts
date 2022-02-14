@@ -1,7 +1,7 @@
-import { Event } from "../../event";
-import { BailEmitter } from "../../event/bail.emitter";
+import {Event} from '../../event';
+import {BailEmitter} from '../../event/bail.emitter';
 
-describe("BailEmitter", function() {
+describe('BailEmitter', function () {
   let emitter: BailEmitter<[string, number]>;
   let event: Event<[string, number]>;
 
@@ -10,27 +10,27 @@ describe("BailEmitter", function() {
     event = emitter.event;
   });
 
-  it("executes listeners in order", () => {
-    let output = "";
+  it('executes listeners in order', () => {
+    let output = '';
 
     event(([value]) => {
       output += value;
-      output += "B";
+      output += 'B';
     });
     event(() => {
-      output += "C";
+      output += 'C';
     });
     event(() => {
-      output += "D";
+      output += 'D';
     });
 
-    const result = emitter.emit(["A", 0]);
+    const result = emitter.emit(['A', 0]);
 
     expect(result).toBe(false);
-    expect(output).toBe("ABCD");
+    expect(output).toBe('ABCD');
   });
 
-  it("bails the loop if a listener returns false", () => {
+  it('bails the loop if a listener returns false', () => {
     let count = 0;
 
     event(() => {
@@ -45,13 +45,13 @@ describe("BailEmitter", function() {
       count += 1;
     });
 
-    const result = emitter.emit(["", 0]);
+    const result = emitter.emit(['', 0]);
 
     expect(result).toBe(true);
     expect(count).toBe(2);
   });
 
-  it("doesnt bail the loop if a listener returns true", () => {
+  it('doesnt bail the loop if a listener returns true', () => {
     let count = 0;
 
     event(([string, number]) => {
@@ -67,7 +67,7 @@ describe("BailEmitter", function() {
       count += 1;
     });
 
-    const result = emitter.emit(["", 1]);
+    const result = emitter.emit(['', 1]);
 
     expect(result).toBe(false);
     expect(count).toBe(4);

@@ -1,6 +1,6 @@
-import { isFunction } from "tily/is/function";
-import { Emitter } from "./emitter";
-import { onUnexpectedError } from "../errors/handler";
+import {isFunction} from 'tily/is/function';
+import {Emitter} from './emitter';
+import {onUnexpectedError} from '../errors/handler';
 
 export class BailEmitter<T> extends Emitter<T> {
   emit(data: T) {
