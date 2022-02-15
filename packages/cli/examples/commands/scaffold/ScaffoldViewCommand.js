@@ -1,4 +1,4 @@
-const {Command} = require('../../../lib');
+const {Command} = require('../../..');
 
 module.exports = class ScaffoldViewCommand extends Command {
   static description = 'Scaffold a view';

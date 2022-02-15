@@ -1,4 +1,4 @@
-const {Command} = require('../../lib');
+const {Command} = require('../..');
 
 module.exports = class BuildCommand extends Command {
   static path = 'build';

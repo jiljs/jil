@@ -2,7 +2,7 @@ if (process.env.TIMING) {
   require('time-require');
 }
 
-const {Program} = require('../lib');
+const {Program} = require('..');
 const BuildCommand = require('./commands/BuildCommand');
 const ConfirmCommand = require('./commands/ConfirmCommand');
 const ErrorCommand = require('./commands/ErrorCommand');
@@ -17,10 +17,10 @@ const SelectCommand = require('./commands/SelectCommand');
 const OptionsCommand = require('./commands/OptionsCommand');
 const ParamsCommand = require('./commands/ParamsCommand');
 
-const banner = ` __                      __
-|  |--.-----.-----.-----|  |_
-|  _  |  _  |  _  |__ --|   _|
-|_____|_____|_____|_____|____|`;
+const banner = `   __  __  __   
+ _(  )(  )(  )  
+/ \\) \\ )( / (_/\\
+\\____/(__)\\____/`;
 
 new Program({
   banner,

@@ -5,10 +5,10 @@ import { commands, options, params } from './__fixtures__/args';
 
 jest.mock('term-size');
 
-const banner = ` _____ _____ _____ _____ _____
-| __  |     |     |   __|_   _|
-| __ -|  |  |  |  |__   | | |
-|_____|_____|_____|_____| |_|`;
+const banner = `   __  __  __   
+ _(  )(  )(  )  
+/ \\) \\ )( / (_/\\
+\\____/(__)\\____/`;
 
 describe('<IndexHelp />', () => {
 	const props = {
