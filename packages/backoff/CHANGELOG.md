@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.24](https://github.com/jiljs/jil/compare/@jil/backoff@0.2.23...@jil/backoff@0.2.24) (2022-02-15)
+
+**Note:** Version bump only for package @jil/backoff
+
+
+
+
+
 ## [0.2.23](https://github.com/jiljs/jil/compare/@jil/backoff@0.2.22...@jil/backoff@0.2.23) (2022-02-14)
 
 **Note:** Version bump only for package @jil/backoff

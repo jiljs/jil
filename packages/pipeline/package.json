@@ -1,7 +1,7 @@
 {
   "name": "@jil/pipeline",
   "description": "Pipe an input through a series of routines and tasks to produce an output, or simply, run logic in a series of stages",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "jil",
     "pipeline",
@@ -28,10 +28,10 @@
     "verify": "npm pack && tar xf jil-pipeline*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.22",
-    "@jil/debug": "^0.2.4",
-    "@jil/support": "^0.2.3",
-    "@jil/translate": "^0.1.2",
+    "@jil/common": "^0.2.23",
+    "@jil/debug": "^0.2.5",
+    "@jil/support": "^0.2.4",
+    "@jil/translate": "^0.1.3",
     "@types/split": "^1.0.0",
     "execa": "^5.1.1",
     "lodash": "^4.17.21",

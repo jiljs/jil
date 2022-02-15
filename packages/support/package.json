@@ -1,7 +1,7 @@
 {
   "name": "@jil/support",
   "description": "Jil internal support library",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "keywords": [],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

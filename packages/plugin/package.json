@@ -1,7 +1,7 @@
 {
   "name": "@jil/plugin",
   "description": "Plugin based architecture that supports module loading, custom types, registries, scopes, and more.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,17 +19,17 @@
     "verify": "npm pack && tar xf jil-plugin*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.22",
-    "@jil/debug": "^0.2.4",
-    "@jil/module": "^0.2.1",
-    "@jil/ncommon": "^0.2.2",
-    "@jil/support": "^0.2.3",
+    "@jil/common": "^0.2.23",
+    "@jil/debug": "^0.2.5",
+    "@jil/module": "^0.2.2",
+    "@jil/ncommon": "^0.2.3",
+    "@jil/support": "^0.2.4",
     "@types/debug": "^4.1.7",
     "pluralize": "^8.0.0",
     "tily": "^2.14.3"
   },
   "devDependencies": {
-    "@jil/testlab": "^0.2.3",
+    "@jil/testlab": "^0.2.4",
     "@nutol/build": "^0.2.4",
     "@nutol/eslint-config": "^0.2.1",
     "@types/jest": "^27.4.0",

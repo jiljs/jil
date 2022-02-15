@@ -1,6 +1,6 @@
 {
   "name": "@jil/theme-dracula",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Dracula command line theme for Boost powered CLIs.",
   "keywords": [
     "jil",
