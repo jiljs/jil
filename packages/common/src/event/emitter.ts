@@ -133,6 +133,7 @@ export class Emitter<T = any> {
 
       this._perfMon?.stop();
     }
+    return this.listenerCount;
   }
 
   dispose() {
