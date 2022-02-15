@@ -1,6 +1,6 @@
 import fs from 'fs';
 import {mockFilePath} from '@jil/ncommon/mocks';
-import {Cache} from '../cache';
+import {Cache} from '../Cache';
 
 const CACHE_KEY = process.platform === 'win32' ? 'foo\\bar' : 'foo/bar';
 
@@ -94,7 +94,7 @@ describe('Cache', () => {
 
       expect(cache.dirFilesCache[CACHE_KEY]).toBeUndefined();
 
-      const list = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), () => Promise.resolve(files));
+      const list = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), '', () => Promise.resolve(files));
 
       expect(list).toBe(files);
       expect(cache.dirFilesCache[CACHE_KEY]).toEqual(files);
@@ -108,9 +108,9 @@ describe('Cache', () => {
         return Promise.resolve([mockFilePath(String(count))]);
       };
 
-      const c1 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), cb);
-      const c2 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), cb);
-      const c3 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), cb);
+      const c1 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), '', cb);
+      const c2 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), '', cb);
+      const c3 = await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), '', cb);
 
       expect(c1).toEqual([mockFilePath('1')]);
       expect(c2).toEqual([mockFilePath('1')]);
@@ -121,7 +121,7 @@ describe('Cache', () => {
     it('can clear cached dir contents', async () => {
       expect(cache.dirFilesCache).toEqual({});
 
-      await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), () =>
+      await cache.cacheFilesInDir(mockFilePath(CACHE_KEY), '', () =>
         Promise.resolve([mockFilePath('a'), mockFilePath('b')]),
       );
 

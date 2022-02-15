@@ -1,4 +1,4 @@
-import {getEnv} from '../../utils/get-env';
+import {getEnv} from '../../helpers/getEnv';
 
 describe('getEnv()', () => {
   it('returns from project named env', () => {

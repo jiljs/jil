@@ -1,5 +1,6 @@
 import fs from 'fs';
-import {Path} from '@jil/ncommon';
+import {Path, PortablePath} from '@jil/ncommon';
+import {ConfigError} from './ConfigError';
 
 export interface FileCache<T> {
   content: T;
@@ -39,8 +40,8 @@ export class Cache {
     return content;
   }
 
-  async cacheFilesInDir(dir: Path, commit: () => Promise<Path[]>): Promise<Path[]> {
-    const key = dir.path();
+  async cacheFilesInDir(dir: Path, hash: string, commit: () => Promise<Path[]>): Promise<Path[]> {
+    const key = dir.path() + hash;
 
     if (this.dirFilesCache[key]) {
       return this.dirFilesCache[key];
@@ -71,6 +72,18 @@ export class Cache {
       exists: false,
       mtime: 0,
     };
+
+    return this;
+  }
+
+  setRootDir(dir: PortablePath): this {
+    const root = Path.resolve(dir);
+
+    if (!root.isDirectory()) {
+      throw new ConfigError('ROOT_INVALID_DIR');
+    }
+
+    this.rootDir = root;
 
     return this;
   }

@@ -1,4 +1,4 @@
-import {mergeArray} from '../../utils/merge-array';
+import {mergeArray} from '../../helpers/mergeArray';
 
 describe('mergeArray()', () => {
   it('returns a merged array', () => {

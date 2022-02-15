@@ -1,6 +1,6 @@
 import {toArray} from 'tily/array/toArray';
 import {ExtendsSetting} from '../types';
-import {mergeArray} from './merge-array';
+import {mergeArray} from './mergeArray';
 
 /**
  * Merges previous and next file paths (either a string or array of strings) into a

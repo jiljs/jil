@@ -1,10 +1,9 @@
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {normalizeSeparators} from '@jil/ncommon/mocks';
 import {getFixturePath} from '@jil/testlab';
-import {Configuration, createExtendsSchema} from '..';
+import {Configuration, createExtendsSchema, mergeExtends} from '..';
 import {ExtendsSetting, ExtType} from '../types';
-import {mockSystemPath} from './support';
-import {mergeExtends} from '../utils/merge-extends';
+import {mockSystemPath} from './helpers';
 
 interface JilConfig {
   debug: boolean;

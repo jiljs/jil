@@ -1,15 +1,17 @@
 import {isObject} from 'tily/is/object';
-import {toArray} from 'tily/array/toArray';
-import {PluginOptions, PluginsSetting, PluginsSettingList, PluginsSettingMap} from '../types';
-import {mergeObject} from './merge-object';
+import {PluginsSetting, PluginsSettingList, PluginsSettingMap} from '../types';
+import {mergeObject} from './mergeObject';
 
 function convertListToMap(list: PluginsSettingList): PluginsSettingMap {
-  const map: PluginsSettingMap = {};
-  for (const entry of list) {
-    const [name, options = true] = toArray(entry) as [string, PluginOptions?];
-    map[name] = options;
-  }
-  return map;
+  // TODO: Migrate after Node 12 upgrade
+  return list.reduce((map, entry) => {
+    const [name, options = true] = Array.isArray(entry) ? entry : [entry];
+
+    return {
+      ...map,
+      [name]: options,
+    };
+  }, {});
 }
 
 /**

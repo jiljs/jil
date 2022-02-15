@@ -7,9 +7,10 @@ import {IgnoreFile, IgnoreFinderOptions} from './types';
 
 export class IgnoreFinder extends Finder<IgnoreFile, IgnoreFinderOptions> {
   blueprint(schemas: Schemas): Blueprint<IgnoreFinderOptions> {
-    const {string} = schemas;
+    const {bool, string} = schemas;
 
     return {
+      errorIfNoRootFound: bool(true),
       name: string().required().camelCase(),
     };
   }
@@ -17,6 +18,7 @@ export class IgnoreFinder extends Finder<IgnoreFile, IgnoreFinderOptions> {
   /**
    * Find a single ignore file in the provided directory.
    */
+  // eslint-disable-next-line @typescript-eslint/require-await
   async findFilesInDir(dir: Path): Promise<Path[]> {
     const files: Path[] = [];
     const path = dir.append(this.getFileName());
@@ -61,7 +63,7 @@ export class IgnoreFinder extends Finder<IgnoreFile, IgnoreFinderOptions> {
         return {
           ignore,
           path: filePath,
-          source: this.isRootDir(filePath.parent(), true) ? ('root' as const) : ('branch' as const),
+          source: this.isRootDir(filePath.parent()) ? ('root' as const) : ('branch' as const),
         };
       }),
     );

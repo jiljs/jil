@@ -1,34 +1,36 @@
 import {Contract} from '@jil/common/contract';
-import {ModuleResolver, PortablePath} from '@jil/ncommon';
+import {ModuleResolver, Path, PortablePath} from '@jil/ncommon';
 import {Blueprint, schemas} from '@jil/common/optimal';
 import {Emitter} from '@jil/common/event/emitter';
-import {Cache} from './cache';
-import {ConfigFinder} from './config-finder';
-import {IgnoreFinder} from './ignore-finder';
-import {Processor} from './processor';
+import {Cache} from './Cache';
+import {ConfigFinder} from './ConfigFinder';
+import {IgnoreFinder} from './IgnoreFinder';
+import {Processor} from './Processor';
 import {ConfigFile, ConfigFinderOptions, Handler, IgnoreFile, ProcessedConfig, ProcessorOptions} from './types';
 
 export abstract class Configuration<T extends object> extends Contract<T> {
+  protected _onLoadedConfig = new Emitter<ConfigFile<T>[]>();
+  protected _onLoadedIgnore = new Emitter<IgnoreFile[]>();
   protected _onProcessedConfig = new Emitter<Required<T>>();
-  /**
-   * Called after config files are loaded and processed.
-   * @category Events
-   */
-  readonly onProcessedConfig = this._onProcessedConfig.event;
 
-  protected readonly _onLoadedConfig = new Emitter<ConfigFile<T>[]>();
   /**
    * Called after config files are loaded but before processed. Can modify config file list.
    * @category Events
    */
   readonly onLoadedConfig = this._onLoadedConfig.event;
 
-  protected readonly _onLoadedIgnore = new Emitter<IgnoreFile[]>();
   /**
    * Called after ignore files are loaded. Can modify ignore file list.
    * @category Events
    */
   readonly onLoadedIgnore = this._onLoadedIgnore.event;
+
+  /**
+   * Called after config files are loaded and processed.
+   * @category Events
+   */
+  readonly onProcessedConfig = this._onProcessedConfig.event;
+
   private readonly cache: Cache;
 
   private readonly configFinder: ConfigFinder<T>;
@@ -76,6 +78,15 @@ export abstract class Configuration<T extends object> extends Contract<T> {
   }
 
   /**
+   * Attempt to find the root directory starting from the provided directory.
+   * Once the root is found, it will be cached for further lookups,
+   * otherwise an error is thrown based on current configuration.
+   */
+  async findRootDir(fromDir: PortablePath = process.cwd()): Promise<Path> {
+    return this.getConfigFinder().findRootDir(fromDir);
+  }
+
+  /**
    * Traverse upwards from the branch directory, until the root directory is found,
    * or we reach to top of the file system. While traversing, find all config files
    * within each branch directory, and the root.
@@ -90,8 +101,8 @@ export abstract class Configuration<T extends object> extends Contract<T> {
    * Load config files from the defined root. Root is determined by a relative
    * `.config` folder and `package.json` file.
    */
-  async loadConfigFromRoot(dir: PortablePath = process.cwd()): Promise<ProcessedConfig<T>> {
-    const configs = await this.getConfigFinder().loadFromRoot(dir);
+  async loadConfigFromRoot(fromDir: PortablePath = process.cwd()): Promise<ProcessedConfig<T>> {
+    const configs = await this.getConfigFinder().loadFromRoot(fromDir);
     this._onLoadedConfig.emit(configs);
     return this.processConfigs(configs);
   }
@@ -115,6 +126,18 @@ export abstract class Configuration<T extends object> extends Contract<T> {
     const ignores = await this.getIgnoreFinder().loadFromRoot(dir);
     this._onLoadedIgnore.emit(ignores);
     return ignores;
+  }
+
+  /**
+   * Explicitly set the root directory to stop traversal at. This should only be set
+   * manually when you want full control, and know file boundaries up front.
+   *
+   * This *does not* check for the existence of the root config file or folder.
+   */
+  setRootDir(dir: PortablePath): this {
+    this.cache.setRootDir(dir);
+
+    return this;
   }
 
   /**

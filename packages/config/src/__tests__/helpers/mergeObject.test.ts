@@ -1,4 +1,4 @@
-import {mergeObject} from '../../utils/merge-object';
+import {mergeObject} from '../../helpers/mergeObject';
 
 describe('mergeObject()', () => {
   it('returns a merged object', () => {

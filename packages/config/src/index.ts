@@ -3,13 +3,13 @@
  * @license     https://opensource.org/licenses/MIT
  */
 
-export * from './errors';
-export * from './configuration';
-export * from './utils/get-env';
-export * from './utils/merge-array';
-export * from './utils/merge-extends';
-export * from './utils/merge-object';
-export * from './utils/merge-plugins';
-export * from './utils/overwrite';
+export * from './ConfigError';
+export * from './Configuration';
+export * from './helpers/getEnv';
+export * from './helpers/mergeArray';
+export * from './helpers/mergeExtends';
+export * from './helpers/mergeObject';
+export * from './helpers/mergePlugins';
+export * from './helpers/overwrite';
 export * from './schemas';
 export * from './types';

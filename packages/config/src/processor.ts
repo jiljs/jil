@@ -1,10 +1,12 @@
-import {isObject} from 'tily/is/object';
+/* eslint-disable no-await-in-loop */
+
+import isObject from 'tily/is/object';
 import {Contract} from '@jil/common/contract';
 import {Blueprint, optimal, Schemas} from '@jil/common/optimal';
 import {createDebugger, Debugger} from '@jil/debug';
 import {color} from '@jil/support';
-import {mergeArray} from './utils/merge-array';
-import {mergeObject} from './utils/merge-object';
+import {mergeArray} from './helpers/mergeArray';
+import {mergeObject} from './helpers/mergeObject';
 import {ConfigFile, Handler, ProcessorOptions} from './types';
 
 export class Processor<T extends object> extends Contract<ProcessorOptions> {

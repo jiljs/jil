@@ -11,6 +11,7 @@ export async function loadMjs<T>(path: Path): Promise<T> {
 
   // import() expects URLs, not file paths.
   // https://github.com/nodejs/node/issues/31710
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const mod = await import(pathToFileURL(path.path()).toString());
 
   return (mod as {default: unknown}).default as T;

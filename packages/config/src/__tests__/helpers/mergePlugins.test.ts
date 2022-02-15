@@ -1,4 +1,4 @@
-import {mergePlugins} from '../../utils/merge-plugins';
+import {mergePlugins} from '../../helpers/mergePlugins';
 
 describe('mergePlugins()', () => {
   describe('objects', () => {

@@ -1,9 +1,9 @@
 import {Blueprint, schemas} from '@jil/common/optimal';
 import {mockFilePath} from '@jil/ncommon/mocks';
-import {mergeExtends} from '../utils/merge-extends';
-import {mergePlugins} from '../utils/merge-plugins';
-import {overwrite} from '../utils/overwrite';
-import {Processor} from '../processor';
+import {mergeExtends} from '../helpers/mergeExtends';
+import {mergePlugins} from '../helpers/mergePlugins';
+import {overwrite} from '../helpers/overwrite';
+import {Processor} from '../Processor';
 import {createExtendsSchema, createOverridesSchema, createPluginsSchema} from '../schemas';
 import {ConfigFile, ExtendsSetting, OverridesSetting, PluginsSetting} from '../types';
 

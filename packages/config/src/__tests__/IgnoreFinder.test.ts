@@ -1,9 +1,9 @@
 import {EOL} from 'os';
 import {normalizeSeparators} from '@jil/ncommon/mocks';
 import {getFixturePath} from '@jil/testlab';
-import {Cache} from '../cache';
-import {IgnoreFinder} from '../ignore-finder';
-import {mockSystemPath} from './support';
+import {Cache} from '../Cache';
+import {IgnoreFinder} from '../IgnoreFinder';
+import {mockSystemPath} from './helpers';
 
 describe('IgnoreFinder', () => {
   let cache: Cache;
@@ -28,7 +28,6 @@ describe('IgnoreFinder', () => {
     expect(cache.rootDir).toEqual(mockSystemPath(tempRoot));
     expect(cache.configDir).toEqual(mockSystemPath(`${tempRoot}/.config`));
     expect(cache.pkgPath).toEqual(mockSystemPath(`${tempRoot}/package.json`));
-    expect(cache.dirFilesCache).toEqual({});
     expect(cache.fileContentCache).toEqual({
       [mockSystemPath(`${tempRoot}/.jilignore`).path()]: {
         content: `*.log${EOL}*.lock`,
@@ -108,14 +107,6 @@ describe('IgnoreFinder', () => {
           source: 'root',
         },
       ]);
-    });
-
-    it('errors if not root folder', async () => {
-      const tempRoot = getFixturePath('config-ignore-file-tree');
-
-      await expect(finder.loadFromRoot(normalizeSeparators(`${tempRoot}/src`))).rejects.toThrow(
-        'Invalid configuration root. Requires a `.config` folder and `package.json`.',
-      );
     });
 
     it('errors if root folder is missing a `package.json`', async () => {
