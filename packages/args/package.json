@@ -1,0 +1,50 @@
+{
+  "name": "@jil/args",
+  "description": "A convention based argument parsing and formatting library, with strict validation checks",
+  "version": "0.1.0",
+  "keywords": [
+    "jil",
+    "argv",
+    "args",
+    "arguments",
+    "options",
+    "flags",
+    "params",
+    "cli"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "build": "nb-tsc",
+    "clean": "nb-clean jil-args*.tgz dist *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest",
+    "verify": "npm pack && tar xf jil-args*.tgz && tree package && npm run clean"
+  },
+  "dependencies": {
+    "@jil/common": "^0.2.22",
+    "@jil/support": "^0.2.3",
+    "levenary": "^1.1.1"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.2",
+    "@nutol/eslint-config": "^0.2.1",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.17"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
