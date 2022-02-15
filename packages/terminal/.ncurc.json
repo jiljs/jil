@@ -1,0 +1,14 @@
+{
+  "reject": [
+    "chalk",
+    "figures",
+    "ansi-escapes",
+    "ansi-regex",
+    "strip-ansi",
+    "wrap-ansi",
+    "term-size",
+    "cli-truncate",
+    "string-width",
+    "slice-ansi"
+  ]
+}
