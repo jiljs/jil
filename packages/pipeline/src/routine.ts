@@ -48,7 +48,6 @@ export abstract class Routine<Output = unknown, Input = unknown, Options extends
   protected monitorInstance: Monitor | null = null;
 
   constructor(key: string[] | string, title: string, options?: Options) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     super(title, (context, value) => this.execute(context, value), options);
 
     if (!key || key.length === 0 || (typeof key !== 'string' && !Array.isArray(key))) {
@@ -146,7 +145,6 @@ export abstract class Routine<Output = unknown, Input = unknown, Options extends
    * Update the hierarchical depth when creating a nested pipeline.
    */
   protected updateHierarchy<P extends Hierarchical>(pipeline: P): P {
-    // eslint-disable-next-line no-param-reassign
     pipeline.depth = this.depth + 1;
 
     if (this.monitorInstance && pipeline instanceof Pipeline) {

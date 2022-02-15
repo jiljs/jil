@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop */
-
 import {Context} from './context';
 import {debug} from './debug';
 import {SerialPipeline} from './serial.pipeline';

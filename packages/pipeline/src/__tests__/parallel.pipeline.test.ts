@@ -1,5 +1,3 @@
-/* eslint-disable jest/no-standalone-expect */
-
 import {Schemas} from '@jil/common/optimal';
 import {ConcurrentPipeline} from '../concurrent.pipeline';
 import {Context} from '../context';

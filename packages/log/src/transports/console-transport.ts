@@ -13,7 +13,6 @@ export class ConsoleTransport extends Transport<TransportOptions> {
   }
 
   write(message: string, item: LogItem) {
-    // eslint-disable-next-line no-console
     console[item.level](message.trim());
   }
 }

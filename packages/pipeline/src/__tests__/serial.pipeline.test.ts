@@ -1,5 +1,3 @@
-/* eslint-disable jest/no-standalone-expect */
-
 import {Schemas} from '@jil/common/optimal';
 import {Context} from '../context';
 import {Routine} from '../routine';

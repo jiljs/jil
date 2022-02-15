@@ -55,7 +55,6 @@ export abstract class SerialPipeline<
    * Traverse the linked list to return a list of work units in defined order.
    */
   override getWorkUnits(): WorkUnit<{}, Input, Output>[] {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.root.work;
   }
 

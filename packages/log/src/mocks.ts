@@ -1,4 +1,4 @@
-/* eslint-disable jest/prefer-spy-on,@typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type {LoggerFunction} from '.';
 
@@ -6,7 +6,7 @@ import type {LoggerFunction} from '.';
  * Returns a Jest spy that matches the return value shape of `createLogger`.
  *
  * ```ts
- * import { mockLogger } from '@boost/log/test';
+ * import { mockLogger } from '@jil/log/mocks';
  *
  * it('calls the logger', () => {
  * 	const log = mockLogger();

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-
 import {Context} from '../context';
 
 describe('Context', () => {

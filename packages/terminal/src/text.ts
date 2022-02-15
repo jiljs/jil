@@ -15,7 +15,7 @@ export const ANSI_REGEX = ansiRegex();
  * not support annotations, it will pass the text through.
  *
  * ```ts
- * import { annotate } from '@boost/terminal';
+ * import { annotate } from '@jil/terminal';
  *
  * const text = annotate('fileName.js', absFilePath);
  * ```
@@ -33,7 +33,7 @@ export function annotate(text: string, annotation: string): string {
  * Based on [string-width](https://www.npmjs.com/package/string-width).
  *
  * ```ts
- * import { calculateWidth } from '@boost/terminal';
+ * import { calculateWidth } from '@jil/terminal';
  *
  * calculateWidth('古'); // 2
  * ```
@@ -47,7 +47,7 @@ export function calculateWidth(text: string): number {
  * Based on [ansi-regex](https://www.npmjs.com/package/ansi-regex).
  *
  * ```ts
- * import { hasAnsi } from '@boost/terminal';
+ * import { hasAnsi } from '@jil/terminal';
  *
  * hasAnsi('\u001B[4mTest\u001B[0m'); // true
  * ```
@@ -61,7 +61,7 @@ export function hasAnsi(value: string): boolean {
  * If a terminal does not support hyperlinks, it will pass the text through.
  *
  * ```ts
- * import { link } from '@boost/terminal';
+ * import { link } from '@jil/terminal';
  *
  * const text = link('Read the manual', 'https://boostlib.dev');
  * ```
@@ -79,7 +79,7 @@ export function link(text: string, url: string): string {
  * Based on [slice-ansi](https://www.npmjs.com/package/slice-ansi).
  *
  * ```ts
- * import { sliceAnsi } from '@boost/terminal';
+ * import { sliceAnsi } from '@jil/terminal';
  *
  * const text = sliceAnsi(aStringThatMayContainAnsi, 15, 25);
  * ```
@@ -93,7 +93,7 @@ export function sliceAnsi(text: string, start: number, end?: number): string {
  * Based on [strip-ansi](https://www.npmjs.com/package/strip-ansi).
  *
  * ```ts
- * import { stripAnsi } from '@boost/terminal';
+ * import { stripAnsi } from '@jil/terminal';
  *
  * const text = stripAnsi(aStringThatContainsAnsi);
  * ```
@@ -110,7 +110,7 @@ export type TruncateOptions = CliTruncateOptions;
  * Based on [cli-truncate](https://www.npmjs.com/package/cli-truncate).
  *
  * ```ts
- * import { truncate } from '@boost/terminal';
+ * import { truncate } from '@jil/terminal';
  *
  * const text = truncate(aStringThatMayContainAnsi, 10, { position: 'middle' });
  * ```
@@ -130,7 +130,7 @@ export interface WrapOptions {
  * Based on [wrap-ansi](https://www.npmjs.com/package/wrap-ansi).
  *
  * ```ts
- * import { wrapAnsi } from '@boost/terminal';
+ * import { wrapAnsi } from '@jil/terminal';
  *
  * const text = wrapAnsi(aStringThatContainsAnsi, 20);
  * ```

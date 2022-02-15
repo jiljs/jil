@@ -169,10 +169,10 @@ describe('Routine', () => {
     });
 
     it('runs a local command in a shell', async () => {
-      const result = await routine.executeCommand('echo', ['boost'], {shell: true});
+      const result = await routine.executeCommand('echo', ['jil'], {shell: true});
 
-      expect(execa).toHaveBeenCalledWith('echo', ['boost'], {shell: true});
-      expect(result).toEqual(expect.objectContaining({command: 'echo boost'}));
+      expect(execa).toHaveBeenCalledWith('echo', ['jil'], {shell: true});
+      expect(result).toEqual(expect.objectContaining({command: 'echo jil'}));
     });
 
     it('calls callback with stream', async () => {
