@@ -25,7 +25,7 @@
     "clean": "nb-clean jil-cli*.tgz dist *.tsbuildinfo package",
     "pretest": "npm run clean && npm run build",
     "test": "npm run jest",
-    "jest": "jest --updateSnapshot",
+    "jest": "jest",
     "verify": "npm pack && tar xf jil-cli*.tgz && tree package && npm run clean"
   },
   "peerDependencies": {
@@ -47,10 +47,10 @@
     "tily": "^2.14.3"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.2",
+    "@nutol/build": "^0.2.4",
     "@nutol/eslint-config": "^0.2.1",
     "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.17",
+    "@types/node": "^17.0.18",
     "@types/react": "^17.0.39",
     "@types/semver": "^7.3.9",
     "debug": "^4.3.3",
