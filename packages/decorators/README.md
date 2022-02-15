@@ -2,7 +2,7 @@
 
 > Experimental decorators for common patterns.
 >
-> Forked from [@jil/decorator](https://github.com/milesj/jil)
+> Forked from [@boost/decorators](https://boostlib.dev/docs/decorators)
 
 ```ts
 import {bind} from '@jil/decorators/bind';
