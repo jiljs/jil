@@ -1,6 +1,6 @@
 import {useCallback, useContext} from 'react';
 import {useApp} from 'ink';
-import {ExitError} from '@jil/common-node';
+import {ExitError} from '@jil/ncommon';
 import {EXIT_FAIL, EXIT_PASS} from '../constants';
 import {ProgramContext} from '../ProgramContext';
 import {ProgramContextType} from '../types';

@@ -1,5 +1,5 @@
 import {Blueprint, schemas} from '@jil/common/optimal';
-import {mockFilePath} from '@jil/common-node/mocks';
+import {mockFilePath} from '@jil/ncommon/mocks';
 import {mergeExtends} from '../utils/merge-extends';
 import {mergePlugins} from '../utils/merge-plugins';
 import {overwrite} from '../utils/overwrite';

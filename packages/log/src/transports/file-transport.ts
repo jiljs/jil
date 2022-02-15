@@ -1,6 +1,6 @@
 import fs from 'fs';
 import zlib from 'zlib';
-import {Path, PortablePath, portablePathSchema} from '@jil/common-node';
+import {Path, PortablePath, portablePathSchema} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {MAX_LOG_SIZE} from '../constants';
 import {Transport} from '../transport';

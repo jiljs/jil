@@ -1,6 +1,6 @@
 import path from 'path';
 import {isObject} from 'tily/is/object';
-import {isFilePath, MODULE_NAME_PART, PathResolver} from '@jil/common-node';
+import {isFilePath, MODULE_NAME_PART, PathResolver} from '@jil/ncommon';
 import {createDebugger, Debugger} from '@jil/debug';
 import {color} from '@jil/support';
 import {requireModule} from '@jil/module';

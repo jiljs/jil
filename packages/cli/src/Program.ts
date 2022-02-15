@@ -1,6 +1,6 @@
 import levenary from 'levenary';
 import {ArgList, Arguments, Argv, parse, ParseError, parseInContext, PrimitiveType, ValidationError} from '@jil/args';
-import {ExitError} from '@jil/common-node';
+import {ExitError} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {Emitter} from '@jil/common/event/emitter';
 import {env} from '@jil/support';

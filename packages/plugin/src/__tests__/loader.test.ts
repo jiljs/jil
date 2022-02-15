@@ -1,4 +1,4 @@
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {copyFixtureToNodeModule} from '@jil/testlab';
 import {Loader} from '../loader';
 import {createRendererRegistry, Renderable} from './__fixtures__/renderer';

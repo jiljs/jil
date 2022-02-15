@@ -11,7 +11,7 @@
   ],
   "references": [
     {
-      "path": "../common-node/tsconfig.json"
+      "path": "../ncommon/tsconfig.json"
     },
     {
       "path": "../common/tsconfig.json"

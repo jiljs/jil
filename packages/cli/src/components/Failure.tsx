@@ -4,7 +4,7 @@
 import React from 'react';
 import { Box, Text } from 'ink';
 import { ParseError, ValidationError } from '@jil/args';
-import { ExitError } from '@jil/common-node';
+import { ExitError } from '@jil/ncommon';
 import { screen } from '@jil/terminal';
 import { CLIError } from '../CLIError';
 import { DELIMITER, SPACING_COL, SPACING_ROW } from '../constants';

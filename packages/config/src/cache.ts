@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 
 export interface FileCache<T> {
   content: T;

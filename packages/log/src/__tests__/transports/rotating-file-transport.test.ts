@@ -1,4 +1,4 @@
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {createTempFixtureFolder} from '@jil/testlab';
 import {RotatingFileTransport} from '../../transports/rotating-file-transport';
 import {closeStream, existsFile, readFile, wait as waitForWrite} from './helpers';

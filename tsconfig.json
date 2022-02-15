@@ -16,7 +16,7 @@
       "path": "packages/bufio/tsconfig.json"
     },
     {
-      "path": "packages/common-node/tsconfig.json"
+      "path": "packages/ncommon/tsconfig.json"
     },
     {
       "path": "packages/common/tsconfig.json"

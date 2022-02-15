@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs';
-import {PortablePath} from '@jil/common-node';
+import {PortablePath} from '@jil/ncommon';
 import {FileTransport} from '../../transports/file-transport';
 
 export function existsFile(path: PortablePath): boolean {

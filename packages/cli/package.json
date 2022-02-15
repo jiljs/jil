@@ -35,9 +35,9 @@
   "dependencies": {
     "@jil/args": "^0.1.0",
     "@jil/common": "^0.2.22",
-    "@jil/common-node": "^0.2.2",
     "@jil/decorators": "^0.2.4",
     "@jil/log": "^0.1.2",
+    "@jil/ncommon": "^0.2.2",
     "@jil/support": "^0.2.3",
     "@jil/terminal": "^0.1.1",
     "@jil/translate": "^0.1.2",

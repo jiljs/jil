@@ -1,5 +1,5 @@
 import {EOL} from 'os';
-import {normalizeSeparators} from '@jil/common-node/mocks';
+import {normalizeSeparators} from '@jil/ncommon/mocks';
 import {getFixturePath} from '@jil/testlab';
 import {Cache} from '../cache';
 import {IgnoreFinder} from '../ignore-finder';

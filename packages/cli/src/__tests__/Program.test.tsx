@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect } from "react";
 import { Box, Text } from "ink";
-import { ExitError } from "@jil/common-node";
+import { ExitError } from "@jil/ncommon";
 import { env } from "@jil/support";
 import { mockLogger } from "@jil/log/dist/mocks";
 import { errorHandler, setUnexpectedErrorHandler } from "@jil/common/errors/handler";

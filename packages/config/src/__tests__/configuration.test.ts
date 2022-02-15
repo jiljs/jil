@@ -1,5 +1,5 @@
 import {Blueprint, Schemas} from '@jil/common/optimal';
-import {normalizeSeparators} from '@jil/common-node/mocks';
+import {normalizeSeparators} from '@jil/ncommon/mocks';
 import {getFixturePath} from '@jil/testlab';
 import {Configuration, createExtendsSchema} from '..';
 import {ExtendsSetting, ExtType} from '../types';

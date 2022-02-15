@@ -1,6 +1,6 @@
 import https from 'https';
 import semver from 'semver';
-import {json} from '@jil/common-node';
+import {json} from '@jil/ncommon';
 import {Middleware} from '../types';
 
 async function fetchPackageLatestVersion(name: string): Promise<string | undefined> {

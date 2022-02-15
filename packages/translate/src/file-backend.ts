@@ -1,5 +1,5 @@
 import {BackendModule, Resource, ResourceKey} from 'i18next';
-import {json, Path, yaml} from '@jil/common-node';
+import {json, Path, yaml} from '@jil/ncommon';
 import {Contract} from '@jil/common/contract';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {TranslateError} from './errors';

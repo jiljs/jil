@@ -1,4 +1,4 @@
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {createTempFixtureFolder} from '@jil/testlab';
 import {FileTransport} from '../../transports/file-transport';
 import {closeStream, existsFile, readFile, sizeFile, wait as waitForWrite, writeFile} from './helpers';

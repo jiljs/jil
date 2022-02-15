@@ -1,5 +1,5 @@
-import {Path} from '@jil/common-node';
-import {mockFilePath, normalizeSeparators} from '@jil/common-node/mocks';
+import {Path} from '@jil/ncommon';
+import {mockFilePath, normalizeSeparators} from '@jil/ncommon/mocks';
 import {copyFixtureToTempFolder, getFixturePath} from '@jil/testlab';
 import {Cache} from '../cache';
 import {ConfigFinder} from '../config-finder';

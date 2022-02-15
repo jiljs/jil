@@ -1,4 +1,4 @@
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {requireModule} from '@jil/module';
 
 export async function loadCjs<T>(path: Path): Promise<T> {

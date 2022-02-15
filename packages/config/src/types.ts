@@ -1,4 +1,4 @@
-import {ModuleResolver, PackageStructure, Path} from '@jil/common-node';
+import {ModuleResolver, PackageStructure, Path} from '@jil/ncommon';
 import {DeepPartial} from '@jil/common/optimal';
 
 export type ExtType = 'cjs' | 'js' | 'json' | 'json5' | 'mjs' | 'ts' | 'yaml' | 'yml';

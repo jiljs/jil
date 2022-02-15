@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@jil/common": "^0.2.22",
-    "@jil/common-node": "^0.2.2",
     "@jil/debug": "^0.2.4",
     "@jil/module": "^0.2.1",
+    "@jil/ncommon": "^0.2.2",
     "@jil/support": "^0.2.3",
     "@types/debug": "^4.1.7",
     "pluralize": "^8.0.0",

@@ -2,7 +2,7 @@
 
 import i18next, {InitOptions} from 'i18next';
 import {toArray} from 'tily/array/toArray';
-import {Path, PortablePath} from '@jil/common-node';
+import {Path, PortablePath} from '@jil/ncommon';
 import {debug} from './debug';
 import {FileBackend} from './file-backend';
 import {LocaleDetector} from './locale-detector';

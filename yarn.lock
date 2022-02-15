@@ -942,9 +942,9 @@ __metadata:
   dependencies:
     "@jil/args": ^0.1.0
     "@jil/common": ^0.2.22
-    "@jil/common-node": ^0.2.2
     "@jil/decorators": ^0.2.4
     "@jil/log": ^0.1.2
+    "@jil/ncommon": ^0.2.2
     "@jil/support": ^0.2.3
     "@jil/terminal": ^0.1.1
     "@jil/translate": ^0.1.2
@@ -968,23 +968,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@jil/common-node@^0.2.2, @jil/common-node@workspace:packages/common-node":
-  version: 0.0.0-use.local
-  resolution: "@jil/common-node@workspace:packages/common-node"
-  dependencies:
-    "@jil/common": ^0.2.22
-    "@jil/decorators": ^0.2.4
-    "@jil/testlab": ^0.2.3
-    "@nutol/build": ^0.2.2
-    "@nutol/eslint-config": ^0.2.1
-    "@types/jest": ^27.4.0
-    "@types/node": ^17.0.17
-    "@types/resolve": ^1.20.1
-    resolve: ^1.22.0
-    tily: ^2.14.3
-  languageName: unknown
-  linkType: soft
-
 "@jil/common@^0.2.22, @jil/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@jil/common@workspace:packages/common"
@@ -1005,9 +988,9 @@ __metadata:
   resolution: "@jil/config@workspace:packages/config"
   dependencies:
     "@jil/common": ^0.2.22
-    "@jil/common-node": ^0.2.2
     "@jil/debug": ^0.2.4
     "@jil/module": ^0.2.1
+    "@jil/ncommon": ^0.2.2
     "@jil/support": ^0.2.3
     "@jil/testlab": ^0.2.3
     "@nutol/build": ^0.2.2
@@ -1079,7 +1062,7 @@ __metadata:
   resolution: "@jil/log@workspace:packages/log"
   dependencies:
     "@jil/common": ^0.2.22
-    "@jil/common-node": ^0.2.2
+    "@jil/ncommon": ^0.2.2
     "@jil/support": ^0.2.3
     "@jil/translate": ^0.1.2
     "@nutol/build": ^0.2.2
@@ -1099,6 +1082,23 @@ __metadata:
     "@nutol/eslint-config": ^0.2.1
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.17
+  languageName: unknown
+  linkType: soft
+
+"@jil/ncommon@^0.2.2, @jil/ncommon@workspace:packages/ncommon":
+  version: 0.0.0-use.local
+  resolution: "@jil/ncommon@workspace:packages/ncommon"
+  dependencies:
+    "@jil/common": ^0.2.22
+    "@jil/decorators": ^0.2.4
+    "@jil/testlab": ^0.2.3
+    "@nutol/build": ^0.2.2
+    "@nutol/eslint-config": ^0.2.1
+    "@types/jest": ^27.4.0
+    "@types/node": ^17.0.17
+    "@types/resolve": ^1.20.1
+    resolve: ^1.22.0
+    tily: ^2.14.3
   languageName: unknown
   linkType: soft
 
@@ -1142,9 +1142,9 @@ __metadata:
   resolution: "@jil/plugin@workspace:packages/plugin"
   dependencies:
     "@jil/common": ^0.2.22
-    "@jil/common-node": ^0.2.2
     "@jil/debug": ^0.2.4
     "@jil/module": ^0.2.1
+    "@jil/ncommon": ^0.2.2
     "@jil/support": ^0.2.3
     "@jil/testlab": ^0.2.3
     "@nutol/build": ^0.2.2
@@ -1266,7 +1266,7 @@ __metadata:
   resolution: "@jil/translate@workspace:packages/translate"
   dependencies:
     "@jil/common": ^0.2.22
-    "@jil/common-node": ^0.2.2
+    "@jil/ncommon": ^0.2.2
     "@jil/support": ^0.2.3
     "@nutol/build": ^0.2.2
     "@nutol/eslint-config": ^0.2.1

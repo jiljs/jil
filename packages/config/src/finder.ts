@@ -1,5 +1,5 @@
 import {Contract} from '@jil/common/contract';
-import {Path, PortablePath} from '@jil/common-node';
+import {Path, PortablePath} from '@jil/ncommon';
 import {createDebugger, Debugger} from '@jil/debug';
 import {color} from '@jil/support';
 import {Cache} from './cache';

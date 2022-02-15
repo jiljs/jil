@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@jil/common": "^0.2.22",
-    "@jil/common-node": "^0.2.2",
+    "@jil/ncommon": "^0.2.2",
     "@jil/support": "^0.2.3",
     "i18next": "^21.6.11",
     "os-locale": "^5.0.0",

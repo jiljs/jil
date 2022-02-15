@@ -1,5 +1,5 @@
 {
-  "name": "@jil/common-node",
+  "name": "@jil/ncommon",
   "description": "A common utilities and helpers for Node.js",
   "version": "0.2.2",
   "keywords": [],
@@ -14,11 +14,11 @@
     "version": "yarn run copy:assets",
     "copy:assets": "cpy package.json .npmignore LICENSE README.md CHANGELOG.md dist",
     "build": "nb-tsc && yarn run copy:assets",
-    "clean": "nb-clean jil-common-node*.tgz dist/* *.tsbuildinfo package",
+    "clean": "nb-clean jil-ncommon*.tgz dist/* *.tsbuildinfo package",
     "pretest": "yarn run clean && yarn run build",
     "test": "yarn run jest",
     "jest": "jest",
-    "verify": "npm pack && tar xf jil-common-node*.tgz && tree package && yarn run clean"
+    "verify": "npm pack && tar xf jil-ncommon*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
     "@jil/common": "^0.2.22",

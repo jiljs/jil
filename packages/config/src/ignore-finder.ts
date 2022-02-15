@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {color} from '@jil/support';
 import {Finder} from './Finder';

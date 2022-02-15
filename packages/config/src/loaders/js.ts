@@ -1,4 +1,4 @@
-import {PackageStructure, Path} from '@jil/common-node';
+import {PackageStructure, Path} from '@jil/ncommon';
 import {loadCjs} from './cjs';
 import {loadMjs} from './mjs';
 

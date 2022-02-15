@@ -1,5 +1,5 @@
 import {Contract} from '@jil/common/contract';
-import {ModuleResolver, PortablePath} from '@jil/common-node';
+import {ModuleResolver, PortablePath} from '@jil/ncommon';
 import {Blueprint, schemas} from '@jil/common/optimal';
 import {Emitter} from '@jil/common/event/emitter';
 import {Cache} from './cache';

@@ -1,5 +1,5 @@
 import {pathToFileURL} from 'url';
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {supportsImport} from './supports/import';
 
 export async function loadMjs<T>(path: Path): Promise<T> {

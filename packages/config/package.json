@@ -20,15 +20,15 @@
   },
   "dependencies": {
     "@jil/common": "^0.2.22",
-    "@jil/common-node": "^0.2.2",
     "@jil/debug": "^0.2.4",
     "@jil/module": "^0.2.1",
+    "@jil/ncommon": "^0.2.2",
     "@jil/support": "^0.2.3",
     "minimatch": "^4.1.1",
     "tily": "^2.14.3"
   },
   "devDependencies": {
-    "@jil/common-node": "^0.2.2",
+    "@jil/ncommon": "^0.2.2",
     "@jil/testlab": "^0.2.3",
     "@nutol/build": "^0.2.2",
     "@nutol/eslint-config": "^0.2.1",

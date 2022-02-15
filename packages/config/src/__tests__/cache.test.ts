@@ -1,5 +1,5 @@
 import fs from 'fs';
-import {mockFilePath} from '@jil/common-node/mocks';
+import {mockFilePath} from '@jil/ncommon/mocks';
 import {Cache} from '../cache';
 
 const CACHE_KEY = process.platform === 'win32' ? 'foo\\bar' : 'foo/bar';

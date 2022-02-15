@@ -1,4 +1,4 @@
-import {FilePath, ModuleID, ModuleResolver} from '@jil/common-node';
+import {FilePath, ModuleID, ModuleResolver} from '@jil/ncommon';
 
 export type Source = FilePath | ModuleID;
 

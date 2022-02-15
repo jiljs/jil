@@ -12,7 +12,8 @@
     "importHelpers": false
   },
   "include": [
-    "src"
+    "src",
+    "src/**/*.json"
   ],
   "references": []
 }

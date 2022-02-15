@@ -1,4 +1,4 @@
-import {Path} from '@jil/common-node';
+import {Path} from '@jil/ncommon';
 import {getFixturePath} from '@jil/testlab';
 import {FileBackend} from '../file-backend';
 

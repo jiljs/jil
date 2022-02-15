@@ -3,7 +3,7 @@ import {isObject} from 'tily/is/object';
 import {kebabCaseName} from 'tily/string/kebabCaseName';
 import {upperFirst} from 'tily/string/upperFirst';
 import {Contract} from '@jil/common/contract';
-import {MODULE_NAME_PATTERN, ModuleID, ModuleResolver, PathResolver} from '@jil/common-node';
+import {MODULE_NAME_PATTERN, ModuleID, ModuleResolver, PathResolver} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {createDebugger, Debugger} from '@jil/debug';
 import {Emitter} from '@jil/common/event/emitter';

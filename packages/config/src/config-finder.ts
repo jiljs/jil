@@ -1,6 +1,6 @@
 import minimatch from 'minimatch';
 import {toArray} from 'tily/array/toArray';
-import {isFilePath, isModuleName, PackageStructure, Path, PathResolver} from '@jil/common-node';
+import {isFilePath, isModuleName, PackageStructure, Path, PathResolver} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {color} from '@jil/support';
 import {ConfigError} from './errors';
