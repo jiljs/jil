@@ -1,0 +1,16 @@
+{
+  "name": "@jil/theme-solarized",
+  "version": "2.1.1",
+  "description": "Solarized command line theme for Boost powered CLIs.",
+  "keywords": [
+    "jil",
+    "theme",
+    "solarized"
+  ],
+  "main": "./index.js",
+  "repository": "https://github.com/jiljs/jil/tree/master/themes/solarized",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

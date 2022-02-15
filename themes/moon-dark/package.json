@@ -1,0 +1,18 @@
+{
+  "name": "@jil/theme-moon-dark",
+  "version": "2.1.1",
+  "description": "Dark Side of the Moon command line theme for Boost powered CLIs.",
+  "keywords": [
+    "jil",
+    "theme",
+    "moon",
+    "dark",
+    "side"
+  ],
+  "main": "./index.js",
+  "repository": "https://github.com/jiljs/jil/tree/master/themes/moon-dark",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

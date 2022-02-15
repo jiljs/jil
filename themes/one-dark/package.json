@@ -1,0 +1,17 @@
+{
+  "name": "@jil/theme-one-dark",
+  "version": "2.1.1",
+  "description": "One Dark command line theme for Boost powered CLIs.",
+  "keywords": [
+    "jil",
+    "theme",
+    "one",
+    "dark"
+  ],
+  "main": "./index.js",
+  "repository": "https://github.com/jiljs/jil/tree/master/themes/one-dark",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "@jil/cli",
+  "description": "An interactive command line program builder, powered by React and Ink",
+  "version": "0.1.0",
+  "keywords": [
+    "jil",
+    "args",
+    "cli",
+    "command",
+    "line",
+    "interface",
+    "program",
+    "react",
+    "ink"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
+  "author": "TY",
+  "license": "MIT",
+  "scripts": {
+    "build": "nb-tsc",
+    "clean": "nb-clean jil-cli*.tgz dist *.tsbuildinfo package",
+    "pretest": "npm run clean && npm run build",
+    "test": "npm run jest",
+    "jest": "jest --updateSnapshot",
+    "verify": "npm pack && tar xf jil-cli*.tgz && tree package && npm run clean"
+  },
+  "peerDependencies": {
+    "ink": "^3.0.0",
+    "react": "^16.8.0 || ^17.0.0"
+  },
+  "dependencies": {
+    "@jil/args": "^0.1.0",
+    "@jil/common": "^0.2.22",
+    "@jil/common-node": "^0.2.2",
+    "@jil/decorators": "^0.2.4",
+    "@jil/log": "^0.1.2",
+    "@jil/support": "^0.2.3",
+    "@jil/terminal": "^0.1.1",
+    "@jil/translate": "^0.1.2",
+    "execa": "^5.1.1",
+    "levenary": "^1.1.1",
+    "semver": "^7.3.5",
+    "tily": "^2.14.3"
+  },
+  "devDependencies": {
+    "@nutol/build": "^0.2.2",
+    "@nutol/eslint-config": "^0.2.1",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.17",
+    "@types/react": "^17.0.39",
+    "@types/semver": "^7.3.9",
+    "debug": "^4.3.3",
+    "ink": "^3.2.0",
+    "ink-testing-library": "^2.1.0",
+    "react": "^17.0.2"
+  },
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

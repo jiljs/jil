@@ -1,0 +1,16 @@
+{
+  "name": "@jil/theme-dracula",
+  "version": "2.1.1",
+  "description": "Dracula command line theme for Boost powered CLIs.",
+  "keywords": [
+    "jil",
+    "theme",
+    "dracula"
+  ],
+  "main": "./index.js",
+  "repository": "https://github.com/jiljs/jil/tree/master/themes/dracula",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
