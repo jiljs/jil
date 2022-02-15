@@ -1,7 +1,6 @@
 import ansiEscapes from 'ansi-escapes';
 import ansiRegex from 'ansi-regex';
-import cliTruncate from 'cli-truncate';
-import {Options as CliTruncateOptions} from 'cli-truncate';
+import cliTruncate, {Options as CliTruncateOptions} from 'cli-truncate';
 import slice from 'slice-ansi';
 import stringWidth from 'string-width';
 import strip from 'strip-ansi';
