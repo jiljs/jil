@@ -55,7 +55,7 @@ export abstract class Finder<T extends File, Options extends BaseFinderOptions> 
           const pkgPath = dir.append(PACKAGE_FILE);
 
           if (!pkgPath.exists()) {
-            throw new ConfigError('ROOT_NO_PACKAGE', [CONFIG_FOLDER]);
+            // throw new ConfigError('ROOT_NO_PACKAGE', [CONFIG_FOLDER]);
           }
 
           this.cache.setRootDir(dir);
@@ -96,7 +96,6 @@ export abstract class Finder<T extends File, Options extends BaseFinderOptions> 
     this.debug('Loading files from branch %s to root', color.filePath(branch.path()));
 
     while (!this.isFileSystemRoot(currentDir)) {
-      // eslint-disable-next-line no-await-in-loop
       const files = await this.findFilesInDir(currentDir);
 
       if (files.length > 0) {

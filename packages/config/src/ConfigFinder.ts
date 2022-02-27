@@ -298,7 +298,13 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
    * Load config contents from the provided file path using one of the defined loaders.
    */
   protected async loadConfig(path: Path, source?: FileSource): Promise<ConfigFile<T>> {
-    const pkg = await this.determinePackageScope(path);
+    let pkg: PackageStructure;
+    try {
+      pkg = await this.determinePackageScope(path);
+    } catch {
+      pkg = {name: 'UNKNOWN', version: '0.0.0'};
+    }
+
     const config = await this.cache.cacheFileContents(path, async () => {
       const {loaders} = this.options;
       const ext = path.ext(true);
