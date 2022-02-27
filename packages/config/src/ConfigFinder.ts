@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign, no-await-in-loop */
-
 import minimatch from 'minimatch';
 import {toArray} from 'tily/array/toArray';
 import {isFilePath, isModuleName, PackageStructure, Path, PathResolver} from '@jil/ncommon';
@@ -207,7 +205,6 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
       } else if (extendsFrom) {
         throw new ConfigError('EXTENDS_ONLY_ROOT', [key]);
       } else {
-        // eslint-disable-next-line no-continue
         continue;
       }
 
@@ -281,7 +278,6 @@ export class ConfigFinder<T extends object> extends Finder<ConfigFile<T>, Config
           passes,
           `Matching with includes "${includePatterns}" and excludes "${excludePatterns}"`,
           'Matched',
-          // eslint-disable-next-line no-nested-ternary
           excluded ? 'Excluded' : included ? 'Not matched' : 'Not included',
         );
 

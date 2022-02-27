@@ -48,4 +48,5 @@ new Program({
   .register(new InputCommand())
   .register(new MultiSelectCommand())
   .register(new SelectCommand())
-  .runAndExit(process.argv.slice(2));
+  .runAndExit(process.argv.slice(2))
+  .catch(e => console.error(e));
