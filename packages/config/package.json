@@ -1,7 +1,7 @@
 {
   "name": "@jil/config",
   "description": "Powerful convention based finder, loader, and manager of both configuration and ignore files.",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,17 +19,17 @@
     "verify": "npm pack && tar xf jil-config*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.23",
-    "@jil/debug": "^0.2.5",
-    "@jil/module": "^0.2.2",
-    "@jil/ncommon": "^0.2.3",
-    "@jil/support": "^0.2.4",
+    "@jil/common": "^0.2.24",
+    "@jil/debug": "^0.2.6",
+    "@jil/module": "^0.2.3",
+    "@jil/ncommon": "^0.2.4",
+    "@jil/support": "^0.2.5",
     "minimatch": "^5.0.1",
     "tily": "^2.14.3"
   },
   "devDependencies": {
     "@jil/ncommon": "^0.2.3",
-    "@jil/testlab": "^0.2.4",
+    "@jil/testlab": "^0.2.5",
     "@nutol/build": "^0.2.4",
     "@nutol/eslint-config": "^0.2.1",
     "@types/jest": "^27.4.1",

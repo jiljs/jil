@@ -1,7 +1,7 @@
 {
   "name": "@jil/ncommon",
   "description": "A common utilities and helpers for Node.js",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "keywords": [],
   "main": "index.js",
   "types": "index.d.ts",
@@ -21,13 +21,13 @@
     "verify": "npm pack && tar xf jil-ncommon*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.23",
-    "@jil/decorators": "^0.2.5",
+    "@jil/common": "^0.2.24",
+    "@jil/decorators": "^0.2.6",
     "resolve": "^1.22.0",
     "tily": "^2.14.3"
   },
   "devDependencies": {
-    "@jil/testlab": "^0.2.4",
+    "@jil/testlab": "^0.2.5",
     "@nutol/build": "^0.2.4",
     "@nutol/eslint-config": "^0.2.1",
     "@types/jest": "^27.4.1",

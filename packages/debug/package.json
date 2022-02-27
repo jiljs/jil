@@ -1,7 +1,7 @@
 {
   "name": "@jil/debug",
   "description": "Lightweight debugging and crash reporting.",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "keywords": [],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "verify": "npm pack && tar xf jil-debug*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/support": "^0.2.4",
+    "@jil/support": "^0.2.5",
     "@types/debug": "^4.1.7",
     "debug": "^4.3.3",
     "tily": "^2.14.3"
