@@ -1,5 +1,5 @@
 import {Optionable} from './types';
-import {Blueprint, DeepPartial, optimal, Schemas, schemas} from 'optimal';
+import { Blueprint, DeepPartial, optimal, OptimalOptions, Schemas, schemas } from "optimal";
 
 export abstract class Contract<T extends object = {}> implements Optionable<T> {
   /** Validated and configured options. */
@@ -26,18 +26,7 @@ export abstract class Contract<T extends object = {}> implements Optionable<T> {
    * ```
    */
   configure(options?: Partial<T> | ((options: Required<T>) => Partial<T>)): Readonly<Required<T>> {
-    const nextOptions = typeof options === 'function' ? options(this.options) : options;
-
-    // We don't want the "options" property to be modified directly,
-    // so it's read only, but we still want to modify it with this function.
-    // @ts-expect-error Allow readonly overwrite
-    this['options'] = Object.freeze(
-      optimal(this.blueprint(schemas, this.options === undefined) as Blueprint<T>, {
-        name: this.constructor.name,
-      }).validate({...this.options, ...nextOptions} as DeepPartial<T>),
-    );
-
-    return this.options;
+    return this.doConfigure(options);
   }
 
   /**
@@ -49,4 +38,20 @@ export abstract class Contract<T extends object = {}> implements Optionable<T> {
    * `configure()` (all other times).
    */
   abstract blueprint(schemas: Schemas, onConstruction?: boolean): Blueprint<object>;
+
+  protected doConfigure(options?: Partial<T> | ((options: Required<T>) => Partial<T>), optimalOpts?: OptimalOptions) {
+    const nextOptions = typeof options === 'function' ? options(this.options) : options;
+
+    // We don't want the "options" property to be modified directly,
+    // so it's read only, but we still want to modify it with this function.
+    // @ts-expect-error Allow readonly overwrite
+    this['options'] = Object.freeze(
+      optimal(this.blueprint(schemas, this.options === undefined) as Blueprint<T>, {
+        name: this.constructor.name,
+        ...optimalOpts
+      }).validate({...this.options, ...nextOptions} as DeepPartial<T>),
+    );
+
+    return this.options;
+  }
 }
