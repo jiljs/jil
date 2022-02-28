@@ -9,6 +9,8 @@ import {Processor} from './Processor';
 import {ConfigFile, ConfigFinderOptions, Handler, IgnoreFile, ProcessedConfig, ProcessorOptions} from './types';
 
 export abstract class Configuration<T extends object> extends Contract<T> {
+  readonly name: string;
+
   protected _onLoadedConfig = new Emitter<ConfigFile<T>[]>();
   protected _onLoadedIgnore = new Emitter<IgnoreFile[]>();
   protected _onProcessedConfig = new Emitter<Required<T>>();
@@ -42,6 +44,7 @@ export abstract class Configuration<T extends object> extends Contract<T> {
   constructor(name: string, resolver?: ModuleResolver) {
     super();
 
+    this.name = name;
     this.cache = new Cache();
     this.configFinder = new ConfigFinder({name, resolver}, this.cache);
     this.ignoreFinder = new IgnoreFinder({name}, this.cache);
