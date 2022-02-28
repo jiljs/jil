@@ -1,7 +1,7 @@
 {
   "name": "@jil/args",
   "description": "A convention based argument parsing and formatting library, with strict validation checks",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "keywords": [
     "jil",
     "argv",
@@ -28,7 +28,7 @@
     "verify": "npm pack && tar xf jil-args*.tgz && tree package && npm run clean"
   },
   "dependencies": {
-    "@jil/common": "^0.2.25",
+    "@jil/common": "^0.2.26",
     "@jil/support": "^0.2.5",
     "levenary": "^1.1.1"
   },
