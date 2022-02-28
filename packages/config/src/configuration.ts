@@ -205,7 +205,9 @@ export abstract class Configuration<T extends object> extends Contract<T> {
    * Process all loaded config objects into a single config object, and then validate.
    */
   protected async processConfigs(files: ConfigFile<T>[]): Promise<ProcessedConfig<T>> {
-    const config = await this.getProcessor().process(this.options, files, this.blueprint(schemas) as Blueprint<T>);
+    const config = await this.getProcessor().process(this.options, files, this.blueprint(schemas) as Blueprint<T>, {
+      unknown: this.allowUnknown,
+    });
 
     this._onProcessedConfig.emit(config);
 

@@ -1,6 +1,6 @@
 import isObject from 'tily/is/object';
 import {Contract} from '@jil/common/contract';
-import {Blueprint, optimal, Schemas} from '@jil/common/optimal';
+import {Blueprint, optimal, OptimalOptions, Schemas} from '@jil/common/optimal';
 import {createDebugger, Debugger} from '@jil/debug';
 import {color} from '@jil/support';
 import {mergeArray} from './helpers/mergeArray';
@@ -52,7 +52,7 @@ export class Processor<T extends object> extends Contract<ProcessorOptions> {
    * Use the defined process handlers, or the default processing rules,
    * to generate the final config object.
    */
-  async process(defaults: Required<T>, configs: ConfigFile<T>[], blueprint: Blueprint<T>): Promise<Required<T>> {
+  async process(defaults: Required<T>, configs: ConfigFile<T>[], blueprint: Blueprint<T>, opts?: OptimalOptions): Promise<Required<T>> {
     const {defaultWhenUndefined, validate} = this.options;
     const config = {...defaults};
 
@@ -62,6 +62,7 @@ export class Processor<T extends object> extends Contract<ProcessorOptions> {
       // Validate next config object
       if (validate) {
         optimal(blueprint, {
+          ...opts,
           file: next.path.path(),
         }).validate(next.config);
       }
