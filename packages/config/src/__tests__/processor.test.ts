@@ -3,7 +3,7 @@ import {mockFilePath} from '@jil/ncommon/mocks';
 import {mergeExtends} from '../helpers/mergeExtends';
 import {mergePlugins} from '../helpers/mergePlugins';
 import {overwrite} from '../helpers/overwrite';
-import {Processor} from '../Processor';
+import {Processor} from '../processor';
 import {createExtendsSchema, createOverridesSchema, createPluginsSchema} from '../schemas';
 import {ConfigFile, ExtendsSetting, OverridesSetting, PluginsSetting} from '../types';
 

@@ -1,5 +1,5 @@
 import {instance, shape, string, union} from '@jil/common/optimal';
-import {Path} from './Path';
+import {Path} from './path';
 import {PortablePath} from './types';
 
 /**

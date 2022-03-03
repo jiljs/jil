@@ -1,8 +1,8 @@
 import {Path} from '@jil/ncommon';
 import {mockFilePath, normalizeSeparators} from '@jil/ncommon/mocks';
 import {copyFixtureToTempFolder, getFixturePath} from '@jil/testlab';
-import {Cache} from '../Cache';
-import {ConfigFinder} from '../ConfigFinder';
+import {Cache} from '../cache';
+import {ConfigFinder} from '../config-finder';
 import {mockSystemPath} from './helpers';
 
 describe('ConfigFinder', () => {

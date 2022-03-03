@@ -52,7 +52,12 @@ export class Processor<T extends object> extends Contract<ProcessorOptions> {
    * Use the defined process handlers, or the default processing rules,
    * to generate the final config object.
    */
-  async process(defaults: Required<T>, configs: ConfigFile<T>[], blueprint: Blueprint<T>, opts?: OptimalOptions): Promise<Required<T>> {
+  async process(
+    defaults: Required<T>,
+    configs: ConfigFile<T>[],
+    blueprint: Blueprint<T>,
+    opts?: OptimalOptions,
+  ): Promise<Required<T>> {
     const {defaultWhenUndefined, validate} = this.options;
     const config = {...defaults};
 

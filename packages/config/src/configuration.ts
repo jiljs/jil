@@ -2,10 +2,10 @@ import {Contract} from '@jil/common/contract';
 import {ModuleResolver, Path, PortablePath} from '@jil/ncommon';
 import {Blueprint, schemas} from '@jil/common/optimal';
 import {Emitter} from '@jil/common/event/emitter';
-import {Cache} from './Cache';
-import {ConfigFinder} from './ConfigFinder';
-import {IgnoreFinder} from './IgnoreFinder';
-import {Processor} from './Processor';
+import {Cache} from './cache';
+import {ConfigFinder} from './config-finder';
+import {IgnoreFinder} from './ignore-finder';
+import {Processor} from './processor';
 import {ConfigFile, ConfigFinderOptions, Handler, IgnoreFile, ProcessedConfig, ProcessorOptions} from './types';
 
 export abstract class Configuration<T extends object> extends Contract<T> {

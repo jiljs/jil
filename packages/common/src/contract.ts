@@ -1,5 +1,5 @@
 import {Optionable} from './types';
-import { Blueprint, DeepPartial, optimal, Schemas, schemas } from "optimal";
+import {Blueprint, DeepPartial, optimal, Schemas, schemas} from 'optimal';
 
 export abstract class Contract<T extends object = {}> implements Optionable<T> {
   /** Validated and configured options. */
@@ -54,5 +54,4 @@ export abstract class Contract<T extends object = {}> implements Optionable<T> {
    * `configure()` (all other times).
    */
   abstract blueprint(schemas: Schemas, onConstruction?: boolean): Blueprint<object>;
-
 }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import {Path, PortablePath} from '@jil/ncommon';
-import {ConfigError} from './ConfigError';
+import {ConfigError} from './config-error';
 
 export interface FileCache<T> {
   content: T;

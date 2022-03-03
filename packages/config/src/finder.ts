@@ -3,8 +3,8 @@ import {Contract} from '@jil/common/contract';
 import {Path, PortablePath} from '@jil/ncommon';
 import {createDebugger, Debugger} from '@jil/debug';
 import {color} from '@jil/support';
-import {Cache} from './Cache';
-import {ConfigError} from './ConfigError';
+import {Cache} from './cache';
+import {ConfigError} from './config-error';
 import {CONFIG_FOLDER, PACKAGE_FILE, ROOT_CONFIG_FILE_REGEX} from './constants';
 import {BaseFinderOptions, File} from './types';
 

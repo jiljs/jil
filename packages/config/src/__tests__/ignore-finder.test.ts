@@ -1,8 +1,8 @@
 import {EOL} from 'os';
 import {normalizeSeparators} from '@jil/ncommon/mocks';
 import {getFixturePath} from '@jil/testlab';
-import {Cache} from '../Cache';
-import {IgnoreFinder} from '../IgnoreFinder';
+import {Cache} from '../cache';
+import {IgnoreFinder} from '../ignore-finder';
 import {mockSystemPath} from './helpers';
 
 describe('IgnoreFinder', () => {

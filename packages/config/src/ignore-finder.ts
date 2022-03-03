@@ -2,7 +2,7 @@ import fs from 'fs';
 import {Path} from '@jil/ncommon';
 import {Blueprint, Schemas} from '@jil/common/optimal';
 import {color} from '@jil/support';
-import {Finder} from './Finder';
+import {Finder} from './finder';
 import {IgnoreFile, IgnoreFinderOptions} from './types';
 
 export class IgnoreFinder extends Finder<IgnoreFile, IgnoreFinderOptions> {
