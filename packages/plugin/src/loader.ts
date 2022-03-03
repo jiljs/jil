@@ -6,7 +6,7 @@ import {color} from '@jil/support';
 import {requireModule} from '@jil/module';
 import {debug} from './debug';
 import {PluginError} from './errors';
-import {Registry} from './Registry';
+import {Registry} from './registry';
 import {Factory, Pluggable, Source} from './types';
 
 export class Loader<Plugin extends Pluggable> {

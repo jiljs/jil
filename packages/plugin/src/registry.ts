@@ -10,7 +10,7 @@ import {Emitter} from '@jil/common/event/emitter';
 import {color} from '@jil/support';
 import {DEFAULT_PRIORITY} from './constants';
 import {debug} from './debug';
-import {Loader} from './Loader';
+import {Loader} from './loader';
 import {PluginError} from './errors';
 import {
   Callback,
