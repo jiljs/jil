@@ -12,13 +12,12 @@ cache:
 before_script:
   - node --version
   - npm --version
-  - npm ci
-  - npm run bootstrap
-  - npm run build:ci
+  - yarn --version
+  - yarn install
 
 test:
   script:
-    - npm run test:ci
+    - yarn test
   coverage: /Statements\s+:\s(\d+.?\d+)%/
   artifacts:
     when: always
