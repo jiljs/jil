@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "nb-tsc",
-    "clean": "nb-clean jil-plugin*.tgz dist/* *.tsbuildinfo package",
+    "clean": "nb-clean 'jil-plugin*.tgz' 'dist/*' '*.tsbuildinfo' 'package'",
     "pretest": "yarn run clean && yarn run build",
     "test": "yarn run jest",
     "jest": "jest",

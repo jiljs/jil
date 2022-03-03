@@ -22,7 +22,7 @@
   "license": "MIT",
   "scripts": {
     "build": "nb-tsc",
-    "clean": "nb-clean jil-cli*.tgz dist *.tsbuildinfo package",
+    "clean": "nb-clean 'jil-cli*.tgz' 'dist/*' '*.tsbuildinfo' 'package'",
     "pretest": "npm run clean && npm run build",
     "test": "npm run jest",
     "jest": "jest",

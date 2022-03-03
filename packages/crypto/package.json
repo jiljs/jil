@@ -24,7 +24,7 @@
     "version": "yarn run copy:assets",
     "copy:assets": "cpy package.json README.md dist",
     "build": "nb-tsc && yarn run copy:assets",
-    "clean": "nb-clean jil-crypto*.tgz dist/* *.tsbuildinfo package",
+    "clean": "nb-clean 'jil-crypto*.tgz' 'dist/*' '*.tsbuildinfo' 'package'",
     "pretest": "yarn run clean && yarn run build",
     "test": "yarn run jest",
     "jest": "jest --runInBand",

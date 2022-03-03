@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import https from 'https';
 import {Loggable} from '@jil/log';
-import {mockLogger} from '@jil/log/dist/test';
+import {mockLogger} from '@jil/log/dist/mocks';
 import {checkPackageOutdated} from '../../middleware/checkPackageOutdated';
 
 describe('checkPackageOutdated()', () => {

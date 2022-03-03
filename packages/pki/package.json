@@ -18,7 +18,7 @@
   "scripts": {
     "build": "nb-tsc",
     "postbuild": "cpy \"./src/__tests__/fixtures/**/*\" \"./dist/__tests__/fixtures\"",
-    "clean": "nb-clean jil-pki*.tgz dist *.tsbuildinfo package",
+    "clean": "nb-clean 'jil-pki*.tgz' 'dist/*' '*.tsbuildinfo' 'package'",
     "pretest": "yarn run clean && yarn run build",
     "test": "yarn run jest",
     "jest": "jest",
