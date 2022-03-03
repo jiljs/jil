@@ -1,7 +1,7 @@
 {
   "name": "@jil/crypto",
   "description": "TS crypto library based on bcrypto",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "keywords": [
     "crypto",
     "crypt",
@@ -31,7 +31,7 @@
     "verify": "npm pack && tar xf jil-crypto*.tgz && tree package && yarn run clean"
   },
   "dependencies": {
-    "@jil/bufio": "^0.1.7",
+    "@jil/bufio": "^0.1.8",
     "bcrypto": "^5.4.0"
   },
   "devDependencies": {

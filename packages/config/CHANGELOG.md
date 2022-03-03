@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/jiljs/jil/compare/@jil/config@0.3.4...@jil/config@0.3.5) (2022-03-03)
+
+**Note:** Version bump only for package @jil/config
+
+
+
+
+
 ## [0.3.4](https://github.com/jiljs/jil/compare/@jil/config@0.3.3...@jil/config@0.3.4) (2022-02-28)
 
 **Note:** Version bump only for package @jil/config
