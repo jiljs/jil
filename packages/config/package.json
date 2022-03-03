@@ -25,13 +25,13 @@
     "@jil/ncommon": "^0.2.6",
     "@jil/support": "^0.2.5",
     "minimatch": "^5.0.1",
-    "tily": "^2.14.3"
+    "tily": "^2.14.4"
   },
   "devDependencies": {
-    "@jil/ncommon": "^0.2.3",
+    "@jil/ncommon": "^0.2.6",
     "@jil/testlab": "^0.2.5",
-    "@nutol/build": "^0.2.4",
-    "@nutol/eslint-config": "^0.2.1",
+    "@nutol/build": "^0.2.6",
+    "@nutol/eslint-config": "^0.2.2",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21"
   },

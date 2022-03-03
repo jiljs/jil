@@ -676,6 +676,7 @@ export function transform<Original, Transformed>(
   const target = newWriteableStream<Transformed>(reducer);
 
   listenStream(stream, {
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     onData: data => target.write(transformer.data(data)),
     onError: error => target.error(transformer.error ? transformer.error(error) : error),
     onEnd: () => target.end(),
@@ -724,6 +725,7 @@ export function prefixedStream<T>(prefix: T, stream: ReadableStream<T>, reducer:
   const target = newWriteableStream<T>(reducer);
 
   listenStream(stream, {
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     onData: data => {
       // Handle prefix only once
       if (!prefixHandled) {

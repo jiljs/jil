@@ -24,11 +24,11 @@
     "@jil/support": "^0.2.5",
     "i18next": "^21.6.12",
     "os-locale": "^5.0.0",
-    "tily": "^2.14.3"
+    "tily": "^2.14.4"
   },
   "devDependencies": {
-    "@nutol/build": "^0.2.4",
-    "@nutol/eslint-config": "^0.2.1",
+    "@nutol/build": "^0.2.6",
+    "@nutol/eslint-config": "^0.2.2",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "@types/os-locale": "^4.0.2"
